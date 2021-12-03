@@ -1,0 +1,31 @@
+# Account details
+aws_profile = "heritage-live-eu-west-2"
+aws_region  = "eu-west-2"
+aws_account = "heritage-live"
+
+# Account shorthand
+account = "hlive"
+region  = "euw2"
+
+# Application details
+application = "windows-workloads"
+environment = "live"
+
+# Test Dev Generate RDP port CIDR blocks
+test_dev_generate_rdp_cidr_block = [
+  "10.172.116.224/32",
+  "10.172.23.39/32"
+]
+
+# Test Dev Generate 49155 port CIDR blocks
+test_dev_generate_49155_cidr_block = [
+  "172.16.101.82/32",
+  "172.16.202.91/32"
+]
+
+# Test Dev Generate 135 port CIDR blocks
+test_dev_generate_135_cidr_block = [
+  "172.16.101.82/32",
+  "172.16.202.91/32",
+  "172.16.200.200/32"
+]
