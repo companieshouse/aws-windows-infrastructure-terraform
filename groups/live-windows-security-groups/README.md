@@ -19,6 +19,8 @@
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_smart_vault_1_server_security_group"></a> [smart\_vault\_1\_server\_security\_group](#module\_smart\_vault\_1\_server\_security\_group) | terraform-aws-modules/security-group/aws | ~> 3.0 |
+| <a name="module_smart_vault_2_server_security_group"></a> [smart\_vault\_2\_server\_security\_group](#module\_smart\_vault\_2\_server\_security\_group) | terraform-aws-modules/security-group/aws | ~> 3.0 |
 | <a name="module_test_dev_generate_server_security_group"></a> [test\_dev\_generate\_server\_security\_group](#module\_test\_dev\_generate\_server\_security\_group) | terraform-aws-modules/security-group/aws | ~> 3.0 |
 
 ## Resources
@@ -38,6 +40,19 @@
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region in which resources will be administered | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | The name of the environment | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | Short version of the name of the AWS region in which resources will be administered | `string` | n/a | yes |
+| <a name="input_smart_vault_1_135_cidr_block"></a> [smart\_vault\_1\_135\_cidr\_block](#input\_smart\_vault\_1\_135\_cidr\_block) | Smart Vault 1 135 port CIDR blocks | `list(any)` | `[]` | no |
+| <a name="input_smart_vault_1_445_cidr_block"></a> [smart\_vault\_1\_445\_cidr\_block](#input\_smart\_vault\_1\_445\_cidr\_block) | Smart Vault 1 445 port CIDR blocks | `list(any)` | `[]` | no |
+| <a name="input_smart_vault_1_49155_cidr_block"></a> [smart\_vault\_1\_49155\_cidr\_block](#input\_smart\_vault\_1\_49155\_cidr\_block) | Smart Vault 1 49155 port CIDR blocks | `list(any)` | `[]` | no |
+| <a name="input_smart_vault_1_6001_cidr_block"></a> [smart\_vault\_1\_6001\_cidr\_block](#input\_smart\_vault\_1\_6001\_cidr\_block) | Smart Vault 1 6001 port CIDR blocks | `list(any)` | `[]` | no |
+| <a name="input_smart_vault_1_6003_cidr_block"></a> [smart\_vault\_1\_6003\_cidr\_block](#input\_smart\_vault\_1\_6003\_cidr\_block) | Smart Vault 1 6003 port CIDR blocks | `list(any)` | `[]` | no |
+| <a name="input_smart_vault_1_8080_cidr_block"></a> [smart\_vault\_1\_8080\_cidr\_block](#input\_smart\_vault\_1\_8080\_cidr\_block) | Smart Vault 1 8080 port CIDR blocks | `list(any)` | `[]` | no |
+| <a name="input_smart_vault_1_http_cidr_block"></a> [smart\_vault\_1\_http\_cidr\_block](#input\_smart\_vault\_1\_http\_cidr\_block) | Smart Vault 1 http port CIDR blocks | `list(any)` | `[]` | no |
+| <a name="input_smart_vault_1_rdp_cidr_block"></a> [smart\_vault\_1\_rdp\_cidr\_block](#input\_smart\_vault\_1\_rdp\_cidr\_block) | Smart Vault 1 rdp port CIDR blocks | `list(any)` | `[]` | no |
+| <a name="input_smart_vault_2_135_cidr_block"></a> [smart\_vault\_2\_135\_cidr\_block](#input\_smart\_vault\_2\_135\_cidr\_block) | Smart Vault 2 135 port CIDR blocks | `list(any)` | `[]` | no |
+| <a name="input_smart_vault_2_445_cidr_block"></a> [smart\_vault\_2\_445\_cidr\_block](#input\_smart\_vault\_2\_445\_cidr\_block) | Smart Vault 2 445 port CIDR blocks | `list(any)` | `[]` | no |
+| <a name="input_smart_vault_2_49155_cidr_block"></a> [smart\_vault\_2\_49155\_cidr\_block](#input\_smart\_vault\_2\_49155\_cidr\_block) | Smart Vault 2 49155 port CIDR blocks | `list(any)` | `[]` | no |
+| <a name="input_smart_vault_2_6001_cidr_block"></a> [smart\_vault\_2\_6001\_cidr\_block](#input\_smart\_vault\_2\_6001\_cidr\_block) | Smart Vault 2 6001 port CIDR blocks | `list(any)` | `[]` | no |
+| <a name="input_smart_vault_2_rdp_cidr_block"></a> [smart\_vault\_2\_rdp\_cidr\_block](#input\_smart\_vault\_2\_rdp\_cidr\_block) | Smart Vault 2 rdp port CIDR blocks | `list(any)` | `[]` | no |
 | <a name="input_test_dev_generate_135_cidr_block"></a> [test\_dev\_generate\_135\_cidr\_block](#input\_test\_dev\_generate\_135\_cidr\_block) | Test Dev Generate 135 port CIDR blocks | `list(any)` | `[]` | no |
 | <a name="input_test_dev_generate_49155_cidr_block"></a> [test\_dev\_generate\_49155\_cidr\_block](#input\_test\_dev\_generate\_49155\_cidr\_block) | Test Dev Generate 49155 port CIDR blocks | `list(any)` | `[]` | no |
 | <a name="input_test_dev_generate_rdp_cidr_block"></a> [test\_dev\_generate\_rdp\_cidr\_block](#input\_test\_dev\_generate\_rdp\_cidr\_block) | Test Dev Generate RDP port CIDR blocks | `list(any)` | `[]` | no |
