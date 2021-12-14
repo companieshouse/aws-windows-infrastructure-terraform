@@ -56,25 +56,3 @@ variable "environment" {
   type        = string
   description = "The name of the environment"
 }
-
-# ------------------------------------------------------------------------------
-# Security Group Variables
-# ------------------------------------------------------------------------------
-
-variable "test_dev_generate_rdp_cidr_block" {
-  type        = list(any)
-  description = "Test Dev Generate RDP port CIDR blocks"
-  default     = []
-}
-
-variable "test_dev_generate_49155_cidr_block" {
-  type        = list(any)
-  description = "Test Dev Generate 49155 port CIDR blocks"
-  default     = []
-}
-
-variable "test_dev_generate_135_cidr_block" {
-  type        = list(any)
-  description = "Test Dev Generate 135 port CIDR blocks"
-  default     = []
-}

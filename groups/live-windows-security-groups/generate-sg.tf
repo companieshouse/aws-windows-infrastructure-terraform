@@ -16,7 +16,7 @@ module "test_dev_generate_server_security_group" {
     },
     {
       rule        = "rdp-tcp"
-      cidr_blocks = join(",", var.test_dev_generate_rdp_cidr_block)
+      cidr_blocks = join(",", local.test_dev_generate_rdp_cidr_block)
     },
     {
       from_port   = 1000
@@ -28,13 +28,13 @@ module "test_dev_generate_server_security_group" {
       from_port   = 49155
       to_port     = 49155
       protocol    = "tcp"
-      cidr_blocks = join(",", var.test_dev_generate_49155_cidr_block)
+      cidr_blocks = join(",", local.test_dev_generate_49155_cidr_block)
     },
     {
       from_port   = 135
       to_port     = 135
       protocol    = "tcp"
-      cidr_blocks = join(",", var.test_dev_generate_135_cidr_block)
+      cidr_blocks = join(",", local.test_dev_generate_135_cidr_block)
     },
     {
       from_port   = 49643
