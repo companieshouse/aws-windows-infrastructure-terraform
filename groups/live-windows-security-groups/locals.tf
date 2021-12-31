@@ -27,6 +27,31 @@ locals {
   ]
 
   # ------------------------------------------------------------------------------
+  # Production Generate Server Security Group Variables
+  # ------------------------------------------------------------------------------
+
+  # Production Generate RDP port CIDR blocks
+  prod_generate_rdp_cidr_block = [
+    "10.172.116.0/24",
+    "10.172.119.76/32",
+    "10.172.20.0/22",
+    "172.16.101.82/32"
+  ]
+
+  # Production Generate 49155 port CIDR blocks
+  prod_generate_49155_cidr_block = [
+    "172.16.101.82/32",
+    "172.16.202.91/32"
+  ]
+
+  # Production Generate 135 port CIDR blocks
+  prod_generate_135_cidr_block = [
+    "172.16.101.82/32",
+    "172.16.202.91/32",
+    "172.16.200.200/32"
+  ]
+
+  # ------------------------------------------------------------------------------
   # Smart Vault 1 Server Security Group Variables
   # ------------------------------------------------------------------------------
 
@@ -59,18 +84,6 @@ locals {
     "10.172.23.39/32"
   ]
 
-  # Smart Vault 1 6001 port CIDR blocks
-  smart_vault_1_6001_cidr_block = [
-    "172.16.200.92/32",
-    "172.16.200.91/32"
-  ]
-
-  # Smart Vault 1 6003 port CIDR blocks
-  smart_vault_1_6003_cidr_block = [
-    "172.16.200.91/32",
-    "172.16.200.92/32"
-  ]
-
   # Smart Vault 1 8080 port CIDR blocks
   smart_vault_1_8080_cidr_block = [
     "10.172.23.39/32",
@@ -97,8 +110,7 @@ locals {
   # Smart Vault 2 445 port CIDR blocks
   smart_vault_2_445_cidr_block = [
     "172.16.200.206/32",
-    "172.16.101.82/32",
-    "172.16.200.91/32"
+    "172.16.101.82/32"
   ]
 
   # Smart Vault 2 rdp port CIDR blocks
@@ -106,12 +118,6 @@ locals {
     "10.172.23.198/32",
     "10.172.23.39/32",
     "172.16.101.82/32"
-  ]
-
-  # Smart Vault 2 6001 port CIDR blocks
-  smart_vault_2_6001_cidr_block = [
-    "172.16.200.91/32",
-    "172.16.200.92/32"
   ]
 
   # Smart Vault 2 49155 port CIDR blocks

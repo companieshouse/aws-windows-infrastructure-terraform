@@ -41,28 +41,10 @@ module "smart_vault_1_server_security_group" {
       cidr_blocks = "172.16.200.200/32"
     },
     {
-      from_port   = 6001
-      to_port     = 6001
-      protocol    = "tcp"
-      cidr_blocks = join(",", local.smart_vault_1_6001_cidr_block)
-    },
-    {
-      from_port   = 6003
-      to_port     = 6003
-      protocol    = "tcp"
-      cidr_blocks = join(",", local.smart_vault_1_6003_cidr_block)
-    },
-    {
       from_port   = 6129
       to_port     = 6129
       protocol    = "tcp"
       cidr_blocks = "10.172.120.161/32"
-    },
-    {
-      from_port   = 8009
-      to_port     = 8009
-      protocol    = "tcp"
-      cidr_blocks = "172.16.200.91/32"
     },
     {
       from_port   = 8080
@@ -76,18 +58,11 @@ module "smart_vault_1_server_security_group" {
       protocol    = "tcp"
       cidr_blocks = join(",", local.smart_vault_1_49155_cidr_block)
     },
-
-    {
-      from_port   = 55121
-      to_port     = 55121
-      protocol    = "tcp"
-      cidr_blocks = "172.16.200.91/32"
-    },
     {
       from_port   = 55122
       to_port     = 55122
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.91/32"
+      cidr_blocks = "172.16.101.82/32"
     },
     {
       from_port   = 56589
@@ -96,6 +71,46 @@ module "smart_vault_1_server_security_group" {
       cidr_blocks = "172.16.101.82/32"
     }
   ]
+
+  computed_ingress_with_source_security_group_id = [
+    {
+      from_port                = 6001
+      to_port                  = 6001
+      protocol                 = "tcp"
+      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+    },
+    {
+      from_port                = 6001
+      to_port                  = 6001
+      protocol                 = "tcp"
+      source_security_group_id = module.smart_vault_2_server_security_group.this_security_group_id
+    },
+    {
+      from_port                = 6003
+      to_port                  = 6003
+      protocol                 = "tcp"
+      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+    },
+    {
+      from_port                = 6003
+      to_port                  = 6003
+      protocol                 = "tcp"
+      source_security_group_id = module.smart_vault_2_server_security_group.this_security_group_id
+    },
+    {
+      from_port                = 8009
+      to_port                  = 8009
+      protocol                 = "tcp"
+      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+    },
+    {
+      from_port                = 55121
+      to_port                  = 55121
+      protocol                 = "tcp"
+      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+    }
+  ]
+  number_of_computed_ingress_with_source_security_group_id = 6
 
   egress_rules = ["all-all"]
 }
@@ -140,22 +155,10 @@ module "smart_vault_2_server_security_group" {
       cidr_blocks = "172.16.200.200/32"
     },
     {
-      from_port   = 6001
-      to_port     = 6001
-      protocol    = "tcp"
-      cidr_blocks = join(",", local.smart_vault_2_6001_cidr_block)
-    },
-    {
       from_port   = 6129
       to_port     = 6129
       protocol    = "tcp"
       cidr_blocks = "10.172.120.161/32"
-    },
-    {
-      from_port   = 8009
-      to_port     = 8009
-      protocol    = "tcp"
-      cidr_blocks = "172.16.200.91/32"
     },
     {
       from_port   = 49155
@@ -176,6 +179,34 @@ module "smart_vault_2_server_security_group" {
       cidr_blocks = "172.16.101.82/32"
     }
   ]
+
+  computed_ingress_with_source_security_group_id = [
+    {
+      from_port                = 445
+      to_port                  = 445
+      protocol                 = "tcp"
+      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+    },
+    {
+      from_port                = 6001
+      to_port                  = 6001
+      protocol                 = "tcp"
+      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+    },
+    {
+      from_port                = 6001
+      to_port                  = 6001
+      protocol                 = "tcp"
+      source_security_group_id = module.smart_vault_2_server_security_group.this_security_group_id
+    },
+    {
+      from_port                = 8009
+      to_port                  = 8009
+      protocol                 = "tcp"
+      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+    }
+  ]
+  number_of_computed_ingress_with_source_security_group_id = 4
 
   egress_rules = ["all-all"]
 }
