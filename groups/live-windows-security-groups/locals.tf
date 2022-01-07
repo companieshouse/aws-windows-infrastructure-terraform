@@ -125,4 +125,40 @@ locals {
     "172.16.101.82/32",
     "172.16.202.91/32"
   ]
+
+  # ------------------------------------------------------------------------------
+  # Designer Application Server Security Group Variables
+  # ------------------------------------------------------------------------------
+
+  # Designer Application 135 port CIDR blocks
+  designer_135_cidr_block = [
+    "172.16.202.91/32",
+    "172.16.200.200/32",
+    "172.16.101.82/32"
+  ]
+
+  # Designer Application MSSQL port CIDR blocks
+  designer_mssql_cidr_block = [
+    "172.16.155.6/32",
+    "172.16.155.9/32"
+  ]
+
+  # Designer Application rdp port CIDR blocks
+  designer_rdp_cidr_block = [
+    "172.16.101.82/32",
+    "10.172.22.130/32"
+  ]
+
+  # Designer Application 37719 port CIDR blocks
+  designer_37719_cidr_block = [
+    "10.172.116.194/32",
+    "10.172.116.192/32",
+    "10.172.20.214/32"
+  ]
+
+  # Designer Application 49155 port CIDR blocks
+  designer_49155_cidr_block = [
+    "172.16.202.91/32",
+    "172.16.101.82/32"
+  ]
 }
