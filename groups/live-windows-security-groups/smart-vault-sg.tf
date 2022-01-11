@@ -47,9 +47,7 @@ module "smart_vault_1_server_security_group" {
       cidr_blocks = "10.172.120.161/32"
     },
     {
-      from_port   = 8080
-      to_port     = 8080
-      protocol    = "tcp"
+      rule        = "http-8080-tcp"
       cidr_blocks = join(",", local.smart_vault_1_8080_cidr_block)
     },
     {
