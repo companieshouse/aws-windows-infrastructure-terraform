@@ -9,3 +9,10 @@ region  = "euw2"
 
 # Application details
 environment = "live"
+application = "windows-workloads"
+
+# ABBYY Doc Capture & OCR Servers
+
+# Ewok Licensing Test Server
+
+# Ewok Licensing Backup Server
