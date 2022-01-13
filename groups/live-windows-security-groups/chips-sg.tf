@@ -46,7 +46,7 @@ module "chips_server_security_group" {
       from_port   = 49665
       to_port     = 49665
       protocol    = "tcp"
-      cidr_blocks = "10.172.20.153/24"
+      cidr_blocks = "10.172.20.153/32"
     },
     {
       from_port   = 53971
