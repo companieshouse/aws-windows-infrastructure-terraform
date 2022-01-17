@@ -84,7 +84,7 @@ module "abbyy_dev_ec2" {
   key_name               = aws_key_pair.abbyy_dev_keypair.key_name
   monitoring             = var.monitoring
   get_password_data      = var.get_password_data
-  vpc_security_group_ids = [module.abbyy_dev_ec2_security_group.this_security_group_id, data.aws_security_group.nagios_shared.id, data.aws_security_group.rdp_shared.id]
+  vpc_security_group_ids = [module.abbyy_dev_ec2_security_group.this_security_group_id, data.aws_security_group.rdp_shared.id]
   subnet_id              = coalesce(data.aws_subnet_ids.application.ids...)
   iam_instance_profile   = module.abbyy_dev_profile.aws_iam_instance_profile.name
   ebs_optimized          = var.ebs_optimized

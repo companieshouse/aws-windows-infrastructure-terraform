@@ -9,13 +9,6 @@ data "aws_vpc" "vpc" {
   }
 }
 
-data "aws_security_group" "nagios_shared" {
-  filter {
-    name   = "group-name"
-    values = ["sgr-nagios-inbound-shared-*"]
-  }
-}
-
 data "aws_security_group" "rdp_shared" {
   filter {
     name   = "group-name"

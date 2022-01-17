@@ -10,13 +10,6 @@ data "aws_vpc" "vpc" {
   }
 }
 
-data "aws_security_group" "nagios_shared" {
-  filter {
-    name   = "group-name"
-    values = ["sgr-nagios-inbound-shared-*"]
-  }
-}
-
 data "aws_security_group" "rdp_shared" {
   filter {
     name   = "group-name"
@@ -44,12 +37,8 @@ data "aws_acm_certificate" "acm_cert" {
   domain = var.domain_name
 }
 
-data "vault_generic_secret" "ewok_lic_bac_ec2_data" {
-  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/ewok-lic-backup/ec2"
-}
-
-data "vault_generic_secret" "ewok_lic_sec_ec2_data" {
-  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/ewok-lic-second/ec2"
+data "vault_generic_secret" "ewok_lic_ec2_data" {
+  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/ewok-license/ec2"
 }
 
 data "vault_generic_secret" "abbyy_doc_ocr_ec2_data" {

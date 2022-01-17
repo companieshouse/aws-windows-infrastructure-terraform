@@ -119,7 +119,7 @@ resource "aws_instance" "abbyy_doc_ocr_ec2" {
   monitoring             = var.monitoring
   get_password_data      = var.get_password_data
   subnet_id              = sort(data.aws_subnet_ids.application.ids)[count.index]
-  vpc_security_group_ids = [module.abbyy_doc_ocr_ec2_security_group.this_security_group_id, data.aws_security_group.nagios_shared.id, data.aws_security_group.rdp_shared.id]
+  vpc_security_group_ids = [module.abbyy_doc_ocr_ec2_security_group.this_security_group_id, data.aws_security_group.rdp_shared.id]
   iam_instance_profile   = module.abbyy_doc_ocr_profile.aws_iam_instance_profile.name
   ebs_optimized          = var.ebs_optimized
 

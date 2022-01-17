@@ -24,7 +24,7 @@ locals {
   # Ewok License Backup Server locals
   # ------------------------------------------------------------------------------
 
-  ewok_lic_bac_ec2_data = data.vault_generic_secret.ewok_lic_bac_ec2_data.data
+  ewok_lic_ec2_data = data.vault_generic_secret.ewok_lic_ec2_data.data
 
   #For each log map passed, add an extra kv for the log group name
   ewok_lic_bac_cw_logs = { for log, map in var.ewok_lic_bac_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-ewok-lic-backup-${log}" }) }
@@ -35,8 +35,6 @@ locals {
   # ------------------------------------------------------------------------------
   # Ewok License Second Server locals
   # ------------------------------------------------------------------------------
-
-  ewok_lic_sec_ec2_data = data.vault_generic_secret.ewok_lic_sec_ec2_data.data
 
   #For each log map passed, add an extra kv for the log group name
   ewok_lic_sec_cw_logs = { for log, map in var.ewok_lic_sec_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-ewok-lic-second-${log}" }) }
