@@ -74,7 +74,7 @@ locals {
 
   # Smart Vault 1 445 port CIDR blocks
   smart_vault_1_445_cidr_block = [
-    "172.16.200.206/32",
+    "10.84.11.21/32",
     "172.16.101.82/32"
   ]
 
@@ -109,7 +109,7 @@ locals {
 
   # Smart Vault 2 445 port CIDR blocks
   smart_vault_2_445_cidr_block = [
-    "172.16.200.206/32",
+    "10.84.11.21/32",
     "172.16.101.82/32"
   ]
 
@@ -153,12 +153,68 @@ locals {
   designer_37719_cidr_block = [
     "10.172.116.194/32",
     "10.172.116.192/32",
-    "10.172.20.214/32"
+    "10.172.20.214/32",
+    "10.172.116.0/22",
+    "10.172.20.0/22"
   ]
 
   # Designer Application 49155 port CIDR blocks
   designer_49155_cidr_block = [
     "172.16.202.91/32",
     "172.16.101.82/32"
+  ]
+
+  # Designer Application 445 port CIDR blocks
+  designer_445_cidr_block = [
+    "10.172.116.0/22",
+    "172.16.101.82/32",
+    "10.172.20.0/22"
+  ]
+
+  # Designer Application 139 port CIDR blocks
+  designer_139_cidr_block = [
+    "10.172.116.0/22",
+    "10.172.20.0/22"
+  ]
+
+  # ------------------------------------------------------------------------------
+  # Chips Server Security Group Variables
+  # ------------------------------------------------------------------------------
+
+  # Chips 135 port CIDR blocks
+  chips_135_cidr_block = [
+    "172.16.202.91/32",
+    "172.16.200.200/32",
+    "172.16.101.82/32"
+  ]
+
+  # Chips 445 port CIDR blocks
+  chips_445_cidr_block = [
+    "10.172.116.0/22",
+    "10.172.20.0/22",
+    "172.16.101.82/32",
+    "172.19.0.0/16"
+  ]
+
+  # Chips 53971 port CIDR blocks
+  chips_53971_cidr_block = [
+    "172.16.202.91/32",
+    "172.16.101.82/32"
+  ]
+
+  # Chips 55792 port CIDR blocks
+  chips_55792_cidr_block = [
+    "172.16.101.82/32",
+    "172.16.202.91/32"
+  ]
+
+  # Chips 8080 port CIDR blocks
+  chips_8080_cidr_block = [
+    "10.172.117.0/32",
+    "10.172.120.0/24",
+    "10.172.20.0/24",
+    "172.16.200.0/22",
+    "172.19.32.0/23",
+    "172.19.68.0/24"
   ]
 }

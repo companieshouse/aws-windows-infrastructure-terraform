@@ -13,7 +13,7 @@ application = "windows-workloads"
 
 # ABBYY Development server
 abbyy_dev_application       = "ABBYY Development Server"
-abbyy_dev_ec2_name          = "ch-ewokabbt-2k8"
+abbyy_dev_ec2_name          = "ch-ewokabbt-2k19"
 abbyy_dev_ec2_instance_size = "t3.medium"
 abbyy_dev_ami               = "ami-082ace3b4ab9d3345"
 
@@ -28,7 +28,7 @@ abbyy_dev_cw_logs = {
 
 # Document Simulation Server
 doc_sim_application       = "Document Simulation Test Server"
-doc_sim_ec2_name          = "ch-sim1-2k8"
+doc_sim_ec2_name          = "ch-sim1-2k19"
 doc_sim_ec2_instance_size = "m5.2xlarge"
 doc_sim_ami               = "ami-082ace3b4ab9d3345"
 
