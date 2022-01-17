@@ -68,20 +68,25 @@ module "abbyy_doc_ocr_ec2_security_group" {
 
   ingress_with_self = [
     {
-      rule                     = "http-80-tcp"
-      source_security_group_id = module.abbyy_doc_ocr_ec2_security_group.this_security_group_id
+      rule = "http-80-tcp"
+      self = true
     },
     {
-      from_port                = 10020
-      to_port                  = 10020
-      protocol                 = "tcp"
-      source_security_group_id = module.abbyy_doc_ocr_ec2_security_group.this_security_group_id
-    },
+      from_port   = 10020
+      to_port     = 10020
+      protocol    = "tcp"
+      description = "FlexiCapture Service"
+      self        = true
+    }
+  ]
+
+  computed_ingress_with_source_security_group_id = [
     {
       rule                     = "http-80-tcp"
       source_security_group_id = module.abbyy_doc_ocr_internal_alb_security_group.this_security_group_id
     }
   ]
+  number_of_computed_ingress_with_source_security_group_id = 1
 
   egress_rules = ["all-all"]
 }
