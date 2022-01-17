@@ -21,10 +21,16 @@ module "designer_server_security_group" {
       cidr_blocks = join(",", local.designer_135_cidr_block)
     },
     {
+      from_port   = 139
+      to_port     = 139
+      protocol    = "tcp"
+      cidr_blocks = join(",", local.designer_139_cidr_block)
+    },
+    {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.designer_445_cidr_block)
     },
     {
       from_port   = 1000

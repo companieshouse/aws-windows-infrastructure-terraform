@@ -82,7 +82,7 @@ module "chips_estor_security_group" {
 
   computed_ingress_with_source_security_group_id = [
     {
-      rule        = "http-8080-tcp"
+      rule                     = "http-8080-tcp"
       source_security_group_id = module.chips_estor_security_group.this_security_group_id
     }
   ]
