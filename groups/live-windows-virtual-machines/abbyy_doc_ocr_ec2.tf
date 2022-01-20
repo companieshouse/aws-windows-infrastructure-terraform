@@ -80,14 +80,6 @@ module "abbyy_doc_ocr_ec2_security_group" {
     }
   ]
 
-  computed_ingress_with_source_security_group_id = [
-    {
-      rule                     = "http-80-tcp"
-      source_security_group_id = module.abbyy_doc_ocr_internal_alb_security_group.this_security_group_id
-    }
-  ]
-  number_of_computed_ingress_with_source_security_group_id = 1
-
   egress_rules = ["all-all"]
 }
 
@@ -165,15 +157,4 @@ resource "aws_instance" "abbyy_doc_ocr_ec2" {
       "BackupApp", var.application
     )
   )
-}
-
-resource "aws_lb_target_group_attachment" "ec2_alb_assoc" {
-  count            = var.abbyy_doc_ocr_ec2_count
-  target_group_arn = module.abbyy_doc_ocr_internal_alb.target_group_arns[0]
-  target_id        = aws_instance.abbyy_doc_ocr_ec2[count.index].id
-  port             = var.fe_service_port
-
-  depends_on = [
-    module.abbyy_doc_ocr_internal_alb
-  ]
 }

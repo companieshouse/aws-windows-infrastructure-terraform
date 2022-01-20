@@ -43,7 +43,6 @@ ewok_lic_sec_cw_logs = {
 
 # ABBYY Document Capture & OCR Servers
 abbyy_doc_ocr_ec2_count          = 2
-dns_prefix                       = "abbyy"
 abbyy_doc_ocr_application        = "ABBYY Document Capture & OCR Server"
 abbyy_doc_ocr_ec2_name           = "ewokabb"
 abbyy_doc_ocr_ec2_instance_size  = "m5.2xlarge"
