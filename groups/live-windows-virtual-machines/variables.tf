@@ -68,11 +68,6 @@ variable "default_log_group_retention_in_days" {
   description = "Total days to retain logs in CloudWatch log group if not specified for specific logs"
 }
 
-variable "dns_prefix" {
-  type        = string
-  description = "The DNS prefix"
-}
-
 # ------------------------------------------------------------------------------
 # EC2 Variables
 # ------------------------------------------------------------------------------
@@ -209,26 +204,4 @@ variable "abbyy_doc_ocr_cw_logs" {
   type        = map(any)
   description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
   default     = {}
-}
-
-# ------------------------------------------------------------------------------
-# ABBYY Document Capture & OCR Variables - ALB 
-# ------------------------------------------------------------------------------
-
-variable "domain_name" {
-  type        = string
-  default     = "*.companieshouse.gov.uk"
-  description = "Domain Name for ACM Certificate"
-}
-
-variable "fe_service_port" {
-  type        = number
-  default     = 80
-  description = "Target group backend port"
-}
-
-variable "fe_health_check_path" {
-  type        = string
-  default     = "/"
-  description = "Target group health check path"
 }
