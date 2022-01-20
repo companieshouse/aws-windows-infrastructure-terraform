@@ -147,7 +147,7 @@ resource "aws_instance" "abbyy_doc_ocr_ec2" {
   tags = merge(
     local.default_tags,
     map(
-      "Name", "{var.abbyy_doc_ocr_ec2_name}${count.index + 1}-2k19",
+      "Name", "${var.abbyy_doc_ocr_ec2_name}${count.index + 1}-app",
       "Application", var.abbyy_doc_ocr_application,
       "ServiceTeam", var.ServiceTeam,
       "Backup", "true",
@@ -158,7 +158,7 @@ resource "aws_instance" "abbyy_doc_ocr_ec2" {
   volume_tags = merge(
     local.default_tags,
     map(
-      "Name", "{var.abbyy_doc_ocr_ec2_name}${count.index + 1}-2k19",
+      "Name", "${var.abbyy_doc_ocr_ec2_name}${count.index + 1}-app",
       "Application", var.abbyy_doc_ocr_application,
       "ServiceTeam", var.ServiceTeam,
       "Backup", "true",
