@@ -13,7 +13,7 @@ application = "windows-workloads"
 
 # Ewok Licensing Backup Server
 ewok_lic_bac_application       = "Ewok Licensing Backup Server"
-ewok_lic_bac_ec2_name          = "ch-ewoklic-2k19"
+ewok_lic_bac_ec2_name          = "ewoklic-app"
 ewok_lic_bac_ec2_instance_size = "m5.xlarge"
 ewok_lic_bac_ami               = "ami-082ace3b4ab9d3345"
 
@@ -28,7 +28,7 @@ ewok_lic_bac_cw_logs = {
 
 # Ewok Licensing Second Server
 ewok_lic_sec_application       = "Ewok Licensing Second Server"
-ewok_lic_sec_ec2_name          = "ch-ewoklic2-2k19"
+ewok_lic_sec_ec2_name          = "ewoklic2-app"
 ewok_lic_sec_ec2_instance_size = "t3.medium"
 ewok_lic_sec_ami               = "ami-082ace3b4ab9d3345"
 
@@ -45,7 +45,7 @@ ewok_lic_sec_cw_logs = {
 abbyy_doc_ocr_ec2_count          = 2
 dns_prefix                       = "abbyy"
 abbyy_doc_ocr_application        = "ABBYY Document Capture & OCR Server"
-abbyy_doc_ocr_ec2_name           = "ch-ewokabb"
+abbyy_doc_ocr_ec2_name           = "ewokabb"
 abbyy_doc_ocr_ec2_instance_size  = "m5.2xlarge"
 abbyy_doc_ocr_ami                = "ami-082ace3b4ab9d3345"
 
