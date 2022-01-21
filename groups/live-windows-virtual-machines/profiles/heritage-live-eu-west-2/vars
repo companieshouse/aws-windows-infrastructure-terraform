@@ -56,3 +56,43 @@ abbyy_doc_ocr_cw_logs = {
     log_group_retention = 365
   }
 }
+
+# Designer Servers
+designer_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}
+
+# Generate Servers
+generate_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}
+
+# Smart Vault Servers
+smart_vault_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}
+
+# Chips Estor Servers
+chips_estor_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}
