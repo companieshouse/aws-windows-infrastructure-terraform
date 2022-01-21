@@ -49,6 +49,26 @@ locals {
   abbyy_doc_ocr_log_groups = compact([for log, map in local.abbyy_doc_ocr_cw_logs : lookup(map, "log_group_name", "")])
 
   # ------------------------------------------------------------------------------
+  # Lift and Shift Cloudwatch Variables
+  # ------------------------------------------------------------------------------
+
+  #For each log map passed, add an extra kv for the log group name
+  designer_cw_logs    = { for log, map in var.designer_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-designer-${log}" }) }
+  designer_log_groups = compact([for log, map in local.designer_cw_logs : lookup(map, "log_group_name", "")])
+
+  #For each log map passed, add an extra kv for the log group name
+  generate_cw_logs    = { for log, map in var.generate_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-generate-${log}" }) }
+  generate_log_groups = compact([for log, map in local.generate_cw_logs : lookup(map, "log_group_name", "")])
+
+  #For each log map passed, add an extra kv for the log group name
+  smart_vault_cw_logs    = { for log, map in var.smart_vault_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-smart-vault-${log}" }) }
+  smart_vault_log_groups = compact([for log, map in local.smart_vault_cw_logs : lookup(map, "log_group_name", "")])
+
+  #For each log map passed, add an extra kv for the log group name
+  chips_estor_cw_logs    = { for log, map in var.chips_estor_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-chips-estor-${log}" }) }
+  chips_estor_log_groups = compact([for log, map in local.chips_estor_cw_logs : lookup(map, "log_group_name", "")])
+
+  # ------------------------------------------------------------------------------
   # Ewok License Backup Server Security Group Variables
   # ------------------------------------------------------------------------------
 

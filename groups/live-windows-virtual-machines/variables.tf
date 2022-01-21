@@ -205,3 +205,31 @@ variable "abbyy_doc_ocr_cw_logs" {
   description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
   default     = {}
 }
+
+# ------------------------------------------------------------------------------
+# Lift and Shift Cloudwatch Variables
+# ------------------------------------------------------------------------------
+
+variable "designer_cw_logs" {
+  type        = map(any)
+  description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
+  default     = {}
+}
+
+variable "generate_cw_logs" {
+  type        = map(any)
+  description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
+  default     = {}
+}
+
+variable "smart_vault_cw_logs" {
+  type        = map(any)
+  description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
+  default     = {}
+}
+
+variable "chips_estor_cw_logs" {
+  type        = map(any)
+  description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
+  default     = {}
+}
