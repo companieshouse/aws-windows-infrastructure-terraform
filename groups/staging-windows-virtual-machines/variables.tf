@@ -225,9 +225,3 @@ variable "proxy_test_ami" {
   type        = string
   description = "ID of the AMI to use for instance"
 }
-
-variable "proxy_test_cw_logs" {
-  type        = map(any)
-  description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
-  default     = {}
-}

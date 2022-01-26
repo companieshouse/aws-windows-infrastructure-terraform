@@ -55,11 +55,6 @@ locals {
 
   proxy_test_ec2_data = data.vault_generic_secret.doc_sim_ec2_data.data
 
-  #For each log map passed, add an extra kv for the log group name
-  proxy_test_cw_logs = { for log, map in var.proxy_test_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-proxy-test-${log}" }) }
-
-  proxy_test_log_groups = compact([for log, map in local.proxy_test_cw_logs : lookup(map, "log_group_name", "")])
-
   # ------------------------------------------------------------------------------
   # ABBYY Development Server Security Group Variables
   # ------------------------------------------------------------------------------

@@ -11,25 +11,6 @@ module "proxy_test_ec2_security_group" {
 
   egress_rules = ["all-all"]
 }
-# ------------------------------------------------------------------------------
-# Proxy Test CloudWatch
-# ------------------------------------------------------------------------------
-
-resource "aws_cloudwatch_log_group" "proxy_test" {
-  for_each = local.proxy_test_cw_logs
-
-  name              = each.value["log_group_name"]
-  retention_in_days = lookup(each.value, "log_group_retention", var.default_log_group_retention_in_days)
-  kms_key_id        = lookup(each.value, "kms_key_id", data.aws_kms_key.logs.arn)
-
-  tags = merge(
-    local.default_tags,
-    map(
-      "Name", "${var.application}-proxy-test-server",
-      "ServiceTeam", var.ServiceTeam
-    )
-  )
-}
 
 # ------------------------------------------------------------------------------
 # proxy test EC2
@@ -48,7 +29,6 @@ module "proxy_test_ec2" {
   get_password_data      = var.get_password_data
   vpc_security_group_ids = [module.proxy_test_ec2_security_group.this_security_group_id, data.aws_security_group.rdp_shared.id]
   subnet_id              = coalesce(data.aws_subnet_ids.application.ids...)
-  iam_instance_profile   = module.proxy_test_profile.aws_iam_instance_profile.name
   ebs_optimized          = var.ebs_optimized
 
   root_block_device = [

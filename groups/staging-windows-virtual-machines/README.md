@@ -31,7 +31,6 @@
 | <a name="module_doc_sim_profile"></a> [doc\_sim\_profile](#module\_doc\_sim\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59 |  |
 | <a name="module_proxy_test_ec2"></a> [proxy\_test\_ec2](#module\_proxy\_test\_ec2) | terraform-aws-modules/ec2-instance/aws | 2.19.0 |
 | <a name="module_proxy_test_ec2_security_group"></a> [proxy\_test\_ec2\_security\_group](#module\_proxy\_test\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 3.0 |
-| <a name="module_proxy_test_profile"></a> [proxy\_test\_profile](#module\_proxy\_test\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59 |  |
 
 ## Resources
 
@@ -40,7 +39,6 @@
 | [aws_cloudwatch_log_group.abbyy_dev](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_log_group.bus_obj_2](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_log_group.doc_sim](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
-| [aws_cloudwatch_log_group.proxy_test](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_key_pair.abbyy_dev_keypair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
 | [aws_key_pair.bus_obj_2_keypair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
 | [aws_key_pair.doc_sim_keypair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
@@ -91,7 +89,6 @@
 | <a name="input_monitoring"></a> [monitoring](#input\_monitoring) | If true, the launched EC2 instance will have detailed monitoring enabled | `bool` | `false` | no |
 | <a name="input_proxy_test_ami"></a> [proxy\_test\_ami](#input\_proxy\_test\_ami) | ID of the AMI to use for instance | `string` | n/a | yes |
 | <a name="input_proxy_test_application"></a> [proxy\_test\_application](#input\_proxy\_test\_application) | EC2 application description | `string` | n/a | yes |
-| <a name="input_proxy_test_cw_logs"></a> [proxy\_test\_cw\_logs](#input\_proxy\_test\_cw\_logs) | Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging | `map(any)` | `{}` | no |
 | <a name="input_proxy_test_ec2_instance_size"></a> [proxy\_test\_ec2\_instance\_size](#input\_proxy\_test\_ec2\_instance\_size) | The size of the EC2 instance | `string` | n/a | yes |
 | <a name="input_proxy_test_ec2_name"></a> [proxy\_test\_ec2\_name](#input\_proxy\_test\_ec2\_name) | EC2 instance name | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | Short version of the name of the AWS region in which resources will be administered | `string` | n/a | yes |
