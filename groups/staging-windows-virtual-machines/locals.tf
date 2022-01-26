@@ -50,6 +50,12 @@ locals {
   bus_obj_2_log_groups = compact([for log, map in local.bus_obj_2_cw_logs : lookup(map, "log_group_name", "")])
 
   # ------------------------------------------------------------------------------
+  # Proxy Test Server locals
+  # ------------------------------------------------------------------------------
+
+  proxy_test_ec2_data = data.vault_generic_secret.doc_sim_ec2_data.data
+
+  # ------------------------------------------------------------------------------
   # ABBYY Development Server Security Group Variables
   # ------------------------------------------------------------------------------
 

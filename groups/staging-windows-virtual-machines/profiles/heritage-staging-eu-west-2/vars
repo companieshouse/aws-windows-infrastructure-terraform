@@ -55,3 +55,9 @@ bus_obj_2_cw_logs = {
     log_group_retention = 365
   }
 }
+
+# Proxy Test Server
+proxy_test_application       = "Proxy Test Server"
+proxy_test_ec2_name          = "proxy_tst"
+proxy_test_ec2_instance_size = "t3.medium"
+proxy_test_ami               = "ami-082ace3b4ab9d3345"

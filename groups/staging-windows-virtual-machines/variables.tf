@@ -201,3 +201,27 @@ variable "bus_obj_2_cw_logs" {
   description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
   default     = {}
 }
+
+# ------------------------------------------------------------------------------
+# Proxy Test Server Variables
+# ------------------------------------------------------------------------------
+
+variable "proxy_test_application" {
+  description = "EC2 application description"
+  type        = string
+}
+
+variable "proxy_test_ec2_name" {
+  description = "EC2 instance name"
+  type        = string
+}
+
+variable "proxy_test_ec2_instance_size" {
+  type        = string
+  description = "The size of the EC2 instance"
+}
+
+variable "proxy_test_ami" {
+  type        = string
+  description = "ID of the AMI to use for instance"
+}

@@ -29,6 +29,8 @@
 | <a name="module_doc_sim_ec2"></a> [doc\_sim\_ec2](#module\_doc\_sim\_ec2) | terraform-aws-modules/ec2-instance/aws | 2.19.0 |
 | <a name="module_doc_sim_ec2_security_group"></a> [doc\_sim\_ec2\_security\_group](#module\_doc\_sim\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 3.0 |
 | <a name="module_doc_sim_profile"></a> [doc\_sim\_profile](#module\_doc\_sim\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59 |  |
+| <a name="module_proxy_test_ec2"></a> [proxy\_test\_ec2](#module\_proxy\_test\_ec2) | terraform-aws-modules/ec2-instance/aws | 2.19.0 |
+| <a name="module_proxy_test_ec2_security_group"></a> [proxy\_test\_ec2\_security\_group](#module\_proxy\_test\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 3.0 |
 
 ## Resources
 
@@ -85,6 +87,10 @@
 | <a name="input_environment"></a> [environment](#input\_environment) | The name of the environment | `string` | n/a | yes |
 | <a name="input_get_password_data"></a> [get\_password\_data](#input\_get\_password\_data) | If true, wait for password data to become available and retrieve it. | `bool` | `false` | no |
 | <a name="input_monitoring"></a> [monitoring](#input\_monitoring) | If true, the launched EC2 instance will have detailed monitoring enabled | `bool` | `false` | no |
+| <a name="input_proxy_test_ami"></a> [proxy\_test\_ami](#input\_proxy\_test\_ami) | ID of the AMI to use for instance | `string` | n/a | yes |
+| <a name="input_proxy_test_application"></a> [proxy\_test\_application](#input\_proxy\_test\_application) | EC2 application description | `string` | n/a | yes |
+| <a name="input_proxy_test_ec2_instance_size"></a> [proxy\_test\_ec2\_instance\_size](#input\_proxy\_test\_ec2\_instance\_size) | The size of the EC2 instance | `string` | n/a | yes |
+| <a name="input_proxy_test_ec2_name"></a> [proxy\_test\_ec2\_name](#input\_proxy\_test\_ec2\_name) | EC2 instance name | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | Short version of the name of the AWS region in which resources will be administered | `string` | n/a | yes |
 | <a name="input_vault_password"></a> [vault\_password](#input\_vault\_password) | Password for connecting to Vault - usually supplied through TF\_VARS | `string` | n/a | yes |
 | <a name="input_vault_username"></a> [vault\_username](#input\_vault\_username) | Username for connecting to Vault - usually supplied through TF\_VARS | `string` | n/a | yes |
