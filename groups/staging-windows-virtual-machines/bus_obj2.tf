@@ -144,7 +144,7 @@ module "bus_obj_2_ec2" {
   ebs_block_device = [
     {
       delete_on_termination = var.delete_on_termination
-      device_name           = "/dev/xvdg"
+      device_name           = "/dev/xvdf"
       encrypted             = var.ebs_encrypted
       volume_size           = "100"
       volume_type           = var.volume_type
@@ -160,7 +160,7 @@ module "bus_obj_2_ec2" {
     },
     {
       delete_on_termination = var.delete_on_termination
-      device_name           = "/dev/xvdg"
+      device_name           = "/dev/xvdh"
       encrypted             = var.ebs_encrypted
       volume_size           = "20"
       volume_type           = var.volume_type
