@@ -113,7 +113,7 @@ variable "volume_type" {
 }
 
 # ------------------------------------------------------------------------------
-# ABBYY Development server Variables
+# ABBYY Development Server Variables
 # ------------------------------------------------------------------------------
 
 variable "abbyy_dev_application" {
@@ -143,7 +143,7 @@ variable "abbyy_dev_cw_logs" {
 }
 
 # ------------------------------------------------------------------------------
-# Document Simulation server Variables
+# Document Simulation Server Variables
 # ------------------------------------------------------------------------------
 
 variable "doc_sim_application" {
@@ -167,6 +167,36 @@ variable "doc_sim_ami" {
 }
 
 variable "doc_sim_cw_logs" {
+  type        = map(any)
+  description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
+  default     = {}
+}
+
+# ------------------------------------------------------------------------------
+# Business Objects Server 2 Variables
+# ------------------------------------------------------------------------------
+
+variable "bus_obj_2_application" {
+  description = "EC2 application description"
+  type        = string
+}
+
+variable "bus_obj_2_ec2_name" {
+  description = "EC2 instance name"
+  type        = string
+}
+
+variable "bus_obj_2_ec2_instance_size" {
+  type        = string
+  description = "The size of the EC2 instance"
+}
+
+variable "bus_obj_2_ami" {
+  type        = string
+  description = "ID of the AMI to use for instance"
+}
+
+variable "bus_obj_2_cw_logs" {
   type        = map(any)
   description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
   default     = {}

@@ -33,6 +33,10 @@ data "vault_generic_secret" "abbyy_doc_ocr_ec2_data" {
   path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/abbyy-doc-ocr/ec2"
 }
 
+data "vault_generic_secret" "bus_obj_1_ec2_data" {
+  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/bus-obj-1/ec2"
+}
+
 data "aws_kms_key" "ebs" {
   key_id = "alias/${var.account}/${var.region}/ebs"
 }
