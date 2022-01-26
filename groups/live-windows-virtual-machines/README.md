@@ -22,6 +22,9 @@
 |------|--------|---------|
 | <a name="module_abbyy_doc_ocr_ec2_security_group"></a> [abbyy\_doc\_ocr\_ec2\_security\_group](#module\_abbyy\_doc\_ocr\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 3.0 |
 | <a name="module_abbyy_doc_ocr_profile"></a> [abbyy\_doc\_ocr\_profile](#module\_abbyy\_doc\_ocr\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59 |  |
+| <a name="module_bus_obj_1_ec2"></a> [bus\_obj\_1\_ec2](#module\_bus\_obj\_1\_ec2) | terraform-aws-modules/ec2-instance/aws | 2.19.0 |
+| <a name="module_bus_obj_1_ec2_security_group"></a> [bus\_obj\_1\_ec2\_security\_group](#module\_bus\_obj\_1\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 3.0 |
+| <a name="module_bus_obj_1_profile"></a> [bus\_obj\_1\_profile](#module\_bus\_obj\_1\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59 |  |
 | <a name="module_chips_estor_profile"></a> [chips\_estor\_profile](#module\_chips\_estor\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59 |  |
 | <a name="module_designer_profile"></a> [designer\_profile](#module\_designer\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59 |  |
 | <a name="module_ewok_lic_bac_ec2"></a> [ewok\_lic\_bac\_ec2](#module\_ewok\_lic\_bac\_ec2) | terraform-aws-modules/ec2-instance/aws | 2.19.0 |
@@ -38,6 +41,7 @@
 | Name | Type |
 |------|------|
 | [aws_cloudwatch_log_group.abbyy_doc_ocr](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
+| [aws_cloudwatch_log_group.bus_obj_1](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_log_group.chips_estor](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_log_group.designer](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_log_group.ewok_lic_bac](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
@@ -46,6 +50,7 @@
 | [aws_cloudwatch_log_group.smart_vault](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_instance.abbyy_doc_ocr_ec2](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
 | [aws_key_pair.abbyy_doc_ocr_keypair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
+| [aws_key_pair.bus_obj_1_keypair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
 | [aws_key_pair.ewok_lic_keypair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_kms_key.ebs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/kms_key) | data source |
@@ -54,6 +59,7 @@
 | [aws_subnet_ids.application](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnet_ids) | data source |
 | [aws_vpc.vpc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc) | data source |
 | [vault_generic_secret.abbyy_doc_ocr_ec2_data](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/generic_secret) | data source |
+| [vault_generic_secret.bus_obj_1_ec2_data](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/generic_secret) | data source |
 | [vault_generic_secret.ewok_lic_ec2_data](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/generic_secret) | data source |
 | [vault_generic_secret.kms_keys](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/generic_secret) | data source |
 | [vault_generic_secret.security_kms_keys](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/generic_secret) | data source |
@@ -75,6 +81,11 @@
 | <a name="input_aws_account"></a> [aws\_account](#input\_aws\_account) | The name of the AWS Account in which resources will be administered | `string` | n/a | yes |
 | <a name="input_aws_profile"></a> [aws\_profile](#input\_aws\_profile) | The AWS profile to use | `string` | n/a | yes |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region in which resources will be administered | `string` | n/a | yes |
+| <a name="input_bus_obj_1_ami"></a> [bus\_obj\_1\_ami](#input\_bus\_obj\_1\_ami) | ID of the AMI to use for instance | `string` | n/a | yes |
+| <a name="input_bus_obj_1_application"></a> [bus\_obj\_1\_application](#input\_bus\_obj\_1\_application) | EC2 application description | `string` | n/a | yes |
+| <a name="input_bus_obj_1_cw_logs"></a> [bus\_obj\_1\_cw\_logs](#input\_bus\_obj\_1\_cw\_logs) | Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging | `map(any)` | `{}` | no |
+| <a name="input_bus_obj_1_ec2_instance_size"></a> [bus\_obj\_1\_ec2\_instance\_size](#input\_bus\_obj\_1\_ec2\_instance\_size) | The size of the EC2 instance | `string` | n/a | yes |
+| <a name="input_bus_obj_1_ec2_name"></a> [bus\_obj\_1\_ec2\_name](#input\_bus\_obj\_1\_ec2\_name) | EC2 instance name | `string` | n/a | yes |
 | <a name="input_chips_estor_cw_logs"></a> [chips\_estor\_cw\_logs](#input\_chips\_estor\_cw\_logs) | Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging | `map(any)` | `{}` | no |
 | <a name="input_default_log_group_retention_in_days"></a> [default\_log\_group\_retention\_in\_days](#input\_default\_log\_group\_retention\_in\_days) | Total days to retain logs in CloudWatch log group if not specified for specific logs | `number` | `365` | no |
 | <a name="input_delete_on_termination"></a> [delete\_on\_termination](#input\_delete\_on\_termination) | EBS delete on termination | `string` | `"false"` | no |

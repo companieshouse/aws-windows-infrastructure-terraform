@@ -32,6 +32,9 @@ data "vault_generic_secret" "doc_sim_ec2_data" {
   path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/doc-sim-test/ec2"
 }
 
+data "vault_generic_secret" "bus_obj_2_ec2_data" {
+  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/bus-obj-2/ec2"
+}
 
 data "aws_kms_key" "ebs" {
   key_id = "alias/${var.account}/${var.region}/ebs"

@@ -13,7 +13,7 @@ application = "windows-workloads"
 
 # Ewok Licensing Backup Server
 ewok_lic_bac_application       = "Ewok Licensing Backup Server"
-ewok_lic_bac_ec2_name          = "ewoklic-app"
+ewok_lic_bac_ec2_name          = "ewklic-app"
 ewok_lic_bac_ec2_instance_size = "m5.xlarge"
 ewok_lic_bac_ami               = "ami-082ace3b4ab9d3345"
 
@@ -28,7 +28,7 @@ ewok_lic_bac_cw_logs = {
 
 # Ewok Licensing Second Server
 ewok_lic_sec_application       = "Ewok Licensing Second Server"
-ewok_lic_sec_ec2_name          = "ewoklic2-app"
+ewok_lic_sec_ec2_name          = "ewklic2-app"
 ewok_lic_sec_ec2_instance_size = "t3.medium"
 ewok_lic_sec_ami               = "ami-082ace3b4ab9d3345"
 
@@ -44,7 +44,7 @@ ewok_lic_sec_cw_logs = {
 # ABBYY Document Capture & OCR Servers
 abbyy_doc_ocr_ec2_count          = 2
 abbyy_doc_ocr_application        = "ABBYY Document Capture & OCR Server"
-abbyy_doc_ocr_ec2_name           = "ewokabb"
+abbyy_doc_ocr_ec2_name           = "ewkabb"
 abbyy_doc_ocr_ec2_instance_size  = "m5.2xlarge"
 abbyy_doc_ocr_ami                = "ami-082ace3b4ab9d3345"
 
@@ -89,6 +89,21 @@ smart_vault_cw_logs = {
 
 # Chips Estor Servers
 chips_estor_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}
+
+# Business Objects Server 1
+bus_obj_1_application       = "Business Objects Server 1"
+bus_obj_1_ec2_name          = "busobj1-app"
+bus_obj_1_ec2_instance_size = "m5.2xlarge"
+bus_obj_1_ami               = "ami-082ace3b4ab9d3345"
+
+bus_obj_1_cw_logs = {
   "security" = {
     log_group_retention = 365
   }

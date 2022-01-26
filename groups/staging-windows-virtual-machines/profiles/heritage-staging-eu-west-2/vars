@@ -13,7 +13,7 @@ application = "windows-workloads"
 
 # ABBYY Development server
 abbyy_dev_application       = "ABBYY Development Server"
-abbyy_dev_ec2_name          = "ewokabbt-app"
+abbyy_dev_ec2_name          = "ewkabbt-app"
 abbyy_dev_ec2_instance_size = "t3.medium"
 abbyy_dev_ami               = "ami-082ace3b4ab9d3345"
 
@@ -33,6 +33,21 @@ doc_sim_ec2_instance_size = "m5.2xlarge"
 doc_sim_ami               = "ami-082ace3b4ab9d3345"
 
 doc_sim_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}
+
+# Business Objects Server 2
+bus_obj_2_application       = "Business Objects Server 2"
+bus_obj_2_ec2_name          = "busobj2-app"
+bus_obj_2_ec2_instance_size = "m5.xlarge"
+bus_obj_2_ami               = "ami-082ace3b4ab9d3345"
+
+bus_obj_2_cw_logs = {
   "security" = {
     log_group_retention = 365
   }
