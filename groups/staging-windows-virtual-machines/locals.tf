@@ -71,11 +71,6 @@ locals {
     "172.16.101.82/32"
   ]
 
-  # ABBYY Dev Third Party rdp port CIDR blocks
-  #abbyy_dev_third_party_rdp_cidr_block = [
-  #]
-
-
   # ------------------------------------------------------------------------------
   # Document Simulation Test Server Security Group Variables
   # ------------------------------------------------------------------------------
@@ -97,10 +92,6 @@ locals {
     "172.16.101.82/32",
     "172.16.202.91/32"
   ]
-
-  #  Document Simulation Test Third Party rdp port CIDR blocks
-  #doc_sim_third_party_rdp_cidr_block = [
-  #]
 
   # ------------------------------------------------------------------------------
   # Business Objects Server 2 Security Group Variables

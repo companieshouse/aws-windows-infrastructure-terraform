@@ -59,11 +59,7 @@ module "abbyy_doc_ocr_ec2_security_group" {
       to_port     = 49227
       protocol    = "tcp"
       cidr_blocks = "172.16.101.82/32"
-    },
-    #{
-    #rule        = "rdp-tcp"
-    #cidr_blocks = join(",", local.abbyy_doc_ocr_third_party_rdp_cidr_block)
-    #}
+    }
   ]
 
   ingress_with_self = [

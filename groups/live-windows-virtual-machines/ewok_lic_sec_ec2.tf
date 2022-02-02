@@ -55,11 +55,7 @@ module "ewok_lic_sec_ec2_security_group" {
       to_port     = 57834
       protocol    = "tcp"
       cidr_blocks = "172.16.101.82/32"
-    },
-    #{
-    #rule        = "rdp-tcp"
-    #cidr_blocks = join(",", local.ewok_lic_sec_third_party_rdp_cidr_block)
-    #}
+    }
   ]
 
   egress_rules = ["all-all"]
