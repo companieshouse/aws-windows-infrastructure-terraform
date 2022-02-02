@@ -75,7 +75,8 @@ locals {
   # Smart Vault 1 445 port CIDR blocks
   smart_vault_1_445_cidr_block = [
     "10.84.11.21/32",
-    "172.16.101.82/32"
+    "172.16.101.82/32",
+    "172.16.200.206/32"
   ]
 
   # Smart Vault 1 rdp port CIDR blocks
@@ -110,7 +111,8 @@ locals {
   # Smart Vault 2 445 port CIDR blocks
   smart_vault_2_445_cidr_block = [
     "10.84.11.21/32",
-    "172.16.101.82/32"
+    "172.16.101.82/32",
+    "172.16.200.206/32"
   ]
 
   # Smart Vault 2 rdp port CIDR blocks
