@@ -117,11 +117,6 @@ locals {
     "172.16.202.91/32"
   ]
 
-  # Ewok License Backup Server rdp port CIDR blocks
-  # ewok_lic_bac_third_party_rdp_cidr_block = [
-  #]
-
-
   # ------------------------------------------------------------------------------
   # Ewok License Second Server Security Group Variables
   # ------------------------------------------------------------------------------
@@ -138,10 +133,6 @@ locals {
     "172.16.101.82/32",
     "172.16.202.91/32"
   ]
-
-  # Ewok License Second Third Party rdp port CIDR blocks
-  # ewok_lic_sec_third_party_rdp_cidr_block = [
-  #]
 
   # ------------------------------------------------------------------------------
   # ABBYY Document Capture & OCR Server Security Group Variables
@@ -164,10 +155,6 @@ locals {
     "172.16.101.82/32",
     "172.16.202.91/32"
   ]
-
-  # ABBYY Document Capture & OCR Third Party rdp port CIDR blocks
-  # abbyy_doc_ocr_third_party_rdp_cidr_block = [
-  #]
 
 
   # ------------------------------------------------------------------------------

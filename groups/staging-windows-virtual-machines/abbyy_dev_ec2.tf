@@ -31,11 +31,7 @@ module "abbyy_dev_ec2_security_group" {
       to_port     = 49155
       protocol    = "tcp"
       cidr_blocks = join(",", local.abbyy_dev_49155_cidr_block)
-    },
-    #{
-    #rule        = "rdp-tcp"
-    #cidr_blocks = join(",", local.abbyy_dev_third_party_rdp_cidr_block)
-    #}
+    }
   ]
 
   computed_ingress_with_source_security_group_id = [
@@ -116,7 +112,7 @@ module "abbyy_dev_ec2" {
       "Name", var.abbyy_dev_ec2_name,
       "Application", var.abbyy_dev_application,
       "ServiceTeam", var.ServiceTeam,
-      "Backup", "true",
+      "Backup", "backup14",
       "BackupApp", var.application
     )
   )
@@ -127,7 +123,7 @@ module "abbyy_dev_ec2" {
       "Name", var.abbyy_dev_ec2_name,
       "Application", var.abbyy_dev_application,
       "ServiceTeam", var.ServiceTeam,
-      "Backup", "true",
+      "Backup", "backup14",
       "BackupApp", var.application
     )
   )

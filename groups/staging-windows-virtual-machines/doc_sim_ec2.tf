@@ -53,11 +53,7 @@ module "doc_sim_ec2_security_group" {
       to_port     = 50870
       protocol    = "tcp"
       cidr_blocks = "172.16.101.82/32"
-    },
-    #{
-    #rule        = "rdp-tcp"
-    #cidr_blocks = join(",", local.doc_sim_third_party_rdp_cidr_block)
-    #}
+    }
   ]
 
   computed_ingress_with_source_security_group_id = [
@@ -146,7 +142,7 @@ module "doc_sim_ec2" {
       "Name", var.doc_sim_ec2_name,
       "Application", var.doc_sim_application,
       "ServiceTeam", var.ServiceTeam,
-      "Backup", "true",
+      "Backup", "backup14",
       "BackupApp", var.application
     )
   )
@@ -157,7 +153,7 @@ module "doc_sim_ec2" {
       "Name", var.doc_sim_ec2_name,
       "Application", var.doc_sim_application,
       "ServiceTeam", var.ServiceTeam,
-      "Backup", "true",
+      "Backup", "backup14",
       "BackupApp", var.application
     )
   )
