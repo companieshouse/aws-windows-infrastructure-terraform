@@ -138,7 +138,7 @@ module "ewok_lic_bac_ec2" {
       "Name", var.ewok_lic_bac_ec2_name,
       "Application", var.ewok_lic_bac_application,
       "ServiceTeam", var.ServiceTeam,
-      "Backup", "true",
+      "Backup", "backup21",
       "BackupApp", var.application
     )
   )
@@ -149,7 +149,7 @@ module "ewok_lic_bac_ec2" {
       "Name", var.ewok_lic_bac_ec2_name,
       "Application", var.ewok_lic_bac_application,
       "ServiceTeam", var.ServiceTeam,
-      "Backup", "true",
+      "Backup", "backup21",
       "BackupApp", var.application
     )
   )
