@@ -326,7 +326,7 @@ module "bus_obj_1_ec2" {
       "Name", var.bus_obj_1_ec2_name,
       "Application", var.bus_obj_1_application,
       "ServiceTeam", var.ServiceTeam,
-      "Backup", "true",
+      "Backup", "backup21",
       "BackupApp", var.application
     )
   )
@@ -337,7 +337,7 @@ module "bus_obj_1_ec2" {
       "Name", var.bus_obj_1_ec2_name,
       "Application", var.bus_obj_1_application,
       "ServiceTeam", var.ServiceTeam,
-      "Backup", "true",
+      "Backup", "backup21",
       "BackupApp", var.application
     )
   )
