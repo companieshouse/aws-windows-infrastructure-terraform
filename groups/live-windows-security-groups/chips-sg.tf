@@ -17,6 +17,12 @@ module "chips_estor_security_group" {
       cidr_blocks = join(",", local.chips_135_cidr_block)
     },
     {
+      from_port   = 139
+      to_port     = 139
+      protocol    = "tcp"
+      cidr_blocks = join(",", local.chips_139_cidr_block)
+    },
+    {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
