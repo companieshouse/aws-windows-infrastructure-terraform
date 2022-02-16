@@ -59,6 +59,10 @@ module "test_dev_generate_server_security_group" {
       to_port     = 6129
       protocol    = "tcp"
       cidr_blocks = "10.172.120.162/32"
+    },
+    {
+      rule        = "http-8080-tcp"
+      cidr_blocks = "10.172.116.0/22"
     }
   ]
 
