@@ -60,7 +60,10 @@ module "bus_obj_2_ec2_security_group" {
       protocol    = "tcp"
       cidr_blocks = "172.16.101.82/32"
     },
-
+    {
+      rule        = "http-8080-tcp"
+      cidr_blocks = join(",", local.bus_obj_2_8080_cidr_block)
+    }
   ]
 
   ingress_with_self = [
