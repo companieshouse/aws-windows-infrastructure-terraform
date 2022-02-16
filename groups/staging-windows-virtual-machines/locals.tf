@@ -119,6 +119,7 @@ locals {
   # Business Objects Server 2 8080 port CIDR blocks
   bus_obj_2_8080_cidr_block = [
     "10.172.0.0/17",
+    "172.16.0.0/16",
     "172.17.0.0/16",
     "172.18.0.0/16",
     "172.19.0.0/16",
