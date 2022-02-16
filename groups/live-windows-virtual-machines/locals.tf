@@ -199,8 +199,12 @@ locals {
 
   # Business Objects Server 1 8080 port CIDR blocks
   bus_obj_1_8080_cidr_block = [
-    "172.16.200.192/32",
-    "10.172.0.0/17"
+    "10.172.0.0/17",
+    "172.16.0.0/16",
+    "172.17.0.0/16",
+    "172.18.0.0/16",
+    "172.19.0.0/16",
+    "172.23.0.0/16"
   ]
 
   # Business Objects Server 1 49155 rdp port CIDR blocks
