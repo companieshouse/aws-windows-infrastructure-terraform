@@ -62,7 +62,7 @@ module "test_dev_generate_server_security_group" {
     },
     {
       rule        = "http-8080-tcp"
-      cidr_blocks = "10.172.116.0/22"
+      cidr_blocks = join(",", local.test_dev_generate_8080_cidr_block)
     }
   ]
 
