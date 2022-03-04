@@ -108,12 +108,6 @@ module "prod_generate_server_security_group" {
       cidr_blocks = join(",", local.prod_generate_135_cidr_block)
     },
     {
-      from_port   = 139
-      to_port     = 139
-      protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
-    },
-    {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
@@ -148,6 +142,12 @@ module "prod_generate_server_security_group" {
       to_port     = 6129
       protocol    = "tcp"
       cidr_blocks = "10.172.120.162/32"
+    },
+    {
+      from_port   = 139
+      to_port     = 139
+      protocol    = "tcp"
+      cidr_blocks = "172.16.101.82/32"
     }
   ]
 

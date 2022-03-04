@@ -190,10 +190,14 @@ locals {
     "10.172.22.161/32"
   ]
 
-  # Business Objects Server 1 6400 port CIDR blocks
-  bus_obj_1_6400_cidr_block = [
-    "172.16.200.9/32",
+  # Business Objects Server 1 6400 - 6414 port CIDR blocks
+  bus_obj_1_6400_6414_cidr_block = [
     "10.172.0.0/17",
+    "172.16.0.0/16",
+    "172.17.0.0/16",
+    "172.18.0.0/16",
+    "172.19.0.0/16",
+    "172.23.0.0/16",
     "10.80.10.0/24"
   ]
 
