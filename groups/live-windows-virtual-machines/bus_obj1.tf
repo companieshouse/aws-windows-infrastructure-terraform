@@ -48,9 +48,9 @@ module "bus_obj_1_ec2_security_group" {
     },
     {
       from_port   = 6400
-      to_port     = 6400
+      to_port     = 6414
       protocol    = "tcp"
-      cidr_blocks = join(",", local.bus_obj_1_6400_cidr_block)
+      cidr_blocks = join(",", local.bus_obj_1_6400_6414_cidr_block)
     },
     {
       rule        = "http-8080-tcp"
