@@ -111,7 +111,7 @@ module "prod_generate_server_security_group" {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.prod_generate_445_cidr_block)
     },
     {
       from_port   = 49637
@@ -135,7 +135,7 @@ module "prod_generate_server_security_group" {
       from_port   = 8080
       to_port     = 8080
       protocol    = "tcp"
-      cidr_blocks = "172.19.49.17/32"
+      cidr_blocks = "172.19.0.0/17"
     },
     {
       from_port   = 6129
@@ -147,7 +147,7 @@ module "prod_generate_server_security_group" {
       from_port   = 139
       to_port     = 139
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.prod_generate_139_cidr_block)
     }
   ]
 

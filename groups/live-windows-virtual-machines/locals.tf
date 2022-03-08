@@ -86,9 +86,9 @@ locals {
 
   # Ewok License Backup Server 80 port CIDR blocks
   ewok_lic_bac_80_cidr_block = [
-    "172.18.0.0/24",
-    "172.19.0.0/18",
-    "172.23.32.16/32"
+    "172.18.0.0/16",
+    "172.19.0.0/17",
+    "172.23.0.0/16"
   ]
 
   # Ewok License Backup Server 135 port CIDR blocks
@@ -102,7 +102,7 @@ locals {
     "10.172.0.0/19",
     "172.16.101.82/32",
     "172.19.0.0/17",
-    "172.23.32.16/32"
+    "172.23.0.0/16"
   ]
 
   # Ewok License Backup Server winrm port CIDR blocks
@@ -170,24 +170,23 @@ locals {
   # Business Objects Server 1 445 port CIDR blocks
   bus_obj_1_445_cidr_block = [
     "172.16.200.26/32",
-    "10.172.23.0/24",
+    "10.172.20.0/22",
     "172.16.101.82/32",
-    "10.172.119.18/32",
+    "10.172.116.0/22",
     "10.80.10.0/24"
   ]
 
   # Business Objects Server 1 rdp port CIDR blocks
   bus_obj_1_rdp_cidr_block = [
-    "10.172.23.0/24",
-    "10.172.119.182/32",
+    "10.172.20.0/22",
+    "10.172.116.0/22",
     "10.172.120.168/29",
     "10.172.24.168/29"
   ]
 
   # Business Objects Server 1 6129 port CIDR blocks
   bus_obj_1_6129_cidr_block = [
-    "10.172.20.99/32",
-    "10.172.22.161/32"
+    "10.172.20.0/22"
   ]
 
   # Business Objects Server 1 6400 - 6414 port CIDR blocks

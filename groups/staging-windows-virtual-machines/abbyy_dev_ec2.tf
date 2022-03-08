@@ -24,7 +24,7 @@ module "abbyy_dev_ec2_security_group" {
       from_port   = 6129
       to_port     = 6129
       protocol    = "tcp"
-      cidr_blocks = "10.172.23.145/32"
+      cidr_blocks = "10.172.20.0/22"
     },
     {
       from_port   = 49155

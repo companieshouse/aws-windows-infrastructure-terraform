@@ -9,8 +9,8 @@ locals {
 
   # Test Dev Generate RDP port CIDR blocks
   test_dev_generate_rdp_cidr_block = [
-    "10.172.116.224/32",
-    "10.172.23.39/32"
+    "10.172.116.0/22",
+    "10.172.20.0/22"
   ]
 
   # Test Dev Generate 49155 port CIDR blocks
@@ -39,8 +39,7 @@ locals {
 
   # Production Generate RDP port CIDR blocks
   prod_generate_rdp_cidr_block = [
-    "10.172.116.0/24",
-    "10.172.119.76/32",
+    "10.172.116.0/22",
     "10.172.20.0/22",
     "172.16.101.82/32"
   ]
@@ -58,6 +57,22 @@ locals {
     "172.16.200.200/32"
   ]
 
+  # Production Generate 445 port CIDR blocks
+  prod_generate_445_cidr_block = [
+    "172.16.101.82/32",
+    "10.0.0.0/8",
+    "172.16.0.0/12",
+    "192.168.0.0/16"
+  ]
+
+  # Production Generate 139 port CIDR blocks
+  prod_generate_139_cidr_block = [
+    "172.16.101.82/32",
+    "10.0.0.0/8",
+    "172.16.0.0/12",
+    "192.168.0.0/16"
+  ]
+
   # ------------------------------------------------------------------------------
   # Smart Vault 1 Server Security Group Variables
   # ------------------------------------------------------------------------------
@@ -66,11 +81,9 @@ locals {
     "10.172.116.0/22",
     "10.172.20.0/22",
     "172.16.200.200/32",
-    "172.18.96.13/32",
-    "172.19.28.13/32",
-    "172.19.68.0/24",
-    "172.23.0.15/32",
-    "172.18.0.0/16"
+    "172.18.0.0/16",
+    "172.19.0.0/17",
+    "172.23.0.0/16"
   ]
 
   # Smart Vault 1 135 port CIDR blocks
@@ -89,14 +102,13 @@ locals {
 
   # Smart Vault 1 rdp port CIDR blocks
   smart_vault_1_rdp_cidr_block = [
-    "10.172.23.198/32",
-    "10.172.23.39/32"
+    "10.172.20.0/22"
   ]
 
   # Smart Vault 1 8080 port CIDR blocks
   smart_vault_1_8080_cidr_block = [
-    "10.172.23.39/32",
-    "10.172.116.25/32"
+    "10.172.20.0/22",
+    "10.172.116.0/22"
   ]
 
   # Smart Vault 1 49155 port CIDR blocks
@@ -125,8 +137,7 @@ locals {
 
   # Smart Vault 2 rdp port CIDR blocks
   smart_vault_2_rdp_cidr_block = [
-    "10.172.23.198/32",
-    "10.172.23.39/32",
+    "10.172.20.0/22",
     "172.16.101.82/32"
   ]
 
@@ -156,14 +167,11 @@ locals {
   # Designer Application rdp port CIDR blocks
   designer_rdp_cidr_block = [
     "172.16.101.82/32",
-    "10.172.22.130/32"
+    "10.172.20.0/22"
   ]
 
   # Designer Application 37719 port CIDR blocks
   designer_37719_cidr_block = [
-    "10.172.116.194/32",
-    "10.172.116.192/32",
-    "10.172.20.214/32",
     "10.172.116.0/22",
     "10.172.20.0/22"
   ]
