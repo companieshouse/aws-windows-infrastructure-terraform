@@ -52,7 +52,7 @@ module "chips_estor_security_group" {
       from_port   = 49665
       to_port     = 49665
       protocol    = "tcp"
-      cidr_blocks = "10.172.20.153/32"
+      cidr_blocks = "10.172.20.0/22"
     },
     {
       from_port   = 53971
@@ -82,7 +82,7 @@ module "chips_estor_security_group" {
       from_port   = 57842
       to_port     = 57842
       protocol    = "tcp"
-      cidr_blocks = "10.172.20.153/32"
+      cidr_blocks = "10.172.20.0/22"
     }
   ]
 
