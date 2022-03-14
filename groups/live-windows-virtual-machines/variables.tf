@@ -234,6 +234,12 @@ variable "chips_estor_cw_logs" {
   default     = {}
 }
 
+variable "rempro_cw_logs" {
+  type        = map(any)
+  description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
+  default     = {}
+}
+
 # ------------------------------------------------------------------------------
 # Business Objects Server 1 Variables
 # ------------------------------------------------------------------------------

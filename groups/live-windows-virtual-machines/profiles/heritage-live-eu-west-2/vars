@@ -111,3 +111,13 @@ bus_obj_1_cw_logs = {
     log_group_retention = 365
   }
 }
+
+# rempro Servers
+rempro_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}

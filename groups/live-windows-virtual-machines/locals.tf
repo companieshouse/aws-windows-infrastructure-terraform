@@ -80,6 +80,10 @@ locals {
   chips_estor_cw_logs    = { for log, map in var.chips_estor_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-chips-estor-${log}" }) }
   chips_estor_log_groups = compact([for log, map in local.chips_estor_cw_logs : lookup(map, "log_group_name", "")])
 
+  #For each log map passed, add an extra kv for the log group name
+  rempro_cw_logs    = { for log, map in var.rempro_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-rempro-${log}" }) }
+  rempro_log_groups = compact([for log, map in local.rempro_cw_logs : lookup(map, "log_group_name", "")])
+
   # ------------------------------------------------------------------------------
   # Ewok License Backup Server Security Group Variables
   # ------------------------------------------------------------------------------
