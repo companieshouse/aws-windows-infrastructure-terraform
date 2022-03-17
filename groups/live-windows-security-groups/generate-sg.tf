@@ -63,6 +63,20 @@ module "test_dev_generate_server_security_group" {
     {
       rule        = "http-8080-tcp"
       cidr_blocks = join(",", local.test_dev_generate_8080_cidr_block)
+    },
+    {
+      from_port   = 135
+      to_port     = 135
+      protocol    = "tcp"
+      description = "WMI Access"
+      cidr_blocks = join(",", local.azure_dc_cidrs)
+    },
+    {
+      from_port   = 49152
+      to_port     = 65535
+      protocol    = "tcp"
+      description = "WMI Access"
+      cidr_blocks = join(",", local.azure_dc_cidrs)
     }
   ]
 

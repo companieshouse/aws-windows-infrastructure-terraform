@@ -212,6 +212,20 @@ module "bus_obj_1_ec2_security_group" {
       protocol    = "tcp"
       cidr_blocks = "172.16.200.9/32"
     },
+    {
+      from_port   = 135
+      to_port     = 135
+      protocol    = "tcp"
+      description = "WMI Access"
+      cidr_blocks = join(",", local.azure_dc_cidrs)
+    },
+    {
+      from_port   = 49152
+      to_port     = 65535
+      protocol    = "tcp"
+      description = "WMI Access"
+      cidr_blocks = join(",", local.azure_dc_cidrs)
+    }
 
   ]
 
