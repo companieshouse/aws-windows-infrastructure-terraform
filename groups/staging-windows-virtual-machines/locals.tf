@@ -50,6 +50,11 @@ locals {
   bus_obj_2_log_groups = compact([for log, map in local.bus_obj_2_cw_logs : lookup(map, "log_group_name", "")])
 
   # ------------------------------------------------------------------------------
+  # Shared Security Group Variables
+  # ------------------------------------------------------------------------------
+  azure_dc_cidrs = jsondecode(data.vault_generic_secret.azure_dc_cidrs.data["cidrs"])
+
+  # ------------------------------------------------------------------------------
   # ABBYY Development Server Security Group Variables
   # ------------------------------------------------------------------------------
 

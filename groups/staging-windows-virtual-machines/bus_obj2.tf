@@ -69,6 +69,20 @@ module "bus_obj_2_ec2_security_group" {
       to_port     = 6414
       protocol    = "tcp"
       cidr_blocks = join(",", local.bus_obj_2_6400_6414_cidr_block)
+    },
+    {
+      from_port   = 135
+      to_port     = 135
+      protocol    = "tcp"
+      description = "WMI Access"
+      cidr_blocks = join(",", local.azure_dc_cidrs)
+    },
+    {
+      from_port   = 49152
+      to_port     = 65535
+      protocol    = "tcp"
+      description = "WMI Access"
+      cidr_blocks = join(",", local.azure_dc_cidrs)
     }
   ]
 

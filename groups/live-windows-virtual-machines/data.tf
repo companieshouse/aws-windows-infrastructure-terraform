@@ -37,6 +37,10 @@ data "vault_generic_secret" "bus_obj_1_ec2_data" {
   path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/bus-obj-1/ec2"
 }
 
+data "vault_generic_secret" "azure_dc_cidrs" {
+  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/azure_dc"
+}
+
 data "aws_kms_key" "ebs" {
   key_id = "alias/${var.account}/${var.region}/ebs"
 }

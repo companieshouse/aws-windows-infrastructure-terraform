@@ -53,6 +53,20 @@ module "doc_sim_ec2_security_group" {
       to_port     = 50870
       protocol    = "tcp"
       cidr_blocks = "172.16.101.82/32"
+    },
+    {
+      from_port   = 135
+      to_port     = 135
+      protocol    = "tcp"
+      description = "WMI Access"
+      cidr_blocks = join(",", local.azure_dc_cidrs)
+    },
+    {
+      from_port   = 49152
+      to_port     = 65535
+      protocol    = "tcp"
+      description = "WMI Access"
+      cidr_blocks = join(",", local.azure_dc_cidrs)
     }
   ]
 
