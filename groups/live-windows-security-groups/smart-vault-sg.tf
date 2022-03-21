@@ -81,6 +81,13 @@ module "smart_vault_1_server_security_group" {
       protocol    = "tcp"
       description = "WMI Access"
       cidr_blocks = join(",", local.azure_dc_cidrs)
+    },
+    {
+      from_port   = 6003
+      to_port     = 6003
+      protocol    = "tcp"
+      description = "On-premise Access"
+      cidr_blocks = join(",", local.smart_onprem_cidrs)
     }
   ]
 
@@ -203,6 +210,13 @@ module "smart_vault_2_server_security_group" {
       protocol    = "tcp"
       description = "WMI Access"
       cidr_blocks = join(",", local.azure_dc_cidrs)
+    },
+    {
+      from_port   = 6003
+      to_port     = 6003
+      protocol    = "tcp"
+      description = "On-premise Access"
+      cidr_blocks = join(",", local.smart_onprem_cidrs)
     }
   ]
 
