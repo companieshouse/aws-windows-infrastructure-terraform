@@ -73,6 +73,11 @@ locals {
   ]
 
   # ------------------------------------------------------------------------------
+  # Smart Vault Shared Security Group Variables
+  # ------------------------------------------------------------------------------
+  smart_onprem_cidrs = jsondecode(data.vault_generic_secret.smart_onprem_cidrs.data["cidrs"])
+
+  # ------------------------------------------------------------------------------
   # Smart Vault 1 Server Security Group Variables
   # ------------------------------------------------------------------------------
 
