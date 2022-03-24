@@ -57,16 +57,16 @@ module "rempro_server_security_group" {
       cidr_blocks = "172.16.101.82/32"
     },
     {
-      from_port   = 59638
-      to_port     = 59638
-      protocol    = "tcp"
-      cidr_blocks = join(",", local.rempro_59638_cidr_block)
-    },
-    {
       from_port   = 62984
       to_port     = 62984
       protocol    = "tcp"
       cidr_blocks = "172.16.101.82/32"
+    },
+    {
+      from_port   = 49152
+      to_port     = 65535
+      protocol    = "tcp"
+      cidr_blocks = join(",", local.rempro_rpc_cidr_block)
     }
   ]
 
