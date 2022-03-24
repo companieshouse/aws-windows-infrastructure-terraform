@@ -282,10 +282,10 @@ locals {
     "10.128.247.5/32"
   ]
 
-  # Rempro 59638 port CIDR blocks
-  rempro_59638_cidr_block = [
+  # Rempro rpc port CIDR blocks
+  rempro_rpc_cidr_block = [
+    "172.23.0.0/16",
     "172.18.0.0/16",
-    "172.19.0.0/17",
-    "172.23.0.0/16"
+    "172.19.0.0/17"
   ]
 }
