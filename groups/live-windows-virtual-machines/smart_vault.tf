@@ -44,4 +44,15 @@ module "smart_vault_profile" {
     local.ssm_kms_key_id
   ]
   s3_buckets_write = [local.session_manager_bucket_name]
+
+  custom_statements = [
+    {
+      sid       = "CloudwatchMetrics"
+      effect    = "Allow"
+      resources = ["*"]
+      actions = [
+        "cloudwatch:PutMetricData"
+      ]
+    }
+  ]
 }

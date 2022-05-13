@@ -21,6 +21,17 @@ module "ewok_lic_bac_profile" {
     local.ssm_kms_key_id
   ]
   s3_buckets_write = [local.session_manager_bucket_name]
+
+  custom_statements = [
+    {
+      sid       = "CloudwatchMetrics"
+      effect    = "Allow"
+      resources = ["*"]
+      actions = [
+        "cloudwatch:PutMetricData"
+      ]
+    }
+  ]
 }
 
 module "ewok_lic_sec_profile" {
@@ -46,6 +57,17 @@ module "ewok_lic_sec_profile" {
     local.ssm_kms_key_id
   ]
   s3_buckets_write = [local.session_manager_bucket_name]
+
+  custom_statements = [
+    {
+      sid       = "CloudwatchMetrics"
+      effect    = "Allow"
+      resources = ["*"]
+      actions = [
+        "cloudwatch:PutMetricData"
+      ]
+    }
+  ]
 }
 
 module "abbyy_doc_ocr_profile" {
@@ -71,6 +93,17 @@ module "abbyy_doc_ocr_profile" {
     local.ssm_kms_key_id
   ]
   s3_buckets_write = [local.session_manager_bucket_name]
+
+  custom_statements = [
+    {
+      sid       = "CloudwatchMetrics"
+      effect    = "Allow"
+      resources = ["*"]
+      actions = [
+        "cloudwatch:PutMetricData"
+      ]
+    }
+  ]
 }
 
 module "bus_obj_1_profile" {
@@ -96,4 +129,15 @@ module "bus_obj_1_profile" {
     local.ssm_kms_key_id
   ]
   s3_buckets_write = [local.session_manager_bucket_name]
+
+  custom_statements = [
+    {
+      sid       = "CloudwatchMetrics"
+      effect    = "Allow"
+      resources = ["*"]
+      actions = [
+        "cloudwatch:PutMetricData"
+      ]
+    }
+  ]
 }
