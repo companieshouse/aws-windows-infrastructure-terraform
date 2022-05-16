@@ -106,6 +106,13 @@ locals {
     "172.16.101.82/32"
   ]
 
+  # Ewok License Backup Server 443 port CIDR blocks
+  ewok_lic_bac_443_cidr_block = [
+    "172.18.0.0/16",
+    "172.19.0.0/17",
+    "172.23.0.0/16"
+  ]
+
   # Ewok License Backup Server 445 port CIDR blocks
   ewok_lic_bac_445_cidr_block = [
     "10.172.0.0/19",

@@ -79,7 +79,13 @@ module "ewok_lic_bac_ec2_security_group" {
       protocol    = "tcp"
       description = "WMI Access"
       cidr_blocks = join(",", local.azure_dc_cidrs)
-    }
+    },
+    {
+      from_port   = 443
+      to_port     = 443
+      protocol    = "tcp"
+      cidr_blocks = join(",", local.ewok_lic_bac_443_cidr_block)
+    },
   ]
 
   egress_rules = ["all-all"]
