@@ -162,6 +162,20 @@ module "prod_generate_server_security_group" {
       to_port     = 139
       protocol    = "tcp"
       cidr_blocks = join(",", local.prod_generate_139_cidr_block)
+    },
+    {
+      from_port   = 135
+      to_port     = 135
+      protocol    = "tcp"
+      description = "WMI Access"
+      cidr_blocks = join(",", local.azure_dc_cidrs)
+    },
+    {
+      from_port   = 49152
+      to_port     = 65535
+      protocol    = "tcp"
+      description = "WMI Access"
+      cidr_blocks = join(",", local.azure_dc_cidrs)
     }
   ]
 
