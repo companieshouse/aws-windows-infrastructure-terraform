@@ -49,6 +49,12 @@ locals {
     "172.16.101.82/32"
   ]
 
+  # Production Generate 49152 -> 65535 port CIDR blocks
+  prod_generate_49152_65535_cidr_block = [
+    "10.128.247.4/32",
+    "10.128.247.5/32"
+  ]
+
   # Production Generate 49155 port CIDR blocks
   prod_generate_49155_cidr_block = [
     "172.16.101.82/32",
@@ -59,7 +65,9 @@ locals {
   prod_generate_135_cidr_block = [
     "172.16.101.82/32",
     "172.16.202.91/32",
-    "172.16.200.200/32"
+    "172.16.200.200/32",
+    "10.128.247.4/32",
+    "10.128.247.5/32"
   ]
 
   # Production Generate 445 port CIDR blocks
