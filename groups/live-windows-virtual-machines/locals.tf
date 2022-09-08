@@ -97,7 +97,11 @@ locals {
   ewok_lic_bac_80_cidr_block = [
     "172.18.0.0/16",
     "172.19.0.0/17",
-    "172.23.0.0/16"
+    "172.23.0.0/16",
+    "10.84.11.36/32",
+    "10.84.10.173/32",
+    "10.94.11.29/32",
+    "10.94.11.145/32"
   ]
 
   # Ewok License Backup Server 135 port CIDR blocks
@@ -110,7 +114,11 @@ locals {
   ewok_lic_bac_443_cidr_block = [
     "172.18.0.0/16",
     "172.19.0.0/17",
-    "172.23.0.0/16"
+    "172.23.0.0/16",
+    "10.84.11.36/32",
+    "10.84.10.173/32",
+    "10.94.11.29/32",
+    "10.94.11.145/32"
   ]
 
   # Ewok License Backup Server 445 port CIDR blocks
@@ -128,6 +136,14 @@ locals {
     "172.16.155.9/32"
   ]
 
+  # Ewok License Backup Server 3020 port CIDR blocks
+  ewok_lic_bac_3020_cidr_block = [
+    "10.84.11.36/32",
+    "10.84.10.173/32",
+    "10.94.11.29/32",
+    "10.94.11.145/32"
+  ]
+
   # Ewok License Backup Server 49155 port CIDR blocks
   ewok_lic_bac_49155_cidr_block = [
     "172.16.101.82/32",
@@ -138,11 +154,35 @@ locals {
   # Ewok License Second Server Security Group Variables
   # ------------------------------------------------------------------------------
 
+  # Ewok License Second Server 80 port CIDR blocks
+  ewok_lic_sec_80_cidr_block = [
+    "10.84.11.36/32",
+    "10.84.10.173/32",
+    "10.94.11.29/32",
+    "10.94.11.145/32"
+  ]
+
   # Ewok License Second 135 port CIDR blocks
   ewok_lic_sec_135_cidr_block = [
     "172.16.202.91/32",
     "172.16.101.82/32",
     "172.16.200.200/32"
+  ]
+
+  # Ewok License Second Server 443 port CIDR blocks
+  ewok_lic_sec_443_cidr_block = [
+    "10.84.11.36/32",
+    "10.84.10.173/32",
+    "10.94.11.29/32",
+    "10.94.11.145/32"
+  ]
+
+  # Ewok License Backup Server 3020 port CIDR blocks
+  ewok_lic_sec_3020_cidr_block = [
+    "10.84.11.36/32",
+    "10.84.10.173/32",
+    "10.94.11.29/32",
+    "10.94.11.145/32"
   ]
 
   # Ewok License Second 49155 port CIDR blocks

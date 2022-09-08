@@ -86,6 +86,12 @@ module "ewok_lic_bac_ec2_security_group" {
       protocol    = "tcp"
       cidr_blocks = join(",", local.ewok_lic_bac_443_cidr_block)
     },
+    {
+      from_port   = 3020
+      to_port     = 3020
+      protocol    = "tcp"
+      cidr_blocks = join(",", local.ewok_lic_bac_3020_cidr_block)
+    },
   ]
 
   egress_rules = ["all-all"]
