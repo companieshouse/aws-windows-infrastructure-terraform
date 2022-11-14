@@ -90,6 +90,28 @@ module "test_2019_1_ec2_security_group" {
 }
 
 
+# ------------------------------------------------------------------------------
+# Test 2019 Server 1 CloudWatch
+# ------------------------------------------------------------------------------
+
+resource "aws_cloudwatch_log_group" "test_2019_1" {
+  for_each = local.test_2019_1_cw_logs
+
+  name              = each.value["log_group_name"]
+  retention_in_days = lookup(each.value, "log_group_retention", var.default_log_group_retention_in_days)
+  kms_key_id        = lookup(each.value, "kms_key_id", data.aws_kms_key.logs.arn)
+
+  tags = merge(
+    local.default_tags,
+    map(
+      "Name", "${var.application}-test-2019-1-server",
+      "ServiceTeam", var.ServiceTeam
+    )
+  )
+}
+
+
+
 module "test_2019_1_ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "2.19.0"
