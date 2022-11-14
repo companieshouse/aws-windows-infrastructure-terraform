@@ -29,6 +29,10 @@
 | <a name="module_doc_sim_ec2"></a> [doc\_sim\_ec2](#module\_doc\_sim\_ec2) | terraform-aws-modules/ec2-instance/aws | 2.19.0 |
 | <a name="module_doc_sim_ec2_security_group"></a> [doc\_sim\_ec2\_security\_group](#module\_doc\_sim\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 3.0 |
 | <a name="module_doc_sim_profile"></a> [doc\_sim\_profile](#module\_doc\_sim\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59 |  |
+| <a name="module_test_2019_1_ec2"></a> [test\_2019\_1\_ec2](#module\_test\_2019\_1\_ec2) | terraform-aws-modules/ec2-instance/aws | 2.19.0 |
+| <a name="module_test_2019_1_ec2_security_group"></a> [test\_2019\_1\_ec2\_security\_group](#module\_test\_2019\_1\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 3.0 |
+| <a name="module_test_2019_1_profile"></a> [test\_2019\_1\_profile](#module\_test\_2019\_1\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59 |  |
+
 
 ## Resources
 
@@ -40,6 +44,7 @@
 | [aws_key_pair.abbyy_dev_keypair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
 | [aws_key_pair.bus_obj_2_keypair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
 | [aws_key_pair.doc_sim_keypair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
+| [aws_key_pair.test_2019_1_keypair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_kms_key.ebs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/kms_key) | data source |
 | [aws_kms_key.logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/kms_key) | data source |
@@ -49,6 +54,7 @@
 | [vault_generic_secret.abbyy_dev_ec2_data](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/generic_secret) | data source |
 | [vault_generic_secret.azure_dc_cidrs](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/generic_secret) | data source |
 | [vault_generic_secret.bus_obj_2_ec2_data](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/generic_secret) | data source |
+| [vault_generic_secret.test_2019_1_ec2_data](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/generic_secret) | data source |
 | [vault_generic_secret.doc_sim_ec2_data](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/generic_secret) | data source |
 | [vault_generic_secret.kms_keys](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/generic_secret) | data source |
 | [vault_generic_secret.security_kms_keys](https://registry.terraform.io/providers/hashicorp/vault/latest/docs/data-sources/generic_secret) | data source |
@@ -74,6 +80,11 @@
 | <a name="input_bus_obj_2_cw_logs"></a> [bus\_obj\_2\_cw\_logs](#input\_bus\_obj\_2\_cw\_logs) | Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging | `map(any)` | `{}` | no |
 | <a name="input_bus_obj_2_ec2_instance_size"></a> [bus\_obj\_2\_ec2\_instance\_size](#input\_bus\_obj\_2\_ec2\_instance\_size) | The size of the EC2 instance | `string` | n/a | yes |
 | <a name="input_bus_obj_2_ec2_name"></a> [bus\_obj\_2\_ec2\_name](#input\_bus\_obj\_2\_ec2\_name) | EC2 instance name | `string` | n/a | yes |
+| <a name="input_test_2019_1_ami"></a> [test\_2019\_1\_ami](#input\_test\_2019\_1\_ami) | ID of the AMI to use for instance | `string` | n/a | yes |
+| <a name="input_test_2019_1_application"></a> [test\_2019\_1\_application](#input\_test\_2019\_1\_application) | EC2 application description | `string` | n/a | yes |
+| <a name="input_test_2019_1_cw_logs"></a> [test\_2019\_1\_cw\_logs](#input\_test\_2019\_1\_cw\_logs) | Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging | `map(any)` | `{}` | no |
+| <a name="input_test_2019_1_ec2_instance_size"></a> [test\_2019\_1\_ec2\_instance\_size](#input\_test\_2019\_1\_ec2\_instance\_size) | The size of the EC2 instance | `string` | n/a | yes |
+| <a name="input_test_2019_1_ec2_name"></a> [test\_2019\_1\_ec2\_name](#input\_test\_2019\_1\_ec2\_name) | EC2 instance name | `string` | n/a | yes |
 | <a name="input_default_log_group_retention_in_days"></a> [default\_log\_group\_retention\_in\_days](#input\_default\_log\_group\_retention\_in\_days) | Total days to retain logs in CloudWatch log group if not specified for specific logs | `number` | `365` | no |
 | <a name="input_delete_on_termination"></a> [delete\_on\_termination](#input\_delete\_on\_termination) | EBS delete on termination | `string` | `"false"` | no |
 | <a name="input_doc_sim_ami"></a> [doc\_sim\_ami](#input\_doc\_sim\_ami) | ID of the AMI to use for instance | `string` | n/a | yes |
