@@ -198,7 +198,8 @@ module "bus_obj_2_ec2" {
       "Application", var.bus_obj_2_application,
       "ServiceTeam", var.ServiceTeam,
       "Backup", "backup14",
-      "BackupApp", var.application
+      "BackupApp", var.application,
+      "scheduled_stop", var.scheduled_stop
     )
   )
 
@@ -209,7 +210,8 @@ module "bus_obj_2_ec2" {
       "Application", var.bus_obj_2_application,
       "ServiceTeam", var.ServiceTeam,
       "Backup", "backup14",
-      "BackupApp", var.application
+      "BackupApp", var.application,
+      "scheduled_stop", var.scheduled_stop
     )
   )
 }

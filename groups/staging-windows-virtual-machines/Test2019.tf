@@ -158,7 +158,8 @@ module "test_2019_1_ec2" {
       "Application", var.test_2019_1_application,
       "ServiceTeam", var.ServiceTeam,
       "Backup", "backup14",
-      "BackupApp", var.application
+      "BackupApp", var.application,
+      "scheduled_stop", var.scheduled_stop
     )
   )
 
@@ -169,7 +170,8 @@ module "test_2019_1_ec2" {
       "Application", var.test_2019_1_application,
       "ServiceTeam", var.ServiceTeam,
       "Backup", "backup14",
-      "BackupApp", var.application
+      "BackupApp", var.application,
+      "scheduled_stop", var.scheduled_stop
     )
   )
 }

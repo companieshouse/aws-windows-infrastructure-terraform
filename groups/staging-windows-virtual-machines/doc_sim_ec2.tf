@@ -157,7 +157,8 @@ module "doc_sim_ec2" {
       "Application", var.doc_sim_application,
       "ServiceTeam", var.ServiceTeam,
       "Backup", "backup14",
-      "BackupApp", var.application
+      "BackupApp", var.application,
+      "scheduled_stop", var.scheduled_stop
     )
   )
 
@@ -168,7 +169,8 @@ module "doc_sim_ec2" {
       "Application", var.doc_sim_application,
       "ServiceTeam", var.ServiceTeam,
       "Backup", "backup14",
-      "BackupApp", var.application
+      "BackupApp", var.application,
+      "scheduled_stop", var.scheduled_stop
     )
   )
 }
