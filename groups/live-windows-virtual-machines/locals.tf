@@ -361,7 +361,7 @@ locals {
   ]
 
   # Live Test Server 1 49155 rdp port CIDR blocks
-  live_test_49155_cidr_block = [
+  live_test_1_49155_cidr_block = [
     "172.16.101.82/32",
     "172.16.202.91/32"
   ]
