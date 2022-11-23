@@ -269,3 +269,33 @@ variable "bus_obj_1_cw_logs" {
   description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
   default     = {}
 }
+
+# ------------------------------------------------------------------------------
+# Live Test Server 1 Variables
+# ------------------------------------------------------------------------------
+
+variable "live_test_1_application" {
+  description = "EC2 application description"
+  type        = string
+}
+
+variable "live_test_1_ec2_name" {
+  description = "EC2 instance name"
+  type        = string
+}
+
+variable "live_test_1_ec2_instance_size" {
+  type        = string
+  description = "The size of the EC2 instance"
+}
+
+variable "live_test_1_ami" {
+  type        = string
+  description = "ID of the AMI to use for instance"
+}
+
+variable "live_test_1_cw_logs" {
+  type        = map(any)
+  description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
+  default     = {}
+}
