@@ -121,3 +121,18 @@ rempro_cw_logs = {
     log_group_retention = 365
   }
 }
+
+# Live Test Server 1
+live_test_1_application       = "Live Test Server 1"
+live_test_1_ec2_name          = "livetest1-app"
+live_test_1_ec2_instance_size = "m5.xlarge"
+live_test_1_ami               = "ami-0685ae995ef3c2224"
+
+live_test_1_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}

@@ -59,6 +59,16 @@ locals {
 
   bus_obj_1_log_groups = compact([for log, map in local.bus_obj_1_cw_logs : lookup(map, "log_group_name", "")])
 
+  # ------------------------------------------------------------------------------
+  # Live Test Server 1 locals
+  # ------------------------------------------------------------------------------
+
+  live_test_1_ec2_data = data.vault_generic_secret.live_test_1_ec2_data.data
+
+  #For each log map passed, add an extra kv for the log group name
+  live_test_1_cw_logs = { for log, map in var.live_test_1_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-live-test-1-${log}" }) }
+
+  live_test_1_log_groups = compact([for log, map in local.live_test_1_cw_logs : lookup(map, "log_group_name", "")])
 
   # ------------------------------------------------------------------------------
   # Lift and Shift Cloudwatch Variables
@@ -293,6 +303,91 @@ locals {
 
   # Business Objects Server 1 55311 rdp port CIDR blocks
   bus_obj_1_55311_cidr_block = [
+    "10.172.0.0/17",
+    "10.80.10.136/32"
+  ]
+}
+
+
+  # ------------------------------------------------------------------------------
+  #  Live Test Server 1 Security Group Variables
+  # ------------------------------------------------------------------------------
+
+  # Live Test Server 1 135 port CIDR blocks
+  live_test_1_135_cidr_block = [
+    "172.16.202.91/32",
+    "172.16.101.82/32"
+  ]
+
+  # Live Test Server 1 445 port CIDR blocks
+  live_test_1_445_cidr_block = [
+    "172.16.200.26/32",
+    "10.172.20.0/22",
+    "172.16.101.82/32",
+    "10.172.116.0/22",
+    "10.80.10.0/24"
+  ]
+
+  # Live Test Server 1 rdp port CIDR blocks
+  live_test_1_rdp_cidr_block = [
+    "10.172.20.0/22",
+    "10.172.116.0/22",
+    "10.172.120.168/29",
+    "10.172.24.168/29"
+  ]
+
+  # Live Test Server 1 6129 port CIDR blocks
+  live_test_1_6129_cidr_block = [
+    "10.172.20.0/22"
+  ]
+
+  # Live Test Server 1 6400 - 6414 port CIDR blocks
+  live_test_1_6400_6414_cidr_block = [
+    "10.172.0.0/17",
+    "172.16.0.0/16",
+    "172.17.0.0/16",
+    "172.18.0.0/16",
+    "172.19.0.0/16",
+    "172.23.0.0/16",
+    "10.80.10.0/24"
+  ]
+
+  # Live Test Server 1 8080 port CIDR blocks
+  live_test_1_8080_cidr_block = [
+    "10.172.0.0/17",
+    "172.16.0.0/16",
+    "172.17.0.0/16",
+    "172.18.0.0/16",
+    "172.19.0.0/16",
+    "172.23.0.0/16"
+  ]
+
+  # Live Test Server 1 49155 rdp port CIDR blocks
+  live_test_49155_cidr_block = [
+    "172.16.101.82/32",
+    "172.16.202.91/32"
+  ]
+
+  # Live Test Server 1 51134 rdp port CIDR blocks
+  live_test_1_51134_cidr_block = [
+    "10.172.0.0/17",
+    "10.80.10.0/24"
+  ]
+
+  # Live Test Server 1 55012 rdp port CIDR blocks
+  live_test_1_55012_cidr_block = [
+    "10.172.0.0/17",
+    "10.80.10.136/32"
+  ]
+
+  # Live Test Server 1 55257 rdp port CIDR blocks
+  live_test_1_55257_cidr_block = [
+    "10.172.0.0/17",
+    "10.80.10.136/32"
+  ]
+
+  # Live Test Server 1 55311 rdp port CIDR blocks
+  live_test_1_55311_cidr_block = [
     "10.172.0.0/17",
     "10.80.10.136/32"
   ]

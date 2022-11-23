@@ -15,3 +15,8 @@ resource "aws_key_pair" "bus_obj_1_keypair" {
   key_name   = "Business-Objects-Server-1"
   public_key = local.bus_obj_1_ec2_data["public-key"]
 }
+
+resource "aws_key_pair" "live_test_1_keypair" {
+  key_name   = "Live-Test-Server-1"
+  public_key = local.live_test_1_ec2_data["public-key"]
+}
