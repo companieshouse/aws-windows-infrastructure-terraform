@@ -60,8 +60,7 @@ bus_obj_2_cw_logs = {
 test_2019_1_application       = "Test 2019 Server 1"
 test_2019_1_ec2_name          = "test2019-app"
 test_2019_1_ec2_instance_size = "m5.2xlarge"
-test_2019_1_ami               = "ami-082ace3b4ab9d3345"
-
+test_2019_1_ami               = "ami-0685ae995ef3c2224"
 test_2019_1_cw_logs = {
   "security" = {
     log_group_retention = 365
