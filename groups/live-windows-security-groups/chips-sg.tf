@@ -26,7 +26,7 @@ module "chips_estor_security_group" {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
-      cidr_blocks = join(",", local.chips_445_cidr_block)
+      cidr_blocks = join(",", local.chips_445_cidr_block, local.azure_dc_cidr)
     },
     {
       rule        = "http-8080-tcp"
@@ -89,7 +89,7 @@ module "chips_estor_security_group" {
       to_port     = 135
       protocol    = "tcp"
       description = "WMI Access"
-      cidr_blocks = join(",", local.azure_dc_cidrs)
+      cidr_blocks = join(",", local.azure_dc_cidrs, local.azure_dc_cidr)
     },
     {
       from_port   = 49152
