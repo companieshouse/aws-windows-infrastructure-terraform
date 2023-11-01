@@ -97,6 +97,20 @@ module "chips_estor_security_group" {
       protocol    = "tcp"
       description = "WMI Access"
       cidr_blocks = join(",", local.azure_dc_cidrs)
+    },
+    {
+      from_port   = 445
+      to_port     = 445
+      protocol    = "tcp"
+      description = "SMB access for estore"
+      cidr_blocks = join(",", local.sql_cidrs)
+    },
+    {
+      from_port   = 135
+      to_port     = 135
+      protocol    = "tcp"
+      description = "WMI access for estore"
+      cidr_blocks = join(",", local.sql_cidrs)
     }
   ]
 

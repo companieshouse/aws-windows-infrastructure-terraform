@@ -8,6 +8,7 @@ locals {
   # ------------------------------------------------------------------------------
   azure_dc_cidrs = jsondecode(data.vault_generic_secret.azure_dc_cidrs.data["cidrs"])
 
+  sql_cidrs = jsondecode(data.vault_generic_secret.sql_cidrs.data["sql"])
   # ------------------------------------------------------------------------------
   # Test/Dev Generate Server Security Group Variables
   # ------------------------------------------------------------------------------
