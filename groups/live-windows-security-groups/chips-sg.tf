@@ -111,6 +111,13 @@ module "chips_estor_security_group" {
       protocol    = "tcp"
       description = "WMI access for estore"
       cidr_blocks = join(",", local.sql_cidrs)
+    },
+    {
+      from_port   = 139
+      to_port     = 139
+      protocol    = "tcp"
+      description = "SMB legacy access for estore"
+      cidr_blocks = join(",", local.sql_cidrs)
     }
   ]
 
