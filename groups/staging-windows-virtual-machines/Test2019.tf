@@ -111,7 +111,7 @@ resource "aws_cloudwatch_log_group" "test_2019_1" {
 }
 
 # ------------------------------------------------------------------------------
-# Test 2019 Server 1 EC2
+# Test 2019 Server 1 EC2 - updated 09/04/2024
 # ------------------------------------------------------------------------------
 
 module "test_2019_1_ec2" {
@@ -145,7 +145,7 @@ module "test_2019_1_ec2" {
       delete_on_termination = var.delete_on_termination
       device_name           = "/dev/xvdf"
       encrypted             = var.ebs_encrypted
-      volume_size           = "150"
+      volume_size           = "155"
       volume_type           = var.volume_type
       kms_key_id            = data.aws_kms_key.ebs.arn
     },
