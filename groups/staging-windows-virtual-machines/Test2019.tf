@@ -153,7 +153,7 @@ module "test_2019_1_ec2" {
       delete_on_termination = var.delete_on_termination
       device_name           = "/dev/xvdg"
       encrypted             = var.ebs_encrypted
-      volume_size           = "20"
+      volume_size           = "50"
       volume_type           = var.volume_type
       kms_key_id            = data.aws_kms_key.ebs.arn
     }
