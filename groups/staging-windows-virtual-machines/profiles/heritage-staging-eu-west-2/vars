@@ -44,7 +44,7 @@ doc_sim_cw_logs = {
 # Business Objects Server 2
 bus_obj_2_application       = "Business Objects Server 2"
 bus_obj_2_ec2_name          = "busobj2-app"
-bus_obj_2_ec2_instance_size = "m5.large"
+bus_obj_2_ec2_instance_size = "m5.xlarge"
 bus_obj_2_ami               = "ami-082ace3b4ab9d3345"
 
 bus_obj_2_cw_logs = {
