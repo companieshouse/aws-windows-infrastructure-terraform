@@ -262,7 +262,7 @@ resource "aws_security_group" "bus_obj_1_server_web_sg" {
   description = "Security group for web access to the ${var.application} Business Objects Server 1"
   vpc_id      = data.aws_vpc.vpc.id
 
-  tags =  local.default_tags
+  tags = local.default_tags
 }
 
 resource "aws_security_group_rule" "http" {
@@ -315,15 +315,19 @@ module "bus_obj_1_ec2" {
 
   name = var.bus_obj_1_ec2_name
 
-  ami                    = var.bus_obj_1_ami
-  instance_type          = var.bus_obj_1_ec2_instance_size
-  key_name               = aws_key_pair.bus_obj_1_keypair.key_name
-  monitoring             = var.monitoring
-  get_password_data      = var.get_password_data
-  vpc_security_group_ids = [module.bus_obj_1_ec2_security_group.this_security_group_id, data.aws_security_group.rdp_shared.id]
-  subnet_id              = coalesce(data.aws_subnet_ids.application.ids...)
-  iam_instance_profile   = module.bus_obj_1_profile.aws_iam_instance_profile.name
-  ebs_optimized          = var.ebs_optimized
+  ami               = var.bus_obj_1_ami
+  instance_type     = var.bus_obj_1_ec2_instance_size
+  key_name          = aws_key_pair.bus_obj_1_keypair.key_name
+  monitoring        = var.monitoring
+  get_password_data = var.get_password_data
+  vpc_security_group_ids = [
+    module.bus_obj_1_ec2_security_group.this_security_group_id,
+    data.aws_security_group.rdp_shared.id,
+    aws_security_group.bus_obj_1_server_web_sg.id
+  ]
+  subnet_id            = coalesce(data.aws_subnet_ids.application.ids...)
+  iam_instance_profile = module.bus_obj_1_profile.aws_iam_instance_profile.name
+  ebs_optimized        = var.ebs_optimized
 
   root_block_device = [
     {
