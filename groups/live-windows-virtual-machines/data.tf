@@ -17,6 +17,10 @@ data "aws_security_group" "rdp_shared" {
   }
 }
 
+data "aws_ec2_managed_prefix_list" "administration" {
+  name = "administration-cidr-ranges"
+}
+
 data "aws_subnet_ids" "application" {
   vpc_id = data.aws_vpc.vpc.id
   filter {
