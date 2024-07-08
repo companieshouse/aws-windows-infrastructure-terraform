@@ -115,7 +115,7 @@ module "bus_obj_2_ec2_security_group" {
 }
 
 resource "aws_security_group" "bus_obj_2_server_web_sg" {
-  name        = "sgr-${var.application}-bus-obj-2-server-web"
+  name        = "sgr-${var.application}-bus-obj-2-web"
   description = "Security group for web access to the ${var.application} Business Objects Server 2"
   vpc_id      = data.aws_vpc.vpc.id
 
