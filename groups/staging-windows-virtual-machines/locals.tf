@@ -49,6 +49,11 @@ locals {
 
   bus_obj_2_log_groups = compact([for log, map in local.bus_obj_2_cw_logs : lookup(map, "log_group_name", "")])
 
+  bus_obj_2_volume_snapshot_ids = jsondecode(local.bus_obj_2_ec2_data["volume_snapshot_ids"])
+  bus_obj_2_xvdf_snapshot_id    = try(local.bus_obj_2_volume_snapshot_ids["xvdf"], null)
+  bus_obj_2_xvdg_snapshot_id    = try(local.bus_obj_2_volume_snapshot_ids["xvdg"], null)
+  bus_obj_2_xvdh_snapshot_id    = try(local.bus_obj_2_volume_snapshot_ids["xvdh"], null)
+
  # ------------------------------------------------------------------------------
   # Test Server Server 1 locals
   # ------------------------------------------------------------------------------
