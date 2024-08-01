@@ -219,7 +219,7 @@ module "bus_obj_2_ec2" {
       delete_on_termination = var.delete_on_termination
       device_name           = "xvdh"
       encrypted             = var.ebs_encrypted
-      snapshot_id           = local.bus_obj_2_xvdf_snapshot_id
+      snapshot_id           = local.bus_obj_2_xvdh_snapshot_id
       volume_size           = "20"
       volume_type           = var.volume_type
       kms_key_id            = data.aws_kms_key.ebs.arn
