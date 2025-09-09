@@ -167,4 +167,10 @@ resource "aws_instance" "abbyy_doc_ocr_ec2" {
       "BackupApp", var.application
     )
   )
+
+  metadata_options {
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 2
+  }
+
 }
