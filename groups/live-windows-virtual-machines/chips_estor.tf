@@ -11,10 +11,10 @@ resource "aws_cloudwatch_log_group" "chips_estor" {
 
   tags = merge(
     local.default_tags,
-    map(
-      "Name", "${var.application}-chips-estor-server",
-      "ServiceTeam", var.ServiceTeam
-    )
+    {
+      Name        = "${var.application}-chips-estor-server"
+      ServiceTeam = var.ServiceTeam
+    }
   )
 }
 
@@ -22,7 +22,7 @@ resource "aws_cloudwatch_log_group" "chips_estor" {
 # Chips Estor CloudWatch IAM Role
 # ------------------------------------------------------------------------------
 module "chips_estor_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "chips-estor-profile"
   enable_SSM = true

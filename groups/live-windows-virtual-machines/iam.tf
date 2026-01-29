@@ -1,5 +1,5 @@
 module "ewok_lic_bac_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "ewok-lic-backup-profile"
   enable_SSM = true
@@ -71,7 +71,7 @@ module "ewok_lic_sec_profile" {
 }
 
 module "abbyy_doc_ocr_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "abbyy-doc-ocr-profile"
   enable_SSM = true
@@ -107,7 +107,7 @@ module "abbyy_doc_ocr_profile" {
 }
 
 module "bus_obj_1_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "bus-obj-1-profile"
   enable_SSM = true
@@ -144,7 +144,7 @@ module "bus_obj_1_profile" {
 
 
 module "live_test_1_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "live-test-1-profile"
   enable_SSM = true

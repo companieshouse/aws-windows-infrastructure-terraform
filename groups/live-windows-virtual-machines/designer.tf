@@ -11,10 +11,10 @@ resource "aws_cloudwatch_log_group" "designer" {
 
   tags = merge(
     local.default_tags,
-    map(
-      "Name", "${var.application}-designer-server",
-      "ServiceTeam", var.ServiceTeam
-    )
+    {
+      Name        = "${var.application}-designer-server"
+      ServiceTeam = var.ServiceTeam
+    }
   )
 }
 
@@ -22,7 +22,7 @@ resource "aws_cloudwatch_log_group" "designer" {
 # Designer CloudWatch IAM Role
 # ------------------------------------------------------------------------------
 module "designer_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "designer-profile"
   enable_SSM = true
