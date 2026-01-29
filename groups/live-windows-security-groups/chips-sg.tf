@@ -3,11 +3,14 @@
 # ------------------------------------------------------------------------------
 module "chips_estor_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "~> 5.0"
 
   name        = "sgr-${var.application}-chips-estor-security-group"
   description = "Security group for the ${var.application} Chips-Estor-Security-Group"
   vpc_id      = data.aws_vpc.vpc.id
+  use_name_prefix = false
+  egress_ipv6_cidr_blocks = []
+  ingress_ipv6_cidr_blocks = []
 
   ingress_with_cidr_blocks = [
     {
@@ -124,7 +127,7 @@ module "chips_estor_security_group" {
   computed_ingress_with_source_security_group_id = [
     {
       rule                     = "http-8080-tcp"
-      source_security_group_id = module.chips_estor_security_group.this_security_group_id
+      source_security_group_id = module.chips_estor_security_group.security_group_id
     }
   ]
   number_of_computed_ingress_with_source_security_group_id = 1

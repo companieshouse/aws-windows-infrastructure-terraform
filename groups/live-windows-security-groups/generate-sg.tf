@@ -3,11 +3,14 @@
 # ------------------------------------------------------------------------------
 module "test_dev_generate_server_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "~> 5.0"
 
   name        = "sgr-${var.application}-test_dev_generate_server"
   description = "Security group for the ${var.application} Test/Dev Generate Server"
   vpc_id      = data.aws_vpc.vpc.id
+  use_name_prefix = false
+  egress_ipv6_cidr_blocks = []
+  ingress_ipv6_cidr_blocks = []
 
   ingress_with_cidr_blocks = [
     {
@@ -88,11 +91,14 @@ module "test_dev_generate_server_security_group" {
 # ------------------------------------------------------------------------------
 module "prod_generate_server_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "~> 5.0"
 
   name        = "sgr-${var.application}-prod_generate_server"
   description = "Security group for the ${var.application} Production Generate Server"
   vpc_id      = data.aws_vpc.vpc.id
+  use_name_prefix = false
+  egress_ipv6_cidr_blocks = []
+  ingress_ipv6_cidr_blocks = []
 
   ingress_with_cidr_blocks = [
     {
