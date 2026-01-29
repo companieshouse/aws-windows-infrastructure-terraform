@@ -3,11 +3,14 @@
 # ------------------------------------------------------------------------------
 module "cloudendure_replicator_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "~> 5.0"
 
   name        = "sgr-${var.application}-cloudendure-replicator"
   description = "Security group for the ${var.application} CloudEndure Replicator"
   vpc_id      = data.aws_vpc.vpc.id
+  use_name_prefix = false
+  egress_ipv6_cidr_blocks = []
+  ingress_ipv6_cidr_blocks = []
 
   ingress_with_cidr_blocks = [
     {
