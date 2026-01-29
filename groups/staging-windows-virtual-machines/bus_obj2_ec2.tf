@@ -3,11 +3,15 @@
 # ------------------------------------------------------------------------------
 module "bus_obj_2_ec2_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "~> 5.0"
 
   name        = "sgr-${var.application}-bus-obj-2-server"
   description = "Security group for the ${var.application} Business Objects Server 2"
   vpc_id      = data.aws_vpc.vpc.id
+
+  use_name_prefix = false
+  egress_ipv6_cidr_blocks = []
+  ingress_ipv6_cidr_blocks = []
 
   ingress_with_cidr_blocks = [
     {
@@ -155,10 +159,10 @@ resource "aws_cloudwatch_log_group" "bus_obj_2" {
 
   tags = merge(
     local.default_tags,
-    map(
-      "Name", "${var.application}-bus-obj-2-server",
-      "ServiceTeam", var.ServiceTeam
-    )
+    {
+      Name        = "${var.application}-bus-obj-2-server"
+      ServiceTeam = var.ServiceTeam
+    }
   )
 }
 
@@ -168,7 +172,7 @@ resource "aws_cloudwatch_log_group" "bus_obj_2" {
 
 module "bus_obj_2_ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "2.19.0"
+  version = "5.8.0"
 
   name = var.bus_obj_2_ec2_name
 
@@ -178,11 +182,11 @@ module "bus_obj_2_ec2" {
   monitoring        = var.monitoring
   get_password_data = var.get_password_data
   vpc_security_group_ids = [
-    module.bus_obj_2_ec2_security_group.this_security_group_id,
+    module.bus_obj_2_ec2_security_group.security_group_id,
     data.aws_security_group.rdp_shared.id,
     aws_security_group.bus_obj_2_server_web_sg.id
   ]
-  subnet_id            = coalesce(data.aws_subnet_ids.application.ids...)
+  subnet_id            = coalesce(data.aws_subnets.application.ids...)
   iam_instance_profile = module.bus_obj_2_profile.aws_iam_instance_profile.name
   ebs_optimized        = var.ebs_optimized
 
@@ -226,27 +230,34 @@ module "bus_obj_2_ec2" {
     }
   ]
 
+  metadata_options = {
+  http_endpoint               = "enabled"
+  http_put_response_hop_limit = 1
+  http_tokens                 = "optional"
+  }
+
+
   tags = merge(
-    local.default_tags,
-    map(
-      "Name", var.bus_obj_2_ec2_name,
-      "Application", var.bus_obj_2_application,
-      "ServiceTeam", var.ServiceTeam,
-      "Backup", "backup14",
-      "BackupApp", var.application,
-      "scheduled_stop", var.scheduled_stop
-    )
+    local.default_tags, 
+    {
+      Name           = var.bus_obj_2_ec2_name
+      Application    = var.bus_obj_2_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup14"
+      BackupApp      = var.application
+      scheduled_stop = var.scheduled_stop
+    }
   )
 
   volume_tags = merge(
     local.default_tags,
-    map(
-      "Name", var.bus_obj_2_ec2_name,
-      "Application", var.bus_obj_2_application,
-      "ServiceTeam", var.ServiceTeam,
-      "Backup", "backup14",
-      "BackupApp", var.application,
-      "scheduled_stop", var.scheduled_stop
-    )
+    {
+      Name           = var.bus_obj_2_ec2_name
+      Application    = var.bus_obj_2_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup14"
+      BackupApp      = var.application
+      scheduled_stop = var.scheduled_stop
+    }
   )
 }

@@ -1,5 +1,5 @@
 module "abbyy_dev_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "abbyy-dev-profile"
   enable_SSM = true
@@ -35,7 +35,7 @@ module "abbyy_dev_profile" {
 }
 
 module "doc_sim_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "doc-sim-profile"
   enable_SSM = true
@@ -71,7 +71,7 @@ module "doc_sim_profile" {
 }
 
 module "bus_obj_2_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "bus-obj-2-profile"
   enable_SSM = true
@@ -107,7 +107,7 @@ module "bus_obj_2_profile" {
 }
 
 module "test_2019_1_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "test-2019-1-profile"
   enable_SSM = true
