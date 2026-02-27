@@ -1,8 +1,8 @@
 module "ewok_lic_bac_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "ewok-lic-backup-profile"
-  enable_SSM = true
+  enable_ssm = true
   cw_log_group_arns = length(local.ewok_lic_bac_log_groups) > 0 ? flatten([
     formatlist(
       "arn:aws:logs:%s:%s:log-group:%s:*:*",
@@ -38,7 +38,7 @@ module "ewok_lic_sec_profile" {
   source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
 
   name       = "ewok-lic-second-profile"
-  enable_SSM = true
+  enable_ssm = true
   cw_log_group_arns = length(local.ewok_lic_sec_log_groups) > 0 ? flatten([
     formatlist(
       "arn:aws:logs:%s:%s:log-group:%s:*:*",
@@ -71,10 +71,10 @@ module "ewok_lic_sec_profile" {
 }
 
 module "abbyy_doc_ocr_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "abbyy-doc-ocr-profile"
-  enable_SSM = true
+  enable_ssm = true
   cw_log_group_arns = length(local.abbyy_doc_ocr_log_groups) > 0 ? flatten([
     formatlist(
       "arn:aws:logs:%s:%s:log-group:%s:*:*",
@@ -107,10 +107,10 @@ module "abbyy_doc_ocr_profile" {
 }
 
 module "bus_obj_1_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "bus-obj-1-profile"
-  enable_SSM = true
+  enable_ssm = true
   cw_log_group_arns = length(local.bus_obj_1_log_groups) > 0 ? flatten([
     formatlist(
       "arn:aws:logs:%s:%s:log-group:%s:*:*",
@@ -144,10 +144,10 @@ module "bus_obj_1_profile" {
 
 
 module "live_test_1_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "live-test-1-profile"
-  enable_SSM = true
+  enable_ssm = true
   cw_log_group_arns = length(local.live_test_1_log_groups) > 0 ? flatten([
     formatlist(
       "arn:aws:logs:%s:%s:log-group:%s:*:*",

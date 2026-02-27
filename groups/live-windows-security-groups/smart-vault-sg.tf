@@ -3,11 +3,14 @@
 # ------------------------------------------------------------------------------
 module "smart_vault_1_server_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "~> 5.0"
 
   name        = "sgr-${var.application}-smart_vault_1_server"
   description = "Security group for the ${var.application} Smart Vault 1 Server"
   vpc_id      = data.aws_vpc.vpc.id
+  use_name_prefix = false
+  egress_ipv6_cidr_blocks = []
+  ingress_ipv6_cidr_blocks = []
 
   ingress_with_cidr_blocks = [
     {
@@ -96,37 +99,37 @@ module "smart_vault_1_server_security_group" {
       from_port                = 6001
       to_port                  = 6001
       protocol                 = "tcp"
-      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+      source_security_group_id = module.smart_vault_1_server_security_group.security_group_id
     },
     {
       from_port                = 6001
       to_port                  = 6001
       protocol                 = "tcp"
-      source_security_group_id = module.smart_vault_2_server_security_group.this_security_group_id
+      source_security_group_id = module.smart_vault_2_server_security_group.security_group_id
     },
     {
       from_port                = 6003
       to_port                  = 6003
       protocol                 = "tcp"
-      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+      source_security_group_id = module.smart_vault_1_server_security_group.security_group_id
     },
     {
       from_port                = 6003
       to_port                  = 6003
       protocol                 = "tcp"
-      source_security_group_id = module.smart_vault_2_server_security_group.this_security_group_id
+      source_security_group_id = module.smart_vault_2_server_security_group.security_group_id
     },
     {
       from_port                = 8009
       to_port                  = 8009
       protocol                 = "tcp"
-      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+      source_security_group_id = module.smart_vault_1_server_security_group.security_group_id
     },
     {
       from_port                = 55121
       to_port                  = 55121
       protocol                 = "tcp"
-      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+      source_security_group_id = module.smart_vault_1_server_security_group.security_group_id
     }
   ]
   number_of_computed_ingress_with_source_security_group_id = 6
@@ -140,11 +143,14 @@ module "smart_vault_1_server_security_group" {
 # ------------------------------------------------------------------------------
 module "smart_vault_2_server_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "~> 5.0"
 
   name        = "sgr-${var.application}-smart_vault_2_server"
   description = "Security group for the ${var.application} Smart Vault 2 Server"
   vpc_id      = data.aws_vpc.vpc.id
+  use_name_prefix = false
+  egress_ipv6_cidr_blocks = []
+  ingress_ipv6_cidr_blocks = []
 
   ingress_with_cidr_blocks = [
     {
@@ -225,25 +231,25 @@ module "smart_vault_2_server_security_group" {
       from_port                = 445
       to_port                  = 445
       protocol                 = "tcp"
-      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+      source_security_group_id = module.smart_vault_1_server_security_group.security_group_id
     },
     {
       from_port                = 6001
       to_port                  = 6001
       protocol                 = "tcp"
-      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+      source_security_group_id = module.smart_vault_1_server_security_group.security_group_id
     },
     {
       from_port                = 6001
       to_port                  = 6001
       protocol                 = "tcp"
-      source_security_group_id = module.smart_vault_2_server_security_group.this_security_group_id
+      source_security_group_id = module.smart_vault_2_server_security_group.security_group_id
     },
     {
       from_port                = 8009
       to_port                  = 8009
       protocol                 = "tcp"
-      source_security_group_id = module.smart_vault_1_server_security_group.this_security_group_id
+      source_security_group_id = module.smart_vault_1_server_security_group.security_group_id
     }
   ]
   number_of_computed_ingress_with_source_security_group_id = 4

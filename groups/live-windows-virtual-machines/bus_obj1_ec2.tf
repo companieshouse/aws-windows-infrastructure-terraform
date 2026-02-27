@@ -3,11 +3,15 @@
 # ------------------------------------------------------------------------------
 module "bus_obj_1_ec2_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "~> 5.0"
 
   name        = "sgr-${var.application}-bus-obj-1-server"
   description = "Security group for the ${var.application} Business Objects Server 1"
   vpc_id      = data.aws_vpc.vpc.id
+
+  use_name_prefix = false
+  egress_ipv6_cidr_blocks = []
+  ingress_ipv6_cidr_blocks = []
 
   ingress_with_cidr_blocks = [
     {
@@ -298,10 +302,10 @@ resource "aws_cloudwatch_log_group" "bus_obj_1" {
 
   tags = merge(
     local.default_tags,
-    map(
-      "Name", "${var.application}-bus-obj-1-server",
-      "ServiceTeam", var.ServiceTeam
-    )
+    {
+      Name        = "${var.application}-bus-obj-1-server"
+      ServiceTeam = var.ServiceTeam
+    }
   )
 }
 
@@ -311,7 +315,7 @@ resource "aws_cloudwatch_log_group" "bus_obj_1" {
 
 module "bus_obj_1_ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "2.19.0"
+  version = "5.8.0"
 
   name = var.bus_obj_1_ec2_name
 
@@ -321,18 +325,18 @@ module "bus_obj_1_ec2" {
   monitoring        = var.monitoring
   get_password_data = var.get_password_data
   vpc_security_group_ids = [
-    module.bus_obj_1_ec2_security_group.this_security_group_id,
+    module.bus_obj_1_ec2_security_group.security_group_id,
     data.aws_security_group.rdp_shared.id,
     aws_security_group.bus_obj_1_server_web_sg.id
   ]
-  subnet_id            = coalesce(data.aws_subnet_ids.application.ids...)
+  subnet_id            = coalesce(data.aws_subnets.application.ids...)
   iam_instance_profile = module.bus_obj_1_profile.aws_iam_instance_profile.name
   ebs_optimized        = var.ebs_optimized
 
   root_block_device = [
     {
       delete_on_termination = var.delete_on_termination
-      volume_size           = "100"
+      volume_size           = 100
       volume_type           = var.volume_type
       encrypted             = var.ebs_encrypted
       kms_key_id            = data.aws_kms_key.ebs.arn
@@ -344,7 +348,7 @@ module "bus_obj_1_ec2" {
       delete_on_termination = var.delete_on_termination
       device_name           = "/dev/xvdf"
       encrypted             = var.ebs_encrypted
-      volume_size           = "80"
+      volume_size           = 80
       volume_type           = var.volume_type
       kms_key_id            = data.aws_kms_key.ebs.arn
     },
@@ -352,7 +356,7 @@ module "bus_obj_1_ec2" {
       delete_on_termination = var.delete_on_termination
       device_name           = "/dev/xvdg"
       encrypted             = var.ebs_encrypted
-      volume_size           = "150"
+      volume_size           = 150
       volume_type           = var.volume_type
       kms_key_id            = data.aws_kms_key.ebs.arn
     },
@@ -360,31 +364,36 @@ module "bus_obj_1_ec2" {
       delete_on_termination = var.delete_on_termination
       device_name           = "/dev/xvdh"
       encrypted             = var.ebs_encrypted
-      volume_size           = "40"
+      volume_size           = 40
       volume_type           = var.volume_type
       kms_key_id            = data.aws_kms_key.ebs.arn
     }
   ]
+  metadata_options = {
+  http_endpoint               = "enabled"
+  http_put_response_hop_limit = 1
+  http_tokens                 = "optional"
+  }
 
   tags = merge(
     local.default_tags,
-    map(
-      "Name", var.bus_obj_1_ec2_name,
-      "Application", var.bus_obj_1_application,
-      "ServiceTeam", var.ServiceTeam,
-      "Backup", "backup21",
-      "BackupApp", var.application
-    )
+    {
+      Name           = var.bus_obj_1_ec2_name
+      Application    = var.bus_obj_1_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup21"
+      BackupApp      = var.application
+    }
   )
 
   volume_tags = merge(
     local.default_tags,
-    map(
-      "Name", var.bus_obj_1_ec2_name,
-      "Application", var.bus_obj_1_application,
-      "ServiceTeam", var.ServiceTeam,
-      "Backup", "backup21",
-      "BackupApp", var.application
-    )
+    {
+      Name           = var.bus_obj_1_ec2_name
+      Application    = var.bus_obj_1_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup21"
+      BackupApp      = var.application
+    }
   )
 }

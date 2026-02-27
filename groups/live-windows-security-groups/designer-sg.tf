@@ -3,11 +3,14 @@
 # ------------------------------------------------------------------------------
 module "designer_server_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "~> 5.0"
 
   name        = "sgr-${var.application}-designer_server"
   description = "Security group for the ${var.application} Designer Application Server"
   vpc_id      = data.aws_vpc.vpc.id
+  use_name_prefix = false
+  egress_ipv6_cidr_blocks = []
+  ingress_ipv6_cidr_blocks = []
 
   ingress_with_cidr_blocks = [
     {
@@ -107,7 +110,7 @@ module "designer_server_security_group" {
       from_port                = 445
       to_port                  = 445
       protocol                 = "tcp"
-      source_security_group_id = module.designer_server_security_group.this_security_group_id
+      source_security_group_id = module.designer_server_security_group.security_group_id
     }
   ]
   number_of_computed_ingress_with_source_security_group_id = 1
