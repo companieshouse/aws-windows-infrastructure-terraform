@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 module "test_2019_1_ec2_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-test-2019-1-server"
   description = "Security group for the ${var.application} Test 2019 Server 1"

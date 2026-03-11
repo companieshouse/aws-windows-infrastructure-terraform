@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 module "chips_estor_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-chips-estor-security-group"
   description = "Security group for the ${var.application} Chips-Estor-Security-Group"

@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 module "ewok_lic_bac_ec2_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-ewok-lic-backup-server"
   description = "Security group for the ${var.application} Ewok License Backup Server"

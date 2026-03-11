@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 module "live_test_1_ec2_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-live-test-1-server"
   description = "Security group for the ${var.application} Live Test Server 1"

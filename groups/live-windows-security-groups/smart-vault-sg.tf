@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 module "smart_vault_1_server_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-smart_vault_1_server"
   description = "Security group for the ${var.application} Smart Vault 1 Server"
@@ -143,7 +143,7 @@ module "smart_vault_1_server_security_group" {
 # ------------------------------------------------------------------------------
 module "smart_vault_2_server_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-smart_vault_2_server"
   description = "Security group for the ${var.application} Smart Vault 2 Server"

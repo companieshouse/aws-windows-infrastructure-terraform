@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 module "test_dev_generate_server_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-test_dev_generate_server"
   description = "Security group for the ${var.application} Test/Dev Generate Server"
@@ -91,7 +91,7 @@ module "test_dev_generate_server_security_group" {
 # ------------------------------------------------------------------------------
 module "prod_generate_server_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-prod_generate_server"
   description = "Security group for the ${var.application} Production Generate Server"

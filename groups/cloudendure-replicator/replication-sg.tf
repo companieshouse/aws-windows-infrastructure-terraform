@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 module "cloudendure_replicator_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-cloudendure-replicator"
   description = "Security group for the ${var.application} CloudEndure Replicator"

@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 module "bus_obj_2_ec2_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 5.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-bus-obj-2-server"
   description = "Security group for the ${var.application} Business Objects Server 2"
