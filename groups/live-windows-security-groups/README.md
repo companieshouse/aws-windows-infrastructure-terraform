@@ -1,6 +1,5 @@
 # aws-windows-infrastructure-terraform
 
-<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -20,13 +19,13 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_chips_estor_security_group"></a> [chips\_estor\_security\_group](#module\_chips\_estor\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
-| <a name="module_designer_server_security_group"></a> [designer\_server\_security\_group](#module\_designer\_server\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
-| <a name="module_prod_generate_server_security_group"></a> [prod\_generate\_server\_security\_group](#module\_prod\_generate\_server\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
-| <a name="module_rempro_server_security_group"></a> [rempro\_server\_security\_group](#module\_rempro\_server\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
-| <a name="module_smart_vault_1_server_security_group"></a> [smart\_vault\_1\_server\_security\_group](#module\_smart\_vault\_1\_server\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
-| <a name="module_smart_vault_2_server_security_group"></a> [smart\_vault\_2\_server\_security\_group](#module\_smart\_vault\_2\_server\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
-| <a name="module_test_dev_generate_server_security_group"></a> [test\_dev\_generate\_server\_security\_group](#module\_test\_dev\_generate\_server\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
+| <a name="module_chips_estor_security_group"></a> [chips\_estor\_security\_group](#module\_chips\_estor\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
+| <a name="module_designer_server_security_group"></a> [designer\_server\_security\_group](#module\_designer\_server\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
+| <a name="module_prod_generate_server_security_group"></a> [prod\_generate\_server\_security\_group](#module\_prod\_generate\_server\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
+| <a name="module_rempro_server_security_group"></a> [rempro\_server\_security\_group](#module\_rempro\_server\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
+| <a name="module_smart_vault_1_server_security_group"></a> [smart\_vault\_1\_server\_security\_group](#module\_smart\_vault\_1\_server\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
+| <a name="module_smart_vault_2_server_security_group"></a> [smart\_vault\_2\_server\_security\_group](#module\_smart\_vault\_2\_server\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
+| <a name="module_test_dev_generate_server_security_group"></a> [test\_dev\_generate\_server\_security\_group](#module\_test\_dev\_generate\_server\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
 
 ## Resources
 
@@ -54,4 +53,3 @@
 ## Outputs
 
 No outputs.
-<!-- END_TF_DOCS -->

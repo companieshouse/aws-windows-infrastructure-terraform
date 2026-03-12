@@ -1,6 +1,5 @@
 # aws-windows-infrastructure-terraform
 
-<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -21,16 +20,16 @@
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_abbyy_dev_ec2"></a> [abbyy\_dev\_ec2](#module\_abbyy\_dev\_ec2) | terraform-aws-modules/ec2-instance/aws | 5.8.0 |
-| <a name="module_abbyy_dev_ec2_security_group"></a> [abbyy\_dev\_ec2\_security\_group](#module\_abbyy\_dev\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
+| <a name="module_abbyy_dev_ec2_security_group"></a> [abbyy\_dev\_ec2\_security\_group](#module\_abbyy\_dev\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
 | <a name="module_abbyy_dev_profile"></a> [abbyy\_dev\_profile](#module\_abbyy\_dev\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_bus_obj_2_ec2"></a> [bus\_obj\_2\_ec2](#module\_bus\_obj\_2\_ec2) | terraform-aws-modules/ec2-instance/aws | 5.8.0 |
-| <a name="module_bus_obj_2_ec2_security_group"></a> [bus\_obj\_2\_ec2\_security\_group](#module\_bus\_obj\_2\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
+| <a name="module_bus_obj_2_ec2_security_group"></a> [bus\_obj\_2\_ec2\_security\_group](#module\_bus\_obj\_2\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
 | <a name="module_bus_obj_2_profile"></a> [bus\_obj\_2\_profile](#module\_bus\_obj\_2\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_doc_sim_ec2"></a> [doc\_sim\_ec2](#module\_doc\_sim\_ec2) | terraform-aws-modules/ec2-instance/aws | 5.8.0 |
-| <a name="module_doc_sim_ec2_security_group"></a> [doc\_sim\_ec2\_security\_group](#module\_doc\_sim\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
+| <a name="module_doc_sim_ec2_security_group"></a> [doc\_sim\_ec2\_security\_group](#module\_doc\_sim\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
 | <a name="module_doc_sim_profile"></a> [doc\_sim\_profile](#module\_doc\_sim\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_test_2019_1_ec2"></a> [test\_2019\_1\_ec2](#module\_test\_2019\_1\_ec2) | terraform-aws-modules/ec2-instance/aws | 5.8.0 |
-| <a name="module_test_2019_1_ec2_security_group"></a> [test\_2019\_1\_ec2\_security\_group](#module\_test\_2019\_1\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
+| <a name="module_test_2019_1_ec2_security_group"></a> [test\_2019\_1\_ec2\_security\_group](#module\_test\_2019\_1\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
 | <a name="module_test_2019_1_profile"></a> [test\_2019\_1\_profile](#module\_test\_2019\_1\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 
 ## Resources
@@ -110,4 +109,3 @@
 ## Outputs
 
 No outputs.
-<!-- END_TF_DOCS -->

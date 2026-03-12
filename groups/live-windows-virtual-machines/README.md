@@ -1,6 +1,5 @@
 # aws-windows-infrastructure-terraform
 
-<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -20,22 +19,22 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_abbyy_doc_ocr_ec2_security_group"></a> [abbyy\_doc\_ocr\_ec2\_security\_group](#module\_abbyy\_doc\_ocr\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
+| <a name="module_abbyy_doc_ocr_ec2_security_group"></a> [abbyy\_doc\_ocr\_ec2\_security\_group](#module\_abbyy\_doc\_ocr\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
 | <a name="module_abbyy_doc_ocr_profile"></a> [abbyy\_doc\_ocr\_profile](#module\_abbyy\_doc\_ocr\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_bus_obj_1_ec2"></a> [bus\_obj\_1\_ec2](#module\_bus\_obj\_1\_ec2) | terraform-aws-modules/ec2-instance/aws | 5.8.0 |
-| <a name="module_bus_obj_1_ec2_security_group"></a> [bus\_obj\_1\_ec2\_security\_group](#module\_bus\_obj\_1\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
+| <a name="module_bus_obj_1_ec2_security_group"></a> [bus\_obj\_1\_ec2\_security\_group](#module\_bus\_obj\_1\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
 | <a name="module_bus_obj_1_profile"></a> [bus\_obj\_1\_profile](#module\_bus\_obj\_1\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_chips_estor_profile"></a> [chips\_estor\_profile](#module\_chips\_estor\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_designer_profile"></a> [designer\_profile](#module\_designer\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_ewok_lic_bac_ec2"></a> [ewok\_lic\_bac\_ec2](#module\_ewok\_lic\_bac\_ec2) | terraform-aws-modules/ec2-instance/aws | 5.8.0 |
-| <a name="module_ewok_lic_bac_ec2_security_group"></a> [ewok\_lic\_bac\_ec2\_security\_group](#module\_ewok\_lic\_bac\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
+| <a name="module_ewok_lic_bac_ec2_security_group"></a> [ewok\_lic\_bac\_ec2\_security\_group](#module\_ewok\_lic\_bac\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
 | <a name="module_ewok_lic_bac_profile"></a> [ewok\_lic\_bac\_profile](#module\_ewok\_lic\_bac\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_ewok_lic_sec_ec2"></a> [ewok\_lic\_sec\_ec2](#module\_ewok\_lic\_sec\_ec2) | terraform-aws-modules/ec2-instance/aws | 5.8.0 |
-| <a name="module_ewok_lic_sec_ec2_security_group"></a> [ewok\_lic\_sec\_ec2\_security\_group](#module\_ewok\_lic\_sec\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
+| <a name="module_ewok_lic_sec_ec2_security_group"></a> [ewok\_lic\_sec\_ec2\_security\_group](#module\_ewok\_lic\_sec\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
 | <a name="module_ewok_lic_sec_profile"></a> [ewok\_lic\_sec\_profile](#module\_ewok\_lic\_sec\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.59 |
 | <a name="module_generate_profile"></a> [generate\_profile](#module\_generate\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_live_test_1_ec2"></a> [live\_test\_1\_ec2](#module\_live\_test\_1\_ec2) | terraform-aws-modules/ec2-instance/aws | 5.8.0 |
-| <a name="module_live_test_1_ec2_security_group"></a> [live\_test\_1\_ec2\_security\_group](#module\_live\_test\_1\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
+| <a name="module_live_test_1_ec2_security_group"></a> [live\_test\_1\_ec2\_security\_group](#module\_live\_test\_1\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
 | <a name="module_live_test_1_profile"></a> [live\_test\_1\_profile](#module\_live\_test\_1\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_rempro_profile"></a> [rempro\_profile](#module\_rempro\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_smart_vault_profile"></a> [smart\_vault\_profile](#module\_smart\_vault\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
@@ -134,4 +133,3 @@
 ## Outputs
 
 No outputs.
-<!-- END_TF_DOCS -->
