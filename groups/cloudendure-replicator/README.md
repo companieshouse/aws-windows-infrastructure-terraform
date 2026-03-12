@@ -1,6 +1,4 @@
 # aws-windows-infrastructure-terraform
-
-<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -19,7 +17,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_cloudendure_replicator_security_group"></a> [cloudendure\_replicator\_security\_group](#module\_cloudendure\_replicator\_security\_group) | terraform-aws-modules/security-group/aws | ~> 5.0 |
+| <a name="module_cloudendure_replicator_security_group"></a> [cloudendure\_replicator\_security\_group](#module\_cloudendure\_replicator\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
 
 ## Resources
 
@@ -45,4 +43,3 @@
 ## Outputs
 
 No outputs.
-<!-- END_TF_DOCS -->
