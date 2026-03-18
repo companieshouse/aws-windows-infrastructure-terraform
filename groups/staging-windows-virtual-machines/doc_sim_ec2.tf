@@ -24,17 +24,18 @@ module "doc_sim_ec2_security_group" {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.doc_sim_445_cidr_block)
     },
     {
       from_port   = 1000
       to_port     = 1000
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.58/32"
+      cidr_blocks = join(",", local.doc_sim_1000_cidr_block)
     },
     {
       rule        = "rdp-tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.doc_sim_rdp_tcp_cidr_block)
+
     },
     {
       rule        = "winrm-http-tcp"
@@ -50,13 +51,13 @@ module "doc_sim_ec2_security_group" {
       from_port   = 50042
       to_port     = 50042
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.doc_sim_50042_cidr_block)
     },
     {
       from_port   = 50870
       to_port     = 50870
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.doc_sim_50870_cidr_block)
     },
     {
       from_port   = 135

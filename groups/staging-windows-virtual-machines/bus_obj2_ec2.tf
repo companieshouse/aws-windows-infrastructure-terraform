@@ -24,13 +24,13 @@ module "bus_obj_2_ec2_security_group" {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.bus_obj_2_445_cidr_block)
     },
     {
       from_port   = 1000
       to_port     = 1000
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.58/32"
+      cidr_blocks = join(",", local.bus_obj_2_1000_cidr_block)
     },
     {
       rule        = "rdp-tcp"
@@ -38,7 +38,7 @@ module "bus_obj_2_ec2_security_group" {
     },
     {
       rule        = "winrm-http-tcp"
-      cidr_blocks = "172.16.200.200/32"
+      cidr_blocks = join(",", local.bus_obj_2_winrm_http_tcp)
     },
     {
       from_port   = 49155
@@ -50,19 +50,19 @@ module "bus_obj_2_ec2_security_group" {
       from_port   = 49377
       to_port     = 49377
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.bus_obj_2_49377_cidr_block)
     },
     {
       from_port   = 58543
       to_port     = 58543
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.26/32"
+      cidr_blocks = join(",", local.bus_obj_2_58543_cidr_block)
     },
     {
       from_port   = 58577
       to_port     = 58577
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.bus_obj_2_58577_cidr_block)
     },
     {
       rule        = "http-8080-tcp"

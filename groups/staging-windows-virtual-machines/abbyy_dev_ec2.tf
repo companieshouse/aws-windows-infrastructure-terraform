@@ -22,13 +22,13 @@ module "abbyy_dev_ec2_security_group" {
     },
     {
       rule        = "winrm-http-tcp"
-      cidr_blocks = "172.16.155.9/32"
+      cidr_blocks = join(",", local.abbyy_dev_winrm_http_tcp)
     },
     {
       from_port   = 6129
       to_port     = 6129
       protocol    = "tcp"
-      cidr_blocks = "10.172.20.0/22"
+      cidr_blocks = join(",", local.abbyy_dev_6129_cidr_block)
     },
     {
       from_port   = 49155
