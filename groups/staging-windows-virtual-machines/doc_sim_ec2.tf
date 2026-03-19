@@ -18,46 +18,46 @@ module "doc_sim_ec2_security_group" {
       from_port   = 135
       to_port     = 135
       protocol    = "tcp"
-      cidr_blocks = join(",", local.doc_sim_135_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["135_cidr_block"])
     },
     {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
-      cidr_blocks = join(",", local.doc_sim_445_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["445_cidr_block"])
     },
     {
       from_port   = 1000
       to_port     = 1000
       protocol    = "tcp"
-      cidr_blocks = join(",", local.doc_sim_1000_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["1000_cidr_block"])
     },
     {
       rule        = "rdp-tcp"
-      cidr_blocks = join(",", local.doc_sim_rdp_tcp_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["rdp_tcp_cidr_block"])
 
     },
     {
       rule        = "winrm-http-tcp"
-      cidr_blocks = join(",", local.doc_sim_winrm_http_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["winrm_http_cidr_block"])
     },
     {
       from_port   = 49155
       to_port     = 49155
       protocol    = "tcp"
-      cidr_blocks = join(",", local.doc_sim_49155_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["49155_cidr_block"])
     },
     {
       from_port   = 50042
       to_port     = 50042
       protocol    = "tcp"
-      cidr_blocks = join(",", local.doc_sim_50042_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["50042_cidr_block"])
     },
     {
       from_port   = 50870
       to_port     = 50870
       protocol    = "tcp"
-      cidr_blocks = join(",", local.doc_sim_50870_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["50870_cidr_block"])
     },
     {
       from_port   = 135

@@ -18,61 +18,61 @@ use_name_prefix = false
       from_port   = 135
       to_port     = 135
       protocol    = "tcp"
-      cidr_blocks = join(",", local.test_2019_1_135_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_test_ec2["135_cidr_block"])
     },
     {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
-      cidr_blocks = join(",", local.test_1_2019_445_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_test_ec2["445_cidr_block"])
     },
     {
       from_port   = 1000
       to_port     = 1000
       protocol    = "tcp"
-      cidr_blocks = join(",", local.test_1_2019_1000_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_test_ec2["1000_cidr_block"])
     },
     {
       rule        = "rdp-tcp"
-      cidr_blocks = join(",", local.test_2019_1_rdp_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_test_ec2["rdp_cidr_block"])
     },
     {
       rule        = "winrm-http-tcp"
-      cidr_blocks = join(",", local.test_1_2019_winrm_http_tcp)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_test_ec2["winrm_http_tcp"])
     },
     {
       from_port   = 49155
       to_port     = 49155
       protocol    = "tcp"
-      cidr_blocks = join(",", local.test_2019_1_49155_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_test_ec2["49155_cidr_block"])
     },
     {
       from_port   = 49377
       to_port     = 49377
       protocol    = "tcp"
-      cidr_blocks = join(",", local.test_1_2019_49377_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_test_ec2["49377_cidr_block"])
     },
     {
       from_port   = 58543
       to_port     = 58543
       protocol    = "tcp"
-      cidr_blocks = join(",", local.test_1_2019_58543_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_test_ec2["58543_cidr_block"])
     },
     {
       from_port   = 58577
       to_port     = 58577
       protocol    = "tcp"
-      cidr_blocks = join(",", local.test_1_2019_58577_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_test_ec2["58577_cidr_block"])
     },
     {
       rule        = "http-8080-tcp"
-      cidr_blocks = join(",", local.test_2019_1_8080_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_test_ec2["8080_cidr_block"])
     },
     {
       from_port   = 6400
       to_port     = 6414
       protocol    = "tcp"
-      cidr_blocks = join(",", local.test_2019_1_6400_6414_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_test_ec2["6400_6414_cidr_block"])
     },
     {
       from_port   = 135

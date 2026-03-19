@@ -102,31 +102,6 @@ locals {
     data.vault_generic_secret.doc_sim_ec2_data.data["ingress-cidr-blocks"]
   )
 
-  # Document Simulation Test 135 port CIDR blocks
-  doc_sim_135_cidr_block = local.ingress_cidr_blocks_doc_sim["doc_sim_135_cidr_block"]
-
-  # Document Simulation Test winrm http port CIDR blocks
-  doc_sim_winrm_http_cidr_block = local.ingress_cidr_blocks_doc_sim["doc_sim_winrm_http_cidr_block"]
-
-  # Document Simulation Test 49155 port CIDR blocks
-  doc_sim_49155_cidr_block = local.ingress_cidr_blocks_doc_sim["doc_sim_49155_cidr_block"]
-
-  # Document Simulation Test 445 port CIDR blocks
-  doc_sim_445_cidr_block = local.ingress_cidr_blocks_doc_sim["doc_sim_445_cidr_block"]
-
-  # Document Simulation Test 1000 port CIDR blocks
-  doc_sim_1000_cidr_block = local.ingress_cidr_blocks_doc_sim["doc_sim_1000_cidr_block"]
-
-  # Document Simulation Test 50042 port CIDR blocks
-  doc_sim_50042_cidr_block = local.ingress_cidr_blocks_doc_sim["doc_sim_50042_cidr_block"]
-
-  # Document Simulation Test 50870 port CIDR blocks
-  doc_sim_50870_cidr_block = local.ingress_cidr_blocks_doc_sim["doc_sim_50870_cidr_block"]
-
-  # Document Simulation Test rdp-tcp port CIDR blocks
-  doc_sim_rdp_tcp_cidr_block = local.ingress_cidr_blocks_doc_sim["doc_sim_rdp_tcp_cidr_block"]
-  
-
   # ------------------------------------------------------------------------------
   # Business Objects Server 2 Security Group Variables
   # ------------------------------------------------------------------------------
@@ -136,40 +111,6 @@ locals {
     data.vault_generic_secret.doc_sim_ec2_data.data["ingress-cidr-blocks"]
   )
 
-  # Business Objects server 2 135 port CIDR blocks
-  bus_obj_2_135_cidr_block = local.ingress_cidr_blocks_bus_obj["bus_obj_2_135_cidr_block"]
-
-  # Business Objects server 2 rdp port CIDR blocks
-  bus_obj_2_rdp_cidr_block = local.ingress_cidr_blocks_bus_obj["bus_obj_2_rdp_cidr_block"]
-
-  # Business Objects 49155 port CIDR blocks
-  bus_obj_2_49155_cidr_block = local.ingress_cidr_blocks_bus_obj["bus_obj_2_49155_cidr_block"]
-
-  # Business Objects Server 2 8080 port CIDR blocks
-  bus_obj_2_8080_cidr_block = local.ingress_cidr_blocks_bus_obj["bus_obj_2_8080_cidr_block"]
-
-  # Business Objects Server 2 6400 - 6414 port CIDR blocks
-  bus_obj_2_6400_6414_cidr_block = local.ingress_cidr_blocks_bus_obj["bus_obj_2_6400_6414_cidr_block"]
-
-  # Business Objects Server 2 445 port CIDR blocks
-  bus_obj_2_445_cidr_block = local.ingress_cidr_blocks_bus_obj["bus_obj_2_445_cidr_block"]
-
-  # Business Objects Server 2 1000 port CIDR blocks
-  bus_obj_2_1000_cidr_block = local.ingress_cidr_blocks_bus_obj["bus_obj_2_1000_cidr_block"]
-
-  # Business Objects Server 2 49377 port CIDR blocks
-  bus_obj_2_49377_cidr_block = local.ingress_cidr_blocks_bus_obj["bus_obj_2_49377_cidr_block"]
-
-  # Business Objects Server 2 58543 port CIDR blocks
-  bus_obj_2_58543_cidr_block = local.ingress_cidr_blocks_bus_obj["bus_obj_2_58543_cidr_block"]
-
-  # Business Objects Server 2 58577 port CIDR blocks
-  bus_obj_2_58577_cidr_block = local.ingress_cidr_blocks_bus_obj["bus_obj_2_58577_cidr_block"]
-
-  # Business Objects Server 2 winrm port CIDR blocks
-  bus_obj_2_winrm_http_tcp = local.ingress_cidr_blocks_bus_obj["bus_obj_2_winrm_http_tcp"]
-
-
   # ------------------------------------------------------------------------------
   # Test 2019 Server 1 Security Group Variables
   # ------------------------------------------------------------------------------
@@ -178,38 +119,5 @@ locals {
     jsondecode(data.vault_generic_secret.test_2019_1_ec2_data.data["ingress-cidr-blocks"]),
     data.vault_generic_secret.test_2019_1_ec2_data.data["ingress-cidr-blocks"]
   )
-
-  # Test 2019 server 1 135 port CIDR blocks
-  test_2019_1_135_cidr_block = local.ingress_cidr_blocks_test_ec2["test_2019_1_135_cidr_block"]
-
-  # Test 2019 server 1 rdp port CIDR blocks
-  test_2019_1_rdp_cidr_block = local.ingress_cidr_blocks_test_ec2["test_2019_1_rdp_cidr_block"]
-
-  # Test 2019 server 1 49155 port CIDR blocks
-  test_2019_1_49155_cidr_block = local.ingress_cidr_blocks_test_ec2["test_2019_1_49155_cidr_block"]
-
-  # Test 2019 server 1 8080 port CIDR blocks
-  test_2019_1_8080_cidr_block = local.ingress_cidr_blocks_test_ec2["test_2019_1_8080_cidr_block"]
-
-  # Test 2019 server 1 6400 - 6414 port CIDR blocks
-  test_2019_1_6400_6414_cidr_block = local.ingress_cidr_blocks_test_ec2["test_2019_1_6400_6414_cidr_block"]
-
-  # Test 2019 server 1 445 port CIDR blocks
-  test_1_2019_445_cidr_block = local.ingress_cidr_blocks_test_ec2["test_1_2019_445_cidr_block"]
-
-  # Test 2019 server 1 1000 port CIDR blocks
-  test_1_2019_1000_cidr_block = local.ingress_cidr_blocks_test_ec2["test_1_2019_1000_cidr_block"]
-
-  # Test 2019 server 1 winrm port CIDR blocks
-  test_1_2019_winrm_http_tcp = local.ingress_cidr_blocks_test_ec2["test_1_2019_winrm_http_tcp"]
-
-  # Test 2019 server 1 49377 port CIDR blocks
-  test_1_2019_49377_cidr_block = local.ingress_cidr_blocks_test_ec2["test_1_2019_49377_cidr_block"]
-
-  # Test 2019 server 1 58543 port CIDR blocks
-  test_1_2019_58543_cidr_block = local.ingress_cidr_blocks_test_ec2["test_1_2019_58543_cidr_block"]
-
-  # Test 2019 server 1 58577 port CIDR blocks
-  test_1_2019_58577_cidr_block = local.ingress_cidr_blocks_test_ec2["test_1_2019_58577_cidr_block"]
-
+  
 }
