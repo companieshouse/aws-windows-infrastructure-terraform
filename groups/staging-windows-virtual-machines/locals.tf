@@ -19,7 +19,7 @@ locals {
   # ABBYY Development Server locals
   # ------------------------------------------------------------------------------
 
-  abbyy_dev_ec2_data = jsondecode(data.vault_generic_secret.abbyy_dev_ec2_data.data)
+  abbyy_dev_ec2_data = data.vault_generic_secret.abbyy_dev_ec2_data.data
 
   #For each log map passed, add an extra kv for the log group name
   abbyy_dev_cw_logs = { for log, map in var.abbyy_dev_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-abbyy-dev-${log}" }) }
@@ -31,7 +31,7 @@ locals {
   # Document Simulation Test Server locals
   # ------------------------------------------------------------------------------
 
-  doc_sim_ec2_data = jsondecode(data.vault_generic_secret.doc_sim_ec2_data.data)
+  doc_sim_ec2_data = data.vault_generic_secret.doc_sim_ec2_data.data
 
   #For each log map passed, add an extra kv for the log group name
   doc_sim_cw_logs = { for log, map in var.doc_sim_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-doc-sim-test-${log}" }) }
@@ -42,14 +42,14 @@ locals {
   # Business Objects Server 2 locals
   # ------------------------------------------------------------------------------
 
-  bus_obj_2_ec2_data = jsondecode(data.vault_generic_secret.bus_obj_2_ec2_data.data)
+  bus_obj_2_ec2_data = data.vault_generic_secret.bus_obj_2_ec2_data.data
 
   #For each log map passed, add an extra kv for the log group name
   bus_obj_2_cw_logs = { for log, map in var.bus_obj_2_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-bus-obj-2-${log}" }) }
 
   bus_obj_2_log_groups = compact([for log, map in local.bus_obj_2_cw_logs : lookup(map, "log_group_name", "")])
 
-  bus_obj_2_volume_snapshot_ids = local.bus_obj_2_ec2_data["volume_snapshot_ids"]
+  bus_obj_2_volume_snapshot_ids = jsondecode(local.bus_obj_2_ec2_data["volume_snapshot_ids"])
   bus_obj_2_xvdf_snapshot_id    = lookup(local.bus_obj_2_volume_snapshot_ids, "xvdf", null)
   bus_obj_2_xvdg_snapshot_id    = lookup(local.bus_obj_2_volume_snapshot_ids, "xvdg", null)
   bus_obj_2_xvdh_snapshot_id    = lookup(local.bus_obj_2_volume_snapshot_ids, "xvdh", null)
@@ -58,7 +58,7 @@ locals {
   # Test Server Server 1 locals
   # ------------------------------------------------------------------------------
 
-  test_2019_1_ec2_data = jsondecode(data.vault_generic_secret.test_2019_1_ec2_data.data)
+  test_2019_1_ec2_data = data.vault_generic_secret.test_2019_1_ec2_data.data
 
   #For each log map passed, add an extra kv for the log group name
   test_2019_1_cw_logs = { for log, map in var.test_2019_1_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-test-2019-1-${log}" }) }
@@ -75,26 +75,26 @@ locals {
   # ABBYY Development Server Security Group Variables
   # ------------------------------------------------------------------------------
 
-  ingress_cidr_blocks_abby_dev = local.abbyy_dev_ec2_data["ingress-cidr-blocks"]
+  ingress_cidr_blocks_abby_dev = jsondecode(local.abbyy_dev_ec2_data["ingress-cidr-blocks"])
   
 
   # ------------------------------------------------------------------------------
   # Document Simulation Test Server Security Group Variables
   # ------------------------------------------------------------------------------
 
-  ingress_cidr_blocks_doc_sim = local.doc_sim_ec2_data["ingress-cidr-blocks"]
+  ingress_cidr_blocks_doc_sim = jsondecode(local.doc_sim_ec2_data["ingress-cidr-blocks"])
 
   # ------------------------------------------------------------------------------
   # Business Objects Server 2 Security Group Variables
   # ------------------------------------------------------------------------------
 
-  ingress_cidr_blocks_bus_obj = local.bus_obj_2_ec2_data["ingress-cidr-blocks"]
+  ingress_cidr_blocks_bus_obj = jsondecode(local.bus_obj_2_ec2_data["ingress-cidr-blocks"])
   
 
   # ------------------------------------------------------------------------------
   # Test 2019 Server 1 Security Group Variables
   # ------------------------------------------------------------------------------
 
-  ingress_cidr_blocks_test_ec2 = local.test_2019_1_ec2_data["ingress-cidr-blocks"]
+  ingress_cidr_blocks_test_ec2 = jsondecode(local.test_2019_1_ec2_data["ingress-cidr-blocks"])
 
 }
