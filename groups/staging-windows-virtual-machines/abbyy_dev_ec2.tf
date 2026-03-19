@@ -18,23 +18,23 @@ module "abbyy_dev_ec2_security_group" {
       from_port   = 135
       to_port     = 135
       protocol    = "tcp"
-      cidr_blocks = join(",", local.abbyy_dev_135_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_dev["135_cidr_block"])
     },
     {
       rule        = "winrm-http-tcp"
-      cidr_blocks = join(",", local.abbyy_dev_winrm_http_tcp)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_dev["winrm_http_tcp"])
     },
     {
       from_port   = 6129
       to_port     = 6129
       protocol    = "tcp"
-      cidr_blocks = join(",", local.abbyy_dev_6129_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_dev["6129_cidr_block"])
     },
     {
       from_port   = 49155
       to_port     = 49155
       protocol    = "tcp"
-      cidr_blocks = join(",", local.abbyy_dev_49155_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_dev["49155_cidr_block"])
     },
     {
       from_port   = 135
