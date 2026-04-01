@@ -16,59 +16,59 @@ module "ewok_lic_bac_ec2_security_group" {
   ingress_with_cidr_blocks = [
     {
       rule        = "http-80-tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_80_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_80_cidr_block"])
     },
     {
       from_port   = 135
       to_port     = 135
       protocol    = "tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_135_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_135_cidr_block"])
     },
     {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_445_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_445_cidr_block"])
     },
     {
       from_port   = 1000
       to_port     = 1000
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.58/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_1000_cidr_block"])
     },
     {
       rule        = "winrm-http-tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_winrm_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_winrm_cidr_block"])
     },
     {
       from_port   = 6129
       to_port     = 6129
       protocol    = "tcp"
-      cidr_blocks = "10.172.0.0/19"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_6129_cidr_block"])
     },
     {
       from_port   = 10040
       to_port     = 10040
       protocol    = "tcp"
-      cidr_blocks = "172.19.238.30/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_10040_cidr_block"])
     },
     {
       from_port   = 49155
       to_port     = 49155
       protocol    = "tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_49155_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_49155_cidr_block"])
     },
     {
       from_port   = 56441
       to_port     = 56441
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_56441_cidr_block"])
     },
     {
       from_port   = 57854
       to_port     = 57854
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_57854_cidr_block"])
     },
     {
       from_port   = 135
@@ -88,13 +88,13 @@ module "ewok_lic_bac_ec2_security_group" {
       from_port   = 443
       to_port     = 443
       protocol    = "tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_443_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_443_cidr_block"])
     },
     {
       from_port   = 3020
       to_port     = 3020
       protocol    = "tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_3020_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_3020_cidr_block"])
     },
   ]
 

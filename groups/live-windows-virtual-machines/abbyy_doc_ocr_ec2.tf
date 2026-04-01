@@ -17,51 +17,51 @@ module "abbyy_doc_ocr_ec2_security_group" {
       from_port   = 135
       to_port     = 135
       protocol    = "tcp"
-      cidr_blocks = join(",", local.abbyy_doc_ocr_135_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_doc_ocr["135_cidr_block"])
     },
     {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_doc_ocr["445_cidr_block"])
     },
     {
       from_port   = 1000
       to_port     = 1000
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.58/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_doc_ocr["135_cidr_block"])
     },
     {
       rule        = "rdp-tcp"
-      cidr_blocks = join(",", local.abbyy_doc_ocr_rdp_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_doc_ocr["rdp_cidr_block"])
     },
     {
       rule        = "winrm-http-tcp"
-      cidr_blocks = "172.16.155.9/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_doc_ocr["winrm_http_tcp"])
     },
     {
       from_port   = 6129
       to_port     = 6129
       protocol    = "tcp"
-      cidr_blocks = "10.172.0.0/17"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_doc_ocr["6129_cidr_block"])
     },
     {
       from_port   = 49155
       to_port     = 49155
       protocol    = "tcp"
-      cidr_blocks = join(",", local.abbyy_doc_ocr_49155_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_dev_ocr["49155_cidr_block"])
     },
     {
       from_port   = 53853
       to_port     = 53853
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_doc_ocr["53853_cidr_block"])
     },
     {
       from_port   = 49227
       to_port     = 49227
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_doc_ocr["49227_cidr_block"])
     },
     {
       from_port   = 135

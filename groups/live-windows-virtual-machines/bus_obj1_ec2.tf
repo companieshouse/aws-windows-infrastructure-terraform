@@ -18,203 +18,204 @@ module "bus_obj_1_ec2_security_group" {
       from_port   = 135
       to_port     = 135
       protocol    = "tcp"
-      cidr_blocks = join(",", local.bus_obj_1_135_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["135_cidr_block"])
     },
     {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
-      cidr_blocks = join(",", local.bus_obj_1_445_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["445_cidr_block"])
     },
     {
       from_port   = 1000
       to_port     = 1000
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.58/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["1000_cidr_block"])
     },
     {
       rule        = "oracle-db-tcp"
-      cidr_blocks = "172.24.4.129/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["oracle_db_tcp_cidr_block"])
     },
     {
       rule        = "rdp-tcp"
-      cidr_blocks = join(",", local.bus_obj_1_rdp_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["rdp_cidr_block"])
     },
     {
       rule        = "winrm-http-tcp"
-      cidr_blocks = "172.16.200.200/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["winrm_http_tcp"])
     },
     {
       from_port   = 6129
       to_port     = 6129
       protocol    = "tcp"
-      cidr_blocks = join(",", local.bus_obj_1_6129_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["6129_cidr_block"])
     },
     {
       from_port   = 6400
       to_port     = 6414
       protocol    = "tcp"
-      cidr_blocks = join(",", local.bus_obj_1_6400_6414_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["6400_6414_cidr_block"])
     },
     {
       rule        = "http-8080-tcp"
-      cidr_blocks = join(",", local.bus_obj_1_8080_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["http_8080_tcp_cidr_block"])
     },
     {
       from_port   = 49155
       to_port     = 49155
       protocol    = "tcp"
-      cidr_blocks = join(",", local.bus_obj_1_49155_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["49155_cidr_block"])
     },
     {
       from_port   = 49512
       to_port     = 49512
       protocol    = "tcp"
-      cidr_blocks = "172.24.9.53/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["49512_cidr_block"])
     },
     {
       from_port   = 50640
       to_port     = 50640
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.58/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["50640_cidr_block"])
     },
     {
       from_port   = 51134
       to_port     = 51134
       protocol    = "tcp"
-      cidr_blocks = join(",", local.bus_obj_1_51134_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["51134_cidr_block"])
     },
     {
       from_port   = 51282
       to_port     = 51282
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["51282_cidr_block"])
     },
     {
       from_port   = 51460
       to_port     = 51463
       protocol    = "tcp"
-      cidr_blocks = "10.172.0.0/17"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["51460_51463_cidr_block"])
     },
     {
       from_port   = 51706
       to_port     = 51706
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.0/24"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["51706_cidr_block"])
     },
     {
       from_port   = 53345
       to_port     = 53345
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.81/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["53345_cidr_block"])
     },
     {
       from_port   = 54666
       to_port     = 54666
       protocol    = "tcp"
-      cidr_blocks = "10.128.1.4/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["54666_cidr_block"])
     },
     {
       from_port   = 55012
       to_port     = 55012
       protocol    = "tcp"
-      cidr_blocks = join(",", local.bus_obj_1_55012_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["55012_cidr_block"])
     },
     {
       from_port   = 55105
       to_port     = 55105
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["55105_cidr_block"])
     },
     {
       from_port   = 55257
       to_port     = 55257
       protocol    = "tcp"
-      cidr_blocks = join(",", local.bus_obj_1_55257_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["55257_cidr_block"])
     },
     {
       from_port   = 55311
       to_port     = 55311
       protocol    = "tcp"
-      cidr_blocks = join(",", local.bus_obj_1_55311_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["55311_cidr_block"])
     },
     {
       from_port   = 56018
       to_port     = 56018
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.91/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["56018_cidr_block"])
     },
     {
       from_port   = 56744
       to_port     = 56745
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.81/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["56744_56745_cidr_block"])
     },
     {
       from_port   = 57021
       to_port     = 57021
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["57021_cidr_block"])
     },
     {
       from_port   = 58269
       to_port     = 58269
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.196/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["58269_cidr_block"])
     },
     {
       from_port   = 58868
       to_port     = 58868
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.196/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["58868_cidr_block"])
     },
     {
       from_port   = 59351
       to_port     = 59351
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["59351_cidr_block"])
     },
     {
       from_port   = 59635
       to_port     = 59635
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.81/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["59635_cidr_block"])
     },
     {
       from_port   = 59966
       to_port     = 59966
       protocol    = "tcp"
-      cidr_blocks = "172.24.9.53/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["59966_cidr_block"])
     },
     {
       from_port   = 62243
       to_port     = 62243
       protocol    = "tcp"
-      cidr_blocks = "172.24.9.53/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["62243_cidr_block"])
     },
     {
       from_port   = 62341
       to_port     = 62341
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.81/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["62341_cidr_block"])
     },
     {
       from_port   = 63108
       to_port     = 63108
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["63108_cidr_block"])
     },
     {
       from_port   = 63712
       to_port     = 63712
       protocol    = "tcp"
-      cidr_blocks = "10.80.10.48/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["63712_cidr_block"])
+
     },
     {
       from_port   = 49208
       to_port     = 65370
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.9/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["49208_65370_cidr_block"])
     },
     {
       from_port   = 135
