@@ -58,7 +58,7 @@ module "bus_obj_1_ec2_security_group" {
     },
     {
       rule        = "http-8080-tcp"
-      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["http_8080_tcp_cidr_block"])
+      cidr_blocks = join(",", local.ingress_cidr_blocks_bus_obj["8080_cidr_block"])
     },
     {
       from_port   = 49155
