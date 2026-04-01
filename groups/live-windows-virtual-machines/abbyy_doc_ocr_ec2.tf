@@ -49,7 +49,7 @@ module "abbyy_doc_ocr_ec2_security_group" {
       from_port   = 49155
       to_port     = 49155
       protocol    = "tcp"
-      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_dev_ocr["49155_cidr_block"])
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_doc_ocr["49155_cidr_block"])
     },
     {
       from_port   = 53853
