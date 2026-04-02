@@ -29,7 +29,7 @@ module "abbyy_doc_ocr_ec2_security_group" {
       from_port   = 1000
       to_port     = 1000
       protocol    = "tcp"
-      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_doc_ocr["135_cidr_block"])
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_doc_ocr["1000_cidr_block"])
     },
     {
       rule        = "rdp-tcp"
