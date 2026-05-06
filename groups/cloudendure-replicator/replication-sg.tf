@@ -18,7 +18,7 @@ module "cloudendure_replicator_security_group" {
       to_port     = 1500
       protocol    = "tcp"
       description = "vCenter VM source CloudEndure Replicator"
-      cidr_blocks = join(",", locals.vcenter_data)
+      cidr_blocks = join(",", locals.vcenter_cidr_block)
     }
   ]
 
