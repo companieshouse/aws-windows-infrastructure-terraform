@@ -7,6 +7,6 @@ data "aws_vpc" "vpc" {
   }
 }
 
-data "vault_generic_secret" "vcenter_cidr_block" {
-  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/vcenter_cidr_block"
+data "vault_generic_secret" "vcenter_data" {
+  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/vcenter_data"
 }
