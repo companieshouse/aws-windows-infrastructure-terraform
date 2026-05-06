@@ -10,9 +10,3 @@ region  = "euw2"
 # Application details
 application = "windows-workloads"
 environment = "live"
-
-# vCenter VM source CloudEndure Replicator CIDR blocks
-vcenter_cidr_block = [
-  "172.16.0.0/16",
-  "172.19.0.0/16"
-]

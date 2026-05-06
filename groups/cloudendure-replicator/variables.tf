@@ -43,13 +43,3 @@ variable "environment" {
   type        = string
   description = "The name of the environment"
 }
-
-# ------------------------------------------------------------------------------
-# Security Group Variables
-# ------------------------------------------------------------------------------
-
-variable "vcenter_cidr_block" {
-  type        = list(any)
-  description = "vCenter VM source CloudEndure Replicator CIDR blocks"
-  default     = []
-}
