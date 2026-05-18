@@ -3,68 +3,72 @@
 # ------------------------------------------------------------------------------
 module "ewok_lic_bac_ec2_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-ewok-lic-backup-server"
   description = "Security group for the ${var.application} Ewok License Backup Server"
   vpc_id      = data.aws_vpc.vpc.id
 
+  use_name_prefix = false
+  egress_ipv6_cidr_blocks = []
+  ingress_ipv6_cidr_blocks = []
+
   ingress_with_cidr_blocks = [
     {
       rule        = "http-80-tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_80_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_80_cidr_block"])
     },
     {
       from_port   = 135
       to_port     = 135
       protocol    = "tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_135_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_135_cidr_block"])
     },
     {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_445_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_445_cidr_block"])
     },
     {
       from_port   = 1000
       to_port     = 1000
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.58/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_1000_cidr_block"])
     },
     {
       rule        = "winrm-http-tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_winrm_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_winrm_cidr_block"])
     },
     {
       from_port   = 6129
       to_port     = 6129
       protocol    = "tcp"
-      cidr_blocks = "10.172.0.0/19"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_6129_cidr_block"])
     },
     {
       from_port   = 10040
       to_port     = 10040
       protocol    = "tcp"
-      cidr_blocks = "172.19.238.30/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_10040_cidr_block"])
     },
     {
       from_port   = 49155
       to_port     = 49155
       protocol    = "tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_49155_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_49155_cidr_block"])
     },
     {
       from_port   = 56441
       to_port     = 56441
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_56441_cidr_block"])
     },
     {
       from_port   = 57854
       to_port     = 57854
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_57854_cidr_block"])
     },
     {
       from_port   = 135
@@ -84,13 +88,13 @@ module "ewok_lic_bac_ec2_security_group" {
       from_port   = 443
       to_port     = 443
       protocol    = "tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_443_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_443_cidr_block"])
     },
     {
       from_port   = 3020
       to_port     = 3020
       protocol    = "tcp"
-      cidr_blocks = join(",", local.ewok_lic_bac_3020_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_ewok_lic_bac["bac_3020_cidr_block"])
     },
   ]
 
@@ -110,10 +114,10 @@ resource "aws_cloudwatch_log_group" "ewok_lic_bac" {
 
   tags = merge(
     local.default_tags,
-    map(
-      "Name", "${var.application}-ewok-lic-backup-server",
-      "ServiceTeam", var.ServiceTeam
-    )
+    {
+      Name        = "${var.application}-ewok-lic-backup-server"
+      ServiceTeam = var.ServiceTeam
+    }
   )
 }
 
@@ -123,7 +127,7 @@ resource "aws_cloudwatch_log_group" "ewok_lic_bac" {
 
 module "ewok_lic_bac_ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "2.19.0"
+  version = "5.8.0"
 
   name = var.ewok_lic_bac_ec2_name
 
@@ -132,15 +136,15 @@ module "ewok_lic_bac_ec2" {
   key_name               = aws_key_pair.ewok_lic_keypair.key_name
   monitoring             = var.monitoring
   get_password_data      = var.get_password_data
-  vpc_security_group_ids = [module.ewok_lic_bac_ec2_security_group.this_security_group_id, data.aws_security_group.rdp_shared.id]
-  subnet_id              = coalesce(data.aws_subnet_ids.application.ids...)
+  vpc_security_group_ids = [module.ewok_lic_bac_ec2_security_group.security_group_id,data.aws_security_group.rdp_shared.id]
+  subnet_id              = coalesce(data.aws_subnets.application.ids...)
   iam_instance_profile   = module.ewok_lic_bac_profile.aws_iam_instance_profile.name
   ebs_optimized          = var.ebs_optimized
 
   root_block_device = [
     {
       delete_on_termination = var.delete_on_termination
-      volume_size           = "100"
+      volume_size           = 100
       volume_type           = var.volume_type
       encrypted             = var.ebs_encrypted
       kms_key_id            = data.aws_kms_key.ebs.arn
@@ -152,32 +156,37 @@ module "ewok_lic_bac_ec2" {
       delete_on_termination = var.delete_on_termination
       device_name           = "/dev/xvdf"
       encrypted             = var.ebs_encrypted
-      volume_size           = "40"
+      volume_size           = 40
       volume_type           = var.volume_type
       kms_key_id            = data.aws_kms_key.ebs.arn
     }
   ]
 
+  metadata_options = {
+      http_endpoint               = "enabled"
+      http_put_response_hop_limit = 1
+      http_tokens                 = "optional"
+  }
+
   tags = merge(
     local.default_tags,
-    map(
-      "Name", var.ewok_lic_bac_ec2_name,
-      "Application", var.ewok_lic_bac_application,
-      "ServiceTeam", var.ServiceTeam,
-      "Backup", "backup21",
-      "BackupApp", var.application
-    )
+    {
+      Name           = var.ewok_lic_bac_ec2_name
+      Application    = var.ewok_lic_bac_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup21"
+      BackupApp      = var.application
+    }
   )
 
   volume_tags = merge(
     local.default_tags,
-    map(
-      "Name", var.ewok_lic_bac_ec2_name,
-      "Application", var.ewok_lic_bac_application,
-      "ServiceTeam", var.ServiceTeam,
-      "Backup", "backup21",
-      "BackupApp", var.application
-    )
+    {
+      Name           = var.ewok_lic_bac_ec2_name
+      Application    = var.ewok_lic_bac_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup21"
+      BackupApp      = var.application
+    }
   )
 }
-

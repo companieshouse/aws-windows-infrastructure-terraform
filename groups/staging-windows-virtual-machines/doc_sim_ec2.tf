@@ -3,56 +3,61 @@
 # ------------------------------------------------------------------------------
 module "doc_sim_ec2_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-doc-sim-test-server"
   description = "Security group for the ${var.application} Document Simulation Test Server"
   vpc_id      = data.aws_vpc.vpc.id
+
+  use_name_prefix = false
+  egress_ipv6_cidr_blocks = []
+  ingress_ipv6_cidr_blocks = []
 
   ingress_with_cidr_blocks = [
     {
       from_port   = 135
       to_port     = 135
       protocol    = "tcp"
-      cidr_blocks = join(",", local.doc_sim_135_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["135_cidr_block"])
     },
     {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["445_cidr_block"])
     },
     {
       from_port   = 1000
       to_port     = 1000
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.58/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["1000_cidr_block"])
     },
     {
       rule        = "rdp-tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["rdp_tcp_cidr_block"])
+
     },
     {
       rule        = "winrm-http-tcp"
-      cidr_blocks = join(",", local.doc_sim_winrm_http_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["winrm_http_cidr_block"])
     },
     {
       from_port   = 49155
       to_port     = 49155
       protocol    = "tcp"
-      cidr_blocks = join(",", local.doc_sim_49155_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["49155_cidr_block"])
     },
     {
       from_port   = 50042
       to_port     = 50042
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["50042_cidr_block"])
     },
     {
       from_port   = 50870
       to_port     = 50870
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_doc_sim["50870_cidr_block"])
     },
     {
       from_port   = 135
@@ -73,7 +78,7 @@ module "doc_sim_ec2_security_group" {
   computed_ingress_with_source_security_group_id = [
     {
       rule                     = "http-80-tcp"
-      source_security_group_id = module.doc_sim_ec2_security_group.this_security_group_id
+      source_security_group_id = module.doc_sim_ec2_security_group.security_group_id
     }
   ]
   number_of_computed_ingress_with_source_security_group_id = 1
@@ -94,10 +99,10 @@ resource "aws_cloudwatch_log_group" "doc_sim" {
 
   tags = merge(
     local.default_tags,
-    map(
-      "Name", "${var.application}-doc-sim-test-server",
-      "ServiceTeam", var.ServiceTeam
-    )
+    {
+      Name         = "${var.application}-doc-sim-test-server",
+      ServiceTeam  = var.ServiceTeam
+    }
   )
 }
 
@@ -107,7 +112,7 @@ resource "aws_cloudwatch_log_group" "doc_sim" {
 
 module "doc_sim_ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "2.19.0"
+  version = "5.8.0"
 
   name = var.doc_sim_ec2_name
 
@@ -116,15 +121,21 @@ module "doc_sim_ec2" {
   key_name               = aws_key_pair.doc_sim_keypair.key_name
   monitoring             = var.monitoring
   get_password_data      = var.get_password_data
-  vpc_security_group_ids = [module.doc_sim_ec2_security_group.this_security_group_id, data.aws_security_group.rdp_shared.id]
-  subnet_id              = coalesce(data.aws_subnet_ids.application.ids...)
+  vpc_security_group_ids = [module.doc_sim_ec2_security_group.security_group_id, data.aws_security_group.rdp_shared.id]
+  subnet_id              = coalesce(data.aws_subnets.application.ids...)
   iam_instance_profile   = module.doc_sim_profile.aws_iam_instance_profile.name
   ebs_optimized          = var.ebs_optimized
+
+  metadata_options = {
+      http_endpoint               = "enabled"
+      http_put_response_hop_limit = 1
+      http_tokens                 = "optional"
+  }
 
   root_block_device = [
     {
       delete_on_termination = var.delete_on_termination
-      volume_size           = "100"
+      volume_size           = 100
       volume_type           = var.volume_type
       encrypted             = var.ebs_encrypted
       kms_key_id            = data.aws_kms_key.ebs.arn
@@ -136,7 +147,7 @@ module "doc_sim_ec2" {
       delete_on_termination = var.delete_on_termination
       device_name           = "/dev/xvdf"
       encrypted             = var.ebs_encrypted
-      volume_size           = "150"
+      volume_size           = 150
       volume_type           = var.volume_type
       kms_key_id            = data.aws_kms_key.ebs.arn
     },
@@ -144,7 +155,7 @@ module "doc_sim_ec2" {
       delete_on_termination = var.delete_on_termination
       device_name           = "/dev/xvdg"
       encrypted             = var.ebs_encrypted
-      volume_size           = "40"
+      volume_size           = 40
       volume_type           = var.volume_type
       kms_key_id            = data.aws_kms_key.ebs.arn
     }
@@ -152,25 +163,25 @@ module "doc_sim_ec2" {
 
   tags = merge(
     local.default_tags,
-    map(
-      "Name", var.doc_sim_ec2_name,
-      "Application", var.doc_sim_application,
-      "ServiceTeam", var.ServiceTeam,
-      "Backup", "backup14",
-      "BackupApp", var.application,
-      "scheduled_stop", var.scheduled_stop
-    )
+    {
+      Name           = var.doc_sim_ec2_name
+      Application    = var.doc_sim_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup14"
+      BackupApp      = var.application
+      scheduled_stop = var.scheduled_stop
+    }
   )
 
   volume_tags = merge(
     local.default_tags,
-    map(
-      "Name", var.doc_sim_ec2_name,
-      "Application", var.doc_sim_application,
-      "ServiceTeam", var.ServiceTeam,
-      "Backup", "backup14",
-      "BackupApp", var.application,
-      "scheduled_stop", var.scheduled_stop
-    )
+    {
+      Name           = var.doc_sim_ec2_name
+      Application    = var.doc_sim_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup14"
+      BackupApp      = var.application
+      scheduled_stop = var.scheduled_stop
+    }
   )
 }

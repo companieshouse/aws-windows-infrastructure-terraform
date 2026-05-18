@@ -3,214 +3,218 @@
 # ------------------------------------------------------------------------------
 module "live_test_1_ec2_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-live-test-1-server"
   description = "Security group for the ${var.application} Live Test Server 1"
   vpc_id      = data.aws_vpc.vpc.id
+
+  use_name_prefix = false
+  egress_ipv6_cidr_blocks = []
+  ingress_ipv6_cidr_blocks = []
 
   ingress_with_cidr_blocks = [
     {
       from_port   = 135
       to_port     = 135
       protocol    = "tcp"
-      cidr_blocks = join(",", local.live_test_1_135_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["135_cidr_block"])
     },
     {
       from_port   = 445
       to_port     = 445
       protocol    = "tcp"
-      cidr_blocks = join(",", local.live_test_1_445_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["445_cidr_block"])
     },
     {
       from_port   = 1000
       to_port     = 1000
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.58/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["1000_cidr_block"])
     },
     {
       rule        = "oracle-db-tcp"
-      cidr_blocks = "172.24.4.129/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["oracle_db_tcp"])
     },
     {
       rule        = "rdp-tcp"
-      cidr_blocks = join(",", local.live_test_1_rdp_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["rdp_cidr_block"])
     },
     {
       rule        = "winrm-http-tcp"
-      cidr_blocks = "172.16.200.200/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["winrm_http_tcp"])
     },
     {
       from_port   = 6129
       to_port     = 6129
       protocol    = "tcp"
-      cidr_blocks = join(",", local.live_test_1_6129_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["6129_cidr_block"])
     },
     {
       from_port   = 6400
       to_port     = 6414
       protocol    = "tcp"
-      cidr_blocks = join(",", local.live_test_1_6400_6414_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["6400_6414_cidr_block"])
     },
     {
       rule        = "http-8080-tcp"
-      cidr_blocks = join(",", local.live_test_1_8080_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["8080_cidr_block"])
     },
     {
       from_port   = 49155
       to_port     = 49155
       protocol    = "tcp"
-      cidr_blocks = join(",", local.live_test_1_49155_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["49155_cidr_block"])
     },
     {
       from_port   = 49512
       to_port     = 49512
       protocol    = "tcp"
-      cidr_blocks = "172.24.9.53/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["49512_cidr_block"])
     },
     {
       from_port   = 50640
       to_port     = 50640
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.58/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["50640_cidr_block"])
     },
     {
       from_port   = 51134
       to_port     = 51134
       protocol    = "tcp"
-      cidr_blocks = join(",", local.live_test_1_51134_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["51134_cidr_block"])
     },
     {
       from_port   = 51282
       to_port     = 51282
       protocol    = "tcp"
-      cidr_blocks = "172.16.101.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["51282_cidr_block"])
     },
     {
       from_port   = 51460
       to_port     = 51463
       protocol    = "tcp"
-      cidr_blocks = "10.172.0.0/17"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["51460_51463_cidr_block"])
     },
     {
       from_port   = 51706
       to_port     = 51706
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.0/24"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["51706_cidr_block"])
     },
     {
       from_port   = 53345
       to_port     = 53345
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.81/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["53345_cidr_block"])
     },
     {
       from_port   = 54666
       to_port     = 54666
       protocol    = "tcp"
-      cidr_blocks = "10.128.1.4/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["54666_cidr_block"])
     },
     {
       from_port   = 55012
       to_port     = 55012
       protocol    = "tcp"
-      cidr_blocks = join(",", local.live_test_1_55012_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["55012_cidr_block"])
     },
     {
       from_port   = 55105
       to_port     = 55105
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["55105_cidr_block"])
     },
     {
       from_port   = 55257
       to_port     = 55257
       protocol    = "tcp"
-      cidr_blocks = join(",", local.live_test_1_55257_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["55257_cidr_block"])
     },
     {
       from_port   = 55311
       to_port     = 55311
       protocol    = "tcp"
-      cidr_blocks = join(",", local.live_test_1_55311_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["55311_cidr_block"])
     },
     {
       from_port   = 56018
       to_port     = 56018
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.91/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["56018_cidr_block"])
     },
     {
       from_port   = 56744
       to_port     = 56745
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.81/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["56744_56745_cidr_block"])
     },
     {
       from_port   = 57021
       to_port     = 57021
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["57021_cidr_block"])
     },
     {
       from_port   = 58269
       to_port     = 58269
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.196/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["58269_cidr_block"])
     },
     {
       from_port   = 58868
       to_port     = 58868
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.196/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["58868_cidr_block"])
     },
     {
       from_port   = 59351
       to_port     = 59351
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["59351_cidr_block"])
     },
     {
       from_port   = 59635
       to_port     = 59635
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.81/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["59635_cidr_block"])
     },
     {
       from_port   = 59966
       to_port     = 59966
       protocol    = "tcp"
-      cidr_blocks = "172.24.9.53/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["59966_cidr_block"])
     },
     {
       from_port   = 62243
       to_port     = 62243
       protocol    = "tcp"
-      cidr_blocks = "172.24.9.53/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["62243_cidr_block"])
     },
     {
       from_port   = 62341
       to_port     = 62341
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.81/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["62341_cidr_block"])
     },
     {
       from_port   = 63108
       to_port     = 63108
       protocol    = "tcp"
-      cidr_blocks = "172.16.202.82/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["63108_cidr_block"])
     },
     {
       from_port   = 63712
       to_port     = 63712
       protocol    = "tcp"
-      cidr_blocks = "10.80.10.48/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["63712_cidr_block"])
     },
     {
       from_port   = 49208
       to_port     = 65370
       protocol    = "tcp"
-      cidr_blocks = "172.16.200.9/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_live_test["49208_65370_cidr_block"])
     },
     {
       from_port   = 135
@@ -270,10 +274,10 @@ resource "aws_cloudwatch_log_group" "live_test_1" {
 
   tags = merge(
     local.default_tags,
-    map(
-      "Name", "${var.application}-live-test-1-server",
-      "ServiceTeam", var.ServiceTeam
-    )
+    {
+      Name         = "${var.application}-live-test-1-server"
+      ServiceTeam  = var.ServiceTeam
+    }
   )
 }
 
@@ -283,7 +287,7 @@ resource "aws_cloudwatch_log_group" "live_test_1" {
 
 module "live_test_1_ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "2.19.0"
+  version = "5.8.0"
 
   name = var.live_test_1_ec2_name
 
@@ -292,15 +296,22 @@ module "live_test_1_ec2" {
   key_name               = aws_key_pair.live_test_1_keypair.key_name
   monitoring             = var.monitoring
   get_password_data      = var.get_password_data
-  vpc_security_group_ids = [module.live_test_1_ec2_security_group.this_security_group_id, data.aws_security_group.rdp_shared.id]
-  subnet_id              = coalesce(data.aws_subnet_ids.application.ids...)
+  vpc_security_group_ids = [module.live_test_1_ec2_security_group.security_group_id, data.aws_security_group.rdp_shared.id]
+  subnet_id              = coalesce(data.aws_subnets.application.ids...)
   iam_instance_profile   = module.live_test_1_profile.aws_iam_instance_profile.name
   ebs_optimized          = var.ebs_optimized
+
+  metadata_options = {
+      http_endpoint               = "enabled"
+      http_put_response_hop_limit = 1
+      http_tokens                 = "optional"
+  }
+  
 
   root_block_device = [
     {
       delete_on_termination = var.delete_on_termination
-      volume_size           = "100"
+      volume_size           = 100
       volume_type           = var.volume_type
       encrypted             = var.ebs_encrypted
       kms_key_id            = data.aws_kms_key.ebs.arn
@@ -312,7 +323,7 @@ module "live_test_1_ec2" {
       delete_on_termination = var.delete_on_termination
       device_name           = "/dev/xvdf"
       encrypted             = var.ebs_encrypted
-      volume_size           = "80"
+      volume_size           = 80
       volume_type           = var.volume_type
       kms_key_id            = data.aws_kms_key.ebs.arn
     },
@@ -320,7 +331,7 @@ module "live_test_1_ec2" {
       delete_on_termination = var.delete_on_termination
       device_name           = "/dev/xvdg"
       encrypted             = var.ebs_encrypted
-      volume_size           = "150"
+      volume_size           = 150
       volume_type           = var.volume_type
       kms_key_id            = data.aws_kms_key.ebs.arn
     },
@@ -328,7 +339,7 @@ module "live_test_1_ec2" {
       delete_on_termination = var.delete_on_termination
       device_name           = "/dev/xvdh"
       encrypted             = var.ebs_encrypted
-      volume_size           = "40"
+      volume_size           = 40
       volume_type           = var.volume_type
       kms_key_id            = data.aws_kms_key.ebs.arn
     }
@@ -336,23 +347,23 @@ module "live_test_1_ec2" {
 
   tags = merge(
     local.default_tags,
-    map(
-      "Name", var.live_test_1_ec2_name,
-      "Application", var.live_test_1_application,
-      "ServiceTeam", var.ServiceTeam,
-      "Backup", "backup21",
-      "BackupApp", var.application
-    )
+    {
+      Name           = var.live_test_1_ec2_name
+      Application    = var.live_test_1_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup21"
+      BackupApp      = var.application
+    }
   )
 
   volume_tags = merge(
     local.default_tags,
-    map(
-      "Name", var.live_test_1_ec2_name,
-      "Application", var.live_test_1_application,
-      "ServiceTeam", var.ServiceTeam,
-      "Backup", "backup21",
-      "BackupApp", var.application
-    )
+    {
+      Name           = var.live_test_1_ec2_name
+      Application    = var.live_test_1_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup21"
+      BackupApp      = var.application
+    }
   )
 }

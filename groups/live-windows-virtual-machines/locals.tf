@@ -103,290 +103,29 @@ locals {
   # Ewok License Backup Server Security Group Variables
   # ------------------------------------------------------------------------------
 
-  # Ewok License Backup Server 80 port CIDR blocks
-  ewok_lic_bac_80_cidr_block = [
-    "172.18.0.0/16",
-    "172.19.0.0/17",
-    "172.23.0.0/16",
-    "10.84.11.36/32",
-    "10.84.10.173/32",
-    "10.94.11.29/32",
-    "10.94.11.145/32"
-  ]
-
-  # Ewok License Backup Server 135 port CIDR blocks
-  ewok_lic_bac_135_cidr_block = [
-    "172.16.202.91/32",
-    "172.16.101.82/32"
-  ]
-
-  # Ewok License Backup Server 443 port CIDR blocks
-  ewok_lic_bac_443_cidr_block = [
-    "172.18.0.0/16",
-    "172.19.0.0/17",
-    "172.23.0.0/16",
-    "10.84.11.36/32",
-    "10.84.10.173/32",
-    "10.94.11.29/32",
-    "10.94.11.145/32"
-  ]
-
-  # Ewok License Backup Server 445 port CIDR blocks
-  ewok_lic_bac_445_cidr_block = [
-    "10.172.0.0/19",
-    "172.16.101.82/32",
-    "172.19.0.0/17",
-    "172.23.0.0/16",
-    "172.18.0.0/16"
-  ]
-
-  # Ewok License Backup Server winrm port CIDR blocks
-  ewok_lic_bac_winrm_cidr_block = [
-    "172.16.200.200/32",
-    "172.16.155.9/32"
-  ]
-
-  # Ewok License Backup Server 3020 port CIDR blocks
-  ewok_lic_bac_3020_cidr_block = [
-    "10.84.11.36/32",
-    "10.84.10.173/32",
-    "10.94.11.29/32",
-    "10.94.11.145/32"
-  ]
-
-  # Ewok License Backup Server 49155 port CIDR blocks
-  ewok_lic_bac_49155_cidr_block = [
-    "172.16.101.82/32",
-    "172.16.202.91/32"
-  ]
+  ingress_cidr_blocks_ewok_lic_bac = jsondecode(local.ewok_lic_ec2_data["ingress-cidr-blocks"])
 
   # ------------------------------------------------------------------------------
   # Ewok License Second Server Security Group Variables
   # ------------------------------------------------------------------------------
 
-  # Ewok License Second Server 80 port CIDR blocks
-  ewok_lic_sec_80_cidr_block = [
-    "10.84.11.36/32",
-    "10.84.10.173/32",
-    "10.94.11.29/32",
-    "10.94.11.145/32"
-  ]
-
-  # Ewok License Second 135 port CIDR blocks
-  ewok_lic_sec_135_cidr_block = [
-    "172.16.202.91/32",
-    "172.16.101.82/32",
-    "172.16.200.200/32"
-  ]
-
-  # Ewok License Second Server 443 port CIDR blocks
-  ewok_lic_sec_443_cidr_block = [
-    "10.84.11.36/32",
-    "10.84.10.173/32",
-    "10.94.11.29/32",
-    "10.94.11.145/32"
-  ]
-
-  # Ewok License Backup Server 3020 port CIDR blocks
-  ewok_lic_sec_3020_cidr_block = [
-    "10.84.11.36/32",
-    "10.84.10.173/32",
-    "10.94.11.29/32",
-    "10.94.11.145/32"
-  ]
-
-  # Ewok License Second 49155 port CIDR blocks
-  ewok_lic_sec_49155_cidr_block = [
-    "172.16.101.82/32",
-    "172.16.202.91/32"
-  ]
+  ingress_cidr_blocks_ewok_lic_sec = jsondecode(local.ewok_lic_ec2_data["ingress-cidr-blocks"])
 
   # ------------------------------------------------------------------------------
   # ABBYY Document Capture & OCR Server Security Group Variables
   # ------------------------------------------------------------------------------
 
-  # ABBYY Document Capture & OCR 135 port CIDR blocks
-  abbyy_doc_ocr_135_cidr_block = [
-    "172.16.202.91/32",
-    "172.16.101.82/32"
-  ]
-
-  # ABBYY Document Capture & OCR rdp port CIDR blocks
-  abbyy_doc_ocr_rdp_cidr_block = [
-    "172.16.101.82/32",
-    "10.172.23.145/32"
-  ]
-
-  # ABBYY Document Capture & OCR 49155 rdp port CIDR blocks
-  abbyy_doc_ocr_49155_cidr_block = [
-    "172.16.101.82/32",
-    "172.16.202.91/32"
-  ]
-
+  ingress_cidr_blocks_abby_doc_ocr = jsondecode(local.abbyy_doc_ocr_ec2_data["ingress-cidr-blocks"])
 
   # ------------------------------------------------------------------------------
   #  Business Objects Server 1 Security Group Variables
   # ------------------------------------------------------------------------------
 
-  # Business Objects Server 1 135 port CIDR blocks
-  bus_obj_1_135_cidr_block = [
-    "172.16.202.91/32",
-    "172.16.101.82/32"
-  ]
-
-  # Business Objects Server 1 445 port CIDR blocks
-  bus_obj_1_445_cidr_block = [
-    "172.16.200.26/32",
-    "10.172.20.0/22",
-    "172.16.101.82/32",
-    "10.172.116.0/22",
-    "10.80.10.0/24"
-  ]
-
-  # Business Objects Server 1 rdp port CIDR blocks
-  bus_obj_1_rdp_cidr_block = [
-    "10.172.20.0/22",
-    "10.172.116.0/22",
-    "10.172.120.168/29",
-    "10.172.24.168/29"
-  ]
-
-  # Business Objects Server 1 6129 port CIDR blocks
-  bus_obj_1_6129_cidr_block = [
-    "10.172.20.0/22"
-  ]
-
-  # Business Objects Server 1 6400 - 6414 port CIDR blocks
-  bus_obj_1_6400_6414_cidr_block = [
-    "10.172.0.0/17",
-    "172.16.0.0/16",
-    "172.17.0.0/16",
-    "172.18.0.0/16",
-    "172.19.0.0/16",
-    "172.23.0.0/16",
-    "10.80.10.0/24"
-  ]
-
-  # Business Objects Server 1 8080 port CIDR blocks
-  bus_obj_1_8080_cidr_block = [
-    "10.172.0.0/17",
-    "172.16.0.0/16",
-    "172.17.0.0/16",
-    "172.18.0.0/16",
-    "172.19.0.0/16",
-    "172.23.0.0/16"
-  ]
-
-  # Business Objects Server 1 49155 rdp port CIDR blocks
-  bus_obj_1_49155_cidr_block = [
-    "172.16.101.82/32",
-    "172.16.202.91/32"
-  ]
-
-  # Business Objects Server 1 51134 rdp port CIDR blocks
-  bus_obj_1_51134_cidr_block = [
-    "10.172.0.0/17",
-    "10.80.10.0/24"
-  ]
-
-  # Business Objects Server 1 55012 rdp port CIDR blocks
-  bus_obj_1_55012_cidr_block = [
-    "10.172.0.0/17",
-    "10.80.10.136/32"
-  ]
-
-  # Business Objects Server 1 55257 rdp port CIDR blocks
-  bus_obj_1_55257_cidr_block = [
-    "10.172.0.0/17",
-    "10.80.10.136/32"
-  ]
-
-  # Business Objects Server 1 55311 rdp port CIDR blocks
-  bus_obj_1_55311_cidr_block = [
-    "10.172.0.0/17",
-    "10.80.10.136/32"
-  ]
+  ingress_cidr_blocks_bus_obj = jsondecode(local.bus_obj_1_ec2_data["ingress-cidr-blocks"])
 
   # ------------------------------------------------------------------------------
   #  Live Test Server 1 Security Group Variables
   # ------------------------------------------------------------------------------
 
-  # Live Test Server 1 135 port CIDR blocks
-  live_test_1_135_cidr_block = [
-    "172.16.202.91/32",
-    "172.16.101.82/32"
-  ]
-
-  # Live Test Server 1 445 port CIDR blocks
-  live_test_1_445_cidr_block = [
-    "172.16.200.26/32",
-    "10.172.20.0/22",
-    "172.16.101.82/32",
-    "10.172.116.0/22",
-    "10.80.10.0/24"
-  ]
-
-  # Live Test Server 1 rdp port CIDR blocks
-  live_test_1_rdp_cidr_block = [
-    "10.172.20.0/22",
-    "10.172.116.0/22",
-    "10.172.120.168/29",
-    "10.172.24.168/29"
-  ]
-
-  # Live Test Server 1 6129 port CIDR blocks
-  live_test_1_6129_cidr_block = [
-    "10.172.20.0/22"
-  ]
-
-  # Live Test Server 1 6400 - 6414 port CIDR blocks
-  live_test_1_6400_6414_cidr_block = [
-    "10.172.0.0/17",
-    "172.16.0.0/16",
-    "172.17.0.0/16",
-    "172.18.0.0/16",
-    "172.19.0.0/16",
-    "172.23.0.0/16",
-    "10.80.10.0/24"
-  ]
-
-  # Live Test Server 1 8080 port CIDR blocks
-  live_test_1_8080_cidr_block = [
-    "10.172.0.0/17",
-    "172.16.0.0/16",
-    "172.17.0.0/16",
-    "172.18.0.0/16",
-    "172.19.0.0/16",
-    "172.23.0.0/16"
-  ]
-
-  # Live Test Server 1 49155 rdp port CIDR blocks
-  live_test_1_49155_cidr_block = [
-    "172.16.101.82/32",
-    "172.16.202.91/32"
-  ]
-
-  # Live Test Server 1 51134 rdp port CIDR blocks
-  live_test_1_51134_cidr_block = [
-    "10.172.0.0/17",
-    "10.80.10.0/24"
-  ]
-
-  # Live Test Server 1 55012 rdp port CIDR blocks
-  live_test_1_55012_cidr_block = [
-    "10.172.0.0/17",
-    "10.80.10.136/32"
-  ]
-
-  # Live Test Server 1 55257 rdp port CIDR blocks
-  live_test_1_55257_cidr_block = [
-    "10.172.0.0/17",
-    "10.80.10.136/32"
-  ]
-
-  # Live Test Server 1 55311 rdp port CIDR blocks
-  live_test_1_55311_cidr_block = [
-    "10.172.0.0/17",
-    "10.80.10.136/32"
-  ]
+  ingress_cidr_blocks_live_test = jsondecode(local.live_test_1_ec2_data["ingress-cidr-blocks"])
 }

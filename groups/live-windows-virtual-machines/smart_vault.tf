@@ -11,10 +11,10 @@ resource "aws_cloudwatch_log_group" "smart_vault" {
 
   tags = merge(
     local.default_tags,
-    map(
-      "Name", "${var.application}-smart-vault-server",
-      "ServiceTeam", var.ServiceTeam
-    )
+    {
+      Name        = "${var.application}-smart-vault-server"
+      ServiceTeam = var.ServiceTeam
+    }
   )
 }
 
@@ -22,10 +22,10 @@ resource "aws_cloudwatch_log_group" "smart_vault" {
 # Smart Vault CloudWatch IAM Role
 # ------------------------------------------------------------------------------
 module "smart_vault_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "smart-vault-profile"
-  enable_SSM = true
+  enable_ssm = true
   cw_log_group_arns = length(local.smart_vault_log_groups) > 0 ? flatten([
     formatlist(
       "arn:aws:logs:%s:%s:log-group:%s:*:*",

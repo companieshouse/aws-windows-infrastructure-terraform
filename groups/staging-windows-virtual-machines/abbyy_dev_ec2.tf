@@ -3,34 +3,38 @@
 # ------------------------------------------------------------------------------
 module "abbyy_dev_ec2_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
-  version = "~> 3.0"
+  version = "5.3.1"
 
   name        = "sgr-${var.application}-abbyy-dev-server"
   description = "Security group for the ${var.application} ABBYY Development Server"
   vpc_id      = data.aws_vpc.vpc.id
+
+  use_name_prefix = false
+  egress_ipv6_cidr_blocks = []
+  ingress_ipv6_cidr_blocks = []
 
   ingress_with_cidr_blocks = [
     {
       from_port   = 135
       to_port     = 135
       protocol    = "tcp"
-      cidr_blocks = join(",", local.abbyy_dev_135_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_dev["135_cidr_block"])
     },
     {
       rule        = "winrm-http-tcp"
-      cidr_blocks = "172.16.155.9/32"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_dev["winrm_http_tcp"])
     },
     {
       from_port   = 6129
       to_port     = 6129
       protocol    = "tcp"
-      cidr_blocks = "10.172.20.0/22"
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_dev["6129_cidr_block"])
     },
     {
       from_port   = 49155
       to_port     = 49155
       protocol    = "tcp"
-      cidr_blocks = join(",", local.abbyy_dev_49155_cidr_block)
+      cidr_blocks = join(",", local.ingress_cidr_blocks_abby_dev["49155_cidr_block"])
     },
     {
       from_port   = 135
@@ -51,7 +55,7 @@ module "abbyy_dev_ec2_security_group" {
   computed_ingress_with_source_security_group_id = [
     {
       rule                     = "http-80-tcp"
-      source_security_group_id = module.abbyy_dev_ec2_security_group.this_security_group_id
+      source_security_group_id = module.abbyy_dev_ec2_security_group.security_group_id
     }
   ]
   number_of_computed_ingress_with_source_security_group_id = 1
@@ -72,10 +76,10 @@ resource "aws_cloudwatch_log_group" "abbyy_dev" {
 
   tags = merge(
     local.default_tags,
-    map(
-      "Name", "${var.application}-Abbyy-dev-server",
-      "ServiceTeam", var.ServiceTeam
-    )
+    {
+      Name         = "${var.application}-Abbyy-dev-server"
+      ServiceTeam  = var.ServiceTeam
+    }
   )
 }
 
@@ -85,7 +89,7 @@ resource "aws_cloudwatch_log_group" "abbyy_dev" {
 
 module "abbyy_dev_ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "2.19.0"
+  version = "5.8.0"
 
   name = var.abbyy_dev_ec2_name
 
@@ -94,15 +98,22 @@ module "abbyy_dev_ec2" {
   key_name               = aws_key_pair.abbyy_dev_keypair.key_name
   monitoring             = var.monitoring
   get_password_data      = var.get_password_data
-  vpc_security_group_ids = [module.abbyy_dev_ec2_security_group.this_security_group_id, data.aws_security_group.rdp_shared.id]
-  subnet_id              = coalesce(data.aws_subnet_ids.application.ids...)
+  vpc_security_group_ids = [module.abbyy_dev_ec2_security_group.security_group_id, data.aws_security_group.rdp_shared.id]
+  subnet_id              = coalesce(data.aws_subnets.application.ids...)
   iam_instance_profile   = module.abbyy_dev_profile.aws_iam_instance_profile.name
   ebs_optimized          = var.ebs_optimized
+
+  metadata_options = {
+      http_endpoint               = "enabled"
+      http_put_response_hop_limit = 1
+      http_tokens                 = "optional"
+  }
+
 
   root_block_device = [
     {
       delete_on_termination = var.delete_on_termination
-      volume_size           = "100"
+      volume_size           = 100
       volume_type           = var.volume_type
       encrypted             = var.ebs_encrypted
       kms_key_id            = data.aws_kms_key.ebs.arn
@@ -114,33 +125,33 @@ module "abbyy_dev_ec2" {
       delete_on_termination = var.delete_on_termination
       device_name           = "/dev/xvdf"
       encrypted             = var.ebs_encrypted
-      volume_size           = "200"
+      volume_size           = 200
       volume_type           = var.volume_type
       kms_key_id            = data.aws_kms_key.ebs.arn
     }
   ]
 
   tags = merge(
-    local.default_tags,
-    map(
-      "Name", var.abbyy_dev_ec2_name,
-      "Application", var.abbyy_dev_application,
-      "ServiceTeam", var.ServiceTeam,
-      "Backup", "backup14",
-      "BackupApp", var.application,
-      "scheduled_stop", var.scheduled_stop
-    )
+    local.default_tags, 
+    {
+      Name           = var.abbyy_dev_ec2_name
+      Application    = var.abbyy_dev_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup14"
+      BackupApp      = var.application
+      scheduled_stop = var.scheduled_stop
+    }
   )
 
   volume_tags = merge(
-    local.default_tags,
-    map(
-      "Name", var.abbyy_dev_ec2_name,
-      "Application", var.abbyy_dev_application,
-      "ServiceTeam", var.ServiceTeam,
-      "Backup", "backup14",
-      "BackupApp", var.application,
-      "scheduled_stop", var.scheduled_stop
-    )
+    local.default_tags, 
+    {
+      Name           = var.abbyy_dev_ec2_name
+      Application    = var.abbyy_dev_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup14"
+      BackupApp      = var.application
+      scheduled_stop = var.scheduled_stop
+    }
   )
 }
