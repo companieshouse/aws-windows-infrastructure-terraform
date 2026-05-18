@@ -146,6 +146,11 @@ resource "aws_security_group_rule" "https" {
   security_group_id = aws_security_group.bus_obj_2_server_web_sg.id
 }
 
+moved {
+  from = "module.bus_obj_2_ec2_security_group.aws_security_group.this_name_prefix[0]"
+  to   = "module.bus_obj_2_ec2_security_group.aws_security_group.this[0]"
+}
+
 # ------------------------------------------------------------------------------
 # Business Objects Server 2 CloudWatch
 # ------------------------------------------------------------------------------
