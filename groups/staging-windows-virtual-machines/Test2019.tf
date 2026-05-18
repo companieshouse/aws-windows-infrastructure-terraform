@@ -93,6 +93,10 @@ use_name_prefix = false
   egress_rules = ["all-all"]
 }
 
+moved {
+  from = module.test_2019_1_ec2_security_group.aws_security_group.this_name_prefix[0]
+  to   = module.test_2019_1_ec2_security_group.aws_security_group.this[0]
+}
 
 # ------------------------------------------------------------------------------
 # Test 2019 Server 1 CloudWatch

@@ -64,8 +64,8 @@ module "abbyy_dev_ec2_security_group" {
 }
 
 moved {
-  from = "module.abbyy_dev_ec2_security_group.aws_security_group.this_name_prefix[0]"
-  to   = "module.abbyy_dev_ec2_security_group.aws_security_group.this[0]"
+  from = module.abbyy_dev_ec2_security_group.aws_security_group.this_name_prefix[0]
+  to   = module.abbyy_dev_ec2_security_group.aws_security_group.this[0]
 }
 
 # ------------------------------------------------------------------------------

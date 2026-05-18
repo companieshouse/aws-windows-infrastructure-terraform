@@ -147,8 +147,8 @@ resource "aws_security_group_rule" "https" {
 }
 
 moved {
-  from = "module.bus_obj_2_ec2_security_group.aws_security_group.this_name_prefix[0]"
-  to   = "module.bus_obj_2_ec2_security_group.aws_security_group.this[0]"
+  from = module.bus_obj_2_ec2_security_group.aws_security_group.this_name_prefix[0]
+  to   = module.bus_obj_2_ec2_security_group.aws_security_group.this[0]
 }
 
 # ------------------------------------------------------------------------------
