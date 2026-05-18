@@ -9,7 +9,7 @@ module "test_2019_1_ec2_security_group" {
   description = "Security group for the ${var.application} Test 2019 Server 1"
   vpc_id      = data.aws_vpc.vpc.id
 
-use_name_prefix = false
+  use_name_prefix = true
   egress_ipv6_cidr_blocks = []
   ingress_ipv6_cidr_blocks = []
 
