@@ -86,11 +86,6 @@ module "doc_sim_ec2_security_group" {
   egress_rules = ["all-all"]
 }
 
-moved {
-  from = module.doc_sim_ec2_security_group.aws_security_group.this_name_prefix[0]
-  to   = module.doc_sim_ec2_security_group.aws_security_group.this[0]
-}
-
 # ------------------------------------------------------------------------------
 # Document Simulation Test Server Cloudwatch
 # ------------------------------------------------------------------------------
