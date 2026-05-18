@@ -8,7 +8,7 @@ module "chips_estor_security_group" {
   name        = "sgr-${var.application}-chips-estor-security-group"
   description = "Security group for the ${var.application} Chips-Estor-Security-Group"
   vpc_id      = data.aws_vpc.vpc.id
-  use_name_prefix = false
+  use_name_prefix = true
   egress_ipv6_cidr_blocks = []
   ingress_ipv6_cidr_blocks = []
 

@@ -8,7 +8,7 @@ module "test_dev_generate_server_security_group" {
   name        = "sgr-${var.application}-test_dev_generate_server"
   description = "Security group for the ${var.application} Test/Dev Generate Server"
   vpc_id      = data.aws_vpc.vpc.id
-  use_name_prefix = false
+  use_name_prefix = true
   egress_ipv6_cidr_blocks = []
   ingress_ipv6_cidr_blocks = []
 
@@ -96,7 +96,7 @@ module "prod_generate_server_security_group" {
   name        = "sgr-${var.application}-prod_generate_server"
   description = "Security group for the ${var.application} Production Generate Server"
   vpc_id      = data.aws_vpc.vpc.id
-  use_name_prefix = false
+  use_name_prefix = true
   egress_ipv6_cidr_blocks = []
   ingress_ipv6_cidr_blocks = []
 
