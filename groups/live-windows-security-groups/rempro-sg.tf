@@ -8,7 +8,7 @@ module "rempro_server_security_group" {
   name        = "sgr-${var.application}-rempro_server"
   description = "Security group for the ${var.application} Rempro Server"
   vpc_id      = data.aws_vpc.vpc.id
-  use_name_prefix = false
+  use_name_prefix = true
   egress_ipv6_cidr_blocks = []
   ingress_ipv6_cidr_blocks = []
 

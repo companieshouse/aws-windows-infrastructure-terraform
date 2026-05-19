@@ -9,7 +9,7 @@ module "ewok_lic_bac_ec2_security_group" {
   description = "Security group for the ${var.application} Ewok License Backup Server"
   vpc_id      = data.aws_vpc.vpc.id
 
-  use_name_prefix = false
+  use_name_prefix = true
   egress_ipv6_cidr_blocks = []
   ingress_ipv6_cidr_blocks = []
 
