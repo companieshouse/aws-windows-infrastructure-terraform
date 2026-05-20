@@ -35,7 +35,7 @@ module "ewok_lic_bac_profile" {
 }
 
 module "ewok_lic_sec_profile" {
-  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.59"
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "ewok-lic-second-profile"
   enable_ssm = true
