@@ -31,7 +31,7 @@
 | <a name="module_ewok_lic_bac_profile"></a> [ewok\_lic\_bac\_profile](#module\_ewok\_lic\_bac\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_ewok_lic_sec_ec2"></a> [ewok\_lic\_sec\_ec2](#module\_ewok\_lic\_sec\_ec2) | terraform-aws-modules/ec2-instance/aws | 5.8.0 |
 | <a name="module_ewok_lic_sec_ec2_security_group"></a> [ewok\_lic\_sec\_ec2\_security\_group](#module\_ewok\_lic\_sec\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
-| <a name="module_ewok_lic_sec_profile"></a> [ewok\_lic\_sec\_profile](#module\_ewok\_lic\_sec\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.59 |
+| <a name="module_ewok_lic_sec_profile"></a> [ewok\_lic\_sec\_profile](#module\_ewok\_lic\_sec\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_generate_profile"></a> [generate\_profile](#module\_generate\_profile) | git@github.com:companieshouse/terraform-modules//aws/instance_profile | tags/1.0.365 |
 | <a name="module_live_test_1_ec2"></a> [live\_test\_1\_ec2](#module\_live\_test\_1\_ec2) | terraform-aws-modules/ec2-instance/aws | 5.8.0 |
 | <a name="module_live_test_1_ec2_security_group"></a> [live\_test\_1\_ec2\_security\_group](#module\_live\_test\_1\_ec2\_security\_group) | terraform-aws-modules/security-group/aws | 5.3.1 |
