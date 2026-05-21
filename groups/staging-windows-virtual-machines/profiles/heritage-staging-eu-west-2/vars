@@ -69,3 +69,17 @@ test_2019_1_cw_logs = {
     log_group_retention = 365
   }
 }
+
+# test 2019 Server 2
+test_2019_2_application       = "Test 2019 Server 2"
+test_2019_2_ec2_name          = "test22019-app"
+test_2019_2_ec2_instance_size = "m5.xlarge"
+test_2019_2_ami               = "ami-08eb218596b1ef874"
+test_2019_2_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}
