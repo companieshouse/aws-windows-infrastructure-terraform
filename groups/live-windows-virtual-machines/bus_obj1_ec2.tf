@@ -330,7 +330,7 @@ module "bus_obj_1_ec2" {
     data.aws_security_group.rdp_shared.id,
     aws_security_group.bus_obj_1_server_web_sg.id
   ]
-  subnet_id            = coalesce(data.aws_subnets.application.ids...)
+  subnet_id              = sort(data.aws_subnets.application.ids)[0]
   iam_instance_profile = module.bus_obj_1_profile.aws_iam_instance_profile.name
   ebs_optimized        = var.ebs_optimized
 

@@ -297,7 +297,7 @@ module "live_test_1_ec2" {
   monitoring             = var.monitoring
   get_password_data      = var.get_password_data
   vpc_security_group_ids = [module.live_test_1_ec2_security_group.security_group_id, data.aws_security_group.rdp_shared.id]
-  subnet_id              = coalesce(data.aws_subnets.application.ids...)
+  subnet_id              = sort(data.aws_subnets.application.ids)[0]
   iam_instance_profile   = module.live_test_1_profile.aws_iam_instance_profile.name
   ebs_optimized          = var.ebs_optimized
 
