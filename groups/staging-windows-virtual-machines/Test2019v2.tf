@@ -35,6 +35,19 @@ module "test_2019_2_ec2" {
     }
   ]
 
+
+ebs_block_device {
+  delete_on_termination = var.delete_on_termination
+  device_name           = "/dev/xvdf"
+  encrypted             = var.ebs_encrypted
+  volume_size           = 50
+  volume_type           = var.volume_type
+  kms_key_id            = data.aws_kms_key.ebs.arn
+}
+
+
+
+
   tags = merge(
     local.default_tags,
     {
