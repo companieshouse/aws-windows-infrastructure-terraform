@@ -35,19 +35,6 @@ module "test_2019_2_ec2" {
     }
   ]
 
-
-ebs_block_device {
-  delete_on_termination = var.delete_on_termination
-  device_name           = "/dev/xvdf"
-  encrypted             = var.ebs_encrypted
-  volume_size           = 50
-  volume_type           = var.volume_type
-  kms_key_id            = data.aws_kms_key.ebs.arn
-}
-
-
-
-
   tags = merge(
     local.default_tags,
     {
@@ -71,4 +58,38 @@ ebs_block_device {
       scheduled_stop = var.scheduled_stop
     }
   )
+}
+
+variable "ebs_volumes" {
+  type = list(object({
+    name        = string
+    device_name = string
+    size        = number
+  }))
+}
+
+resource "aws_ebs_volume" "this" {
+  for_each = { for v in var.ebs_volumes : v.name => v }
+
+  availability_zone = var.az
+  size              = each.value.size
+  type              = "gp3"
+
+  encrypted  = var.ebs_encrypted
+  kms_key_id = data.aws_kms_key.ebs.arn
+
+  iops       = 3000
+  throughput = 125
+
+  tags = {
+    Name = "${var.name}-${each.key}"
+  }
+}
+
+resource "aws_volume_attachment" "this" {
+  for_each = aws_ebs_volume.this
+
+  device_name = var.ebs_volumes[index(keys(aws_ebs_volume.this), each.key)].device_name
+  volume_id   = each.value.id
+  instance_id = aws_instance.this.id
 }
