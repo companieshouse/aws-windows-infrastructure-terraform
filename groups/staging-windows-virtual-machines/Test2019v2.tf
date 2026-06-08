@@ -35,31 +35,6 @@ module "test_2019_2_ec2" {
     }
   ]
 
-  tags = merge(
-    local.default_tags,
-    {
-      Name           = var.test_2019_2_ec2_name
-      Application    = var.test_2019_2_application
-      ServiceTeam    = var.ServiceTeam
-      Backup         = "backup14"
-      BackupApp      = var.application
-      scheduled_stop = var.scheduled_stop
-    }
-  )
-
-  volume_tags = merge(
-    local.default_tags,
-    {
-      Name           = var.test_2019_2_ec2_name
-      Application    = var.test_2019_2_application
-      ServiceTeam    = var.ServiceTeam
-      Backup         = "backup14"
-      BackupApp      = var.application
-      scheduled_stop = var.scheduled_stop
-    }
-  )
-}
-
 variable "ebs_volumes" {
   type = list(object({
     name        = string
@@ -87,9 +62,36 @@ resource "aws_ebs_volume" "this" {
 }
 
 resource "aws_volume_attachment" "this" {
-  for_each = aws_ebs_volume.this
+  for_each = { for v in var.ebs_volumes : v.name => v }
 
-  device_name = var.ebs_volumes[index(keys(aws_ebs_volume.this), each.key)].device_name
-  volume_id   = each.value.id
+  device_name = each.value.device_name
+  volume_id   = aws_ebs_volume.this[each.key].id
   instance_id = aws_instance.this.id
 }
+
+
+  tags = merge(
+    local.default_tags,
+    {
+      Name           = var.test_2019_2_ec2_name
+      Application    = var.test_2019_2_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup14"
+      BackupApp      = var.application
+      scheduled_stop = var.scheduled_stop
+    }
+  )
+
+  volume_tags = merge(
+    local.default_tags,
+    {
+      Name           = var.test_2019_2_ec2_name
+      Application    = var.test_2019_2_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup14"
+      BackupApp      = var.application
+      scheduled_stop = var.scheduled_stop
+    }
+  )
+}
+
