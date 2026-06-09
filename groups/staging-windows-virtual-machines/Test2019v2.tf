@@ -95,8 +95,6 @@ resource "aws_ebs_volume" "test_2019_2" {
     Backup         = "backup14"
     BackupApp      = var.application
     scheduled_stop = var.scheduled_stop
-    DevelopmentTeam =   "None" 
-    Owner           =   "MSS"
   }
   
   lifecycle {
