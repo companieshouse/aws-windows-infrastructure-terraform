@@ -66,7 +66,7 @@ root_block_device = [
  #   scheduled_stop = var.scheduled_stop
  # })
 
-volume_tags = {}
+# volume_tags = {}
 
 
 
