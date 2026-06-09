@@ -49,7 +49,7 @@ module "test_2019_2_ec2" {
   })
 
   volume_tags = merge(local.default_tags, {
-    Name = "${var.test_2019_2_ec2_name}-${each.key}"  
+    Name           = var.test_2019_2_ec2_name
     Application    = var.test_2019_2_application
     ServiceTeam    = var.ServiceTeam
     Backup         = "backup14"
