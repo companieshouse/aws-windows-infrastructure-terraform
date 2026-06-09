@@ -73,8 +73,8 @@ variable "ebs_volumes" {
 # EBS Volumes
 # ------------------------------------------------------------------------------
 
-resource "aws_ebs_volume" "this" {
-  for_each = { for v in var.ebs_volumes : v.name => v }
+resource "aws_ebs_volume" "test_2019_2" {
+  for_each = { for v in var.ebs_volumes_test_2019_2 : v.name => v }
 
   availability_zone = module.test_2019_2_ec2.availability_zone
   size              = each.value.size
@@ -86,26 +86,23 @@ resource "aws_ebs_volume" "this" {
   iops       = 3000
   throughput = 125
 
-  tags = merge(local.default_tags, {
-    Name        = "${var.test_2019_2_ec2_name}-${each.key}"
+  tags = {
+    Name = "${var.test_2019_2_ec2_name}-${each.key}"
     Application = var.test_2019_2_application
     ServiceTeam = var.ServiceTeam
-  })
-
+  }
+  
   lifecycle {
     prevent_destroy = true
   }
+
 }
 
-# ------------------------------------------------------------------------------
-# Volume Attachments
-# ------------------------------------------------------------------------------
-
-resource "aws_volume_attachment" "this" {
-  for_each = { for v in var.ebs_volumes : v.name => v }
+resource "aws_volume_attachment" "test_2019_2" {
+  for_each = { for v in var.ebs_volumes_test_2019_2 : v.name => v }
 
   device_name = each.value.device_name
-  volume_id   = aws_ebs_volume.this[each.key].id
+  volume_id   = aws_ebs_volume.test_2019_2[each.key].id
   instance_id = module.test_2019_2_ec2.id
 
   force_detach = false
