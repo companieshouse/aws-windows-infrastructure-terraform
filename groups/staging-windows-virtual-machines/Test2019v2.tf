@@ -1,6 +1,33 @@
 # ------------------------------------------------------------------------------
 # Test 2019 Server 2 EC2
 # ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# Locals (deduplicate tags)
+# ------------------------------------------------------------------------------
+
+locals {
+  common_tags = merge(local.default_tags, {
+    Application     = var.test_2019_2_application
+    ServiceTeam     = var.ServiceTeam
+    Backup          = "backup14"
+    BackupApp       = var.application
+    scheduled_stop  = var.scheduled_stop
+  })
+
+  instance_tags = merge(local.common_tags, {
+    Name            = var.test_2019_2_ec2_name
+    DevelopmentTeam = "None"
+    Owner           = "MSS"
+  })
+
+  volume_tags = merge(local.common_tags, {
+    Name = var.test_2019_2_ec2_name
+  })
+}
+
+# ------------------------------------------------------------------------------
+# EC2 Instance
+# ------------------------------------------------------------------------------
 
 module "test_2019_2_ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
@@ -13,13 +40,14 @@ module "test_2019_2_ec2" {
   key_name               = aws_key_pair.test_2019_2_keypair.key_name
   monitoring             = var.monitoring
   get_password_data      = var.get_password_data
+  subnet_id              = one(data.aws_subnets.application.ids)
+  iam_instance_profile   = module.test_2019_2_profile.aws_iam_instance_profile.name
+  ebs_optimized          = var.ebs_optimized
+
   vpc_security_group_ids = [
     module.test_2019_1_ec2_security_group.security_group_id,
     data.aws_security_group.rdp_shared.id
   ]
-  subnet_id            = coalesce(data.aws_subnets.application.ids...)
-  iam_instance_profile = module.test_2019_2_profile.aws_iam_instance_profile.name
-  ebs_optimized        = var.ebs_optimized
 
   metadata_options = {
     http_endpoint               = "enabled"
@@ -37,37 +65,22 @@ module "test_2019_2_ec2" {
     }
   ]
 
-  tags = merge(local.default_tags, {
-    Name           = var.test_2019_2_ec2_name
-    Application    = var.test_2019_2_application
-    ServiceTeam    = var.ServiceTeam
-    Backup         = "backup14"
-    BackupApp      = var.application
-    scheduled_stop = var.scheduled_stop
-    DevelopmentTeam =   "None" 
-    Owner           =   "MSS"
-  })
-
-  volume_tags = merge(local.default_tags, {
-    Name           = var.test_2019_2_ec2_name
-    Application    = var.test_2019_2_application
-    ServiceTeam    = var.ServiceTeam
-    Backup         = "backup14"
-    BackupApp      = var.application
-    scheduled_stop = var.scheduled_stop
-  })
+  tags        = local.instance_tags
+  volume_tags = local.volume_tags
 }
 
 # ------------------------------------------------------------------------------
-# Variables (must be outside module)
+# Variables
 # ------------------------------------------------------------------------------
 
 variable "ebs_volumes_test_2019_2" {
+  description = "Additional EBS volumes for test_2019_2"
   type = list(object({
     name        = string
     device_name = string
     size        = number
   }))
+  default = []
 }
 
 # ------------------------------------------------------------------------------
@@ -81,32 +94,30 @@ resource "aws_ebs_volume" "test_2019_2" {
   size              = each.value.size
   type              = "gp3"
 
-  encrypted  = var.ebs_encrypted
-  kms_key_id = data.aws_kms_key.ebs.arn
-
   iops       = 3000
   throughput = 125
 
-  tags = {
+  encrypted  = var.ebs_encrypted
+  kms_key_id = data.aws_kms_key.ebs.arn
+
+  tags = merge(local.common_tags, {
     Name = "${var.test_2019_2_ec2_name}-${each.key}"
-    Application = var.test_2019_2_application
-    ServiceTeam = var.ServiceTeam
-    Backup         = "backup14"
-    BackupApp      = var.application
-    scheduled_stop = var.scheduled_stop
-  }
-  
+  })
+
   lifecycle {
     prevent_destroy = true
   }
-
 }
 
-resource "aws_volume_attachment" "test_2019_2" {
-  for_each = { for v in var.ebs_volumes_test_2019_2 : v.name => v }
+# ------------------------------------------------------------------------------
+# Volume Attachments
+# ------------------------------------------------------------------------------
 
-  device_name = each.value.device_name
-  volume_id   = aws_ebs_volume.test_2019_2[each.key].id
+resource "aws_volume_attachment" "test_2019_2" {
+  for_each = aws_ebs_volume.test_2019_2
+
+  device_name = each.value.tags["Name"] != "" ? each.value.tags["Name"] : each.key
+  volume_id   = each.value.id
   instance_id = module.test_2019_2_ec2.id
 
   force_detach = false
