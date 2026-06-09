@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Test 2019 Server 1 EC2
+# Test 2019 Server 2 EC2
 # ------------------------------------------------------------------------------
 
 module "test_2019_2_ec2" {
@@ -60,14 +60,14 @@ module "test_2019_2_ec2" {
 # Variables (must be outside module)
 # ------------------------------------------------------------------------------
 
-variable "ebs_volumes" {
-  description = "Additional EBS volumes"
+variable "ebs_volumes_test_2019_2" {
   type = list(object({
     name        = string
     device_name = string
     size        = number
   }))
 }
+
 
 # ------------------------------------------------------------------------------
 # EBS Volumes
