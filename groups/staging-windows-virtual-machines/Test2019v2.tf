@@ -27,15 +27,24 @@ module "test_2019_2_ec2" {
     http_tokens                 = "optional"
   }
  
-  root_block_device = [
-    {
-      delete_on_termination = var.delete_on_termination
-      volume_size           = 80
-      volume_type           = var.volume_type
-      encrypted             = var.ebs_encrypted
-      kms_key_id            = data.aws_kms_key.ebs.arn
-    }
-  ]
+root_block_device = [
+  {
+    delete_on_termination = var.delete_on_termination
+    volume_size           = 80
+    volume_type           = var.volume_type
+    encrypted             = var.ebs_encrypted
+    kms_key_id            = data.aws_kms_key.ebs.arn
+
+    tags = merge(local.default_tags, {
+      Name           = "${var.test_2019_2_ec2_name}-root"
+      Application    = var.test_2019_2_application
+      ServiceTeam    = var.ServiceTeam
+      Backup         = "backup14"
+      BackupApp      = var.application
+      scheduled_stop = var.scheduled_stop
+    })
+  }
+]
  
   tags = merge(local.default_tags, {
     Name           = var.test_2019_2_ec2_name
@@ -59,24 +68,7 @@ module "test_2019_2_ec2" {
 
 volume_tags = {}
 
-root_block_device = [
-  {
-    delete_on_termination = var.delete_on_termination
-    volume_size           = 80
-    volume_type           = var.volume_type
-    encrypted             = var.ebs_encrypted
-    kms_key_id            = data.aws_kms_key.ebs.arn
 
-    tags = merge(local.default_tags, {
-      Name           = "${var.test_2019_2_ec2_name}-root"
-      Application    = var.test_2019_2_application
-      ServiceTeam    = var.ServiceTeam
-      Backup         = "backup14"
-      BackupApp      = var.application
-      scheduled_stop = var.scheduled_stop
-    })
-  }
-]
 
 }
  
