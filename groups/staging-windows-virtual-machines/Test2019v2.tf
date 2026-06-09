@@ -90,6 +90,12 @@ resource "aws_ebs_volume" "test_2019_2" {
     Name = "${var.test_2019_2_ec2_name}-${each.key}"
     Application = var.test_2019_2_application
     ServiceTeam = var.ServiceTeam
+    Backup         = "backup14"
+    BackupApp      = var.application
+    scheduled_stop = var.scheduled_stop
+    ServiceTeam    = "Windows"
+    DevelopmentTeam =   "None" 
+    Owner           =   "MSS"
   }
   
   lifecycle {
