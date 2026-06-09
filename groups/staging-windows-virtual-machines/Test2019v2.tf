@@ -23,9 +23,17 @@ module "test_2019_2_ec2" {
   iam_instance_profile = module.test_2019_2_profile.aws_iam_instance_profile.name
   ebs_optimized        = var.ebs_optimized
 
-  # ✅ CRITICAL FIX
-  volume_tags = null
+  # ✅ USE THIS (required by module)
+  volume_tags = merge(local.default_tags, {
+    Name           = "${var.test_2019_2_ec2_name}-root"
+    Application    = var.test_2019_2_application
+    ServiceTeam    = var.ServiceTeam
+    Backup         = "backup14"
+    BackupApp      = var.application
+    scheduled_stop = var.scheduled_stop
+  })
 
+  # ✅ NO TAGS HERE
   root_block_device = [
     {
       delete_on_termination = var.delete_on_termination
@@ -33,15 +41,6 @@ module "test_2019_2_ec2" {
       volume_type           = var.volume_type
       encrypted             = var.ebs_encrypted
       kms_key_id            = data.aws_kms_key.ebs.arn
-
-      tags = merge(local.default_tags, {
-        Name           = "${var.test_2019_2_ec2_name}-root"
-        Application    = var.test_2019_2_application
-        ServiceTeam    = var.ServiceTeam
-        Backup         = "backup14"
-        BackupApp      = var.application
-        scheduled_stop = var.scheduled_stop
-      })
     }
   ]
 
