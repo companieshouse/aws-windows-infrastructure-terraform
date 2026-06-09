@@ -44,6 +44,8 @@ module "test_2019_2_ec2" {
     Backup         = "backup14"
     BackupApp      = var.application
     scheduled_stop = var.scheduled_stop
+    DevelopmentTeam =   "None" 
+    Owner           =   "MSS"
   })
 
   volume_tags = merge(local.default_tags, {
