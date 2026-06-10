@@ -109,9 +109,14 @@ resource "aws_ebs_volume" "test_2019_2" {
     scheduled_stop = var.scheduled_stop
   })
 
-  lifecycle {
-    prevent_destroy = true
-  }
+lifecycle {
+  prevent_destroy = true
+
+  ignore_changes = [
+    tags,
+    tags_all
+  ]
+}
 }
 
 # ------------------------------------------------------------------------------
