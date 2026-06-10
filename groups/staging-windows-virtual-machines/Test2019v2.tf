@@ -56,7 +56,7 @@ module "test_2019_2_ec2" {
     BackupApp       = var.application
     scheduled_stop  = var.scheduled_stop
     DevelopmentTeam = "None"
-    Owner           = "MSS"
+    Owner           = "DAN"
   })
 }
 
