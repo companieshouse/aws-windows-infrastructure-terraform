@@ -1,7 +1,6 @@
 # ------------------------------------------------------------------------------
 # EC2 Instance - Test 2019 Server 2
 # ------------------------------------------------------------------------------
-
 # ------------------------------------------------------------------------------
 # Locals (single source of truth for subnet)
 # ------------------------------------------------------------------------------
@@ -35,17 +34,10 @@ module "test_2019_2_ec2" {
   iam_instance_profile = module.test_2019_2_profile.aws_iam_instance_profile.name
   ebs_optimized        = var.ebs_optimized
 
-  # Root volume tags
-  volume_tags = merge(local.default_tags, {
-    Name           = "${var.test_2019_2_ec2_name}-root"
-    Application    = var.test_2019_2_application
-    ServiceTeam    = var.ServiceTeam
-    Backup         = "backup14"
-    BackupApp      = var.application
-    scheduled_stop = var.scheduled_stop
-  })
+  # ✅ IMPORTANT: REMOVE volume_tags to stop tag conflict
+  volume_tags = {}
 
-  # Root disk ONLY
+  # ✅ Root disk only
   root_block_device = [
     {
       delete_on_termination = var.delete_on_termination
@@ -69,7 +61,7 @@ module "test_2019_2_ec2" {
 }
 
 # ------------------------------------------------------------------------------
-# Get AZ from subnet (FIXED - no module dependency)
+# Get AZ from subnet
 # ------------------------------------------------------------------------------
 
 data "aws_subnet" "test_2019_2" {
@@ -92,7 +84,7 @@ variable "ebs_volumes_test_2019_2" {
 }
 
 # ------------------------------------------------------------------------------
-# EBS Volumes
+# EBS Volumes (data disks ONLY)
 # ------------------------------------------------------------------------------
 
 resource "aws_ebs_volume" "test_2019_2" {
