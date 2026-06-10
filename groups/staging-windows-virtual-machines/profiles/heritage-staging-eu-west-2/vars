@@ -70,35 +70,49 @@ test_2019_1_cw_logs = {
   }
 }
 
-# test 2019 Server 2
+
+# ------------------------------------------------------------------------------
+# Test 2019 Server 2
+# ------------------------------------------------------------------------------
+
 test_2019_2_application       = "Test 2019 Server 2"
 test_2019_2_ec2_name          = "test22019-app"
 test_2019_2_ec2_instance_size = "r6i.large"
 test_2019_2_ami               = "ami-01011bfeecbaa47c8"
+
 test_2019_2_cw_logs = {
-  "security" = {
+  security = {
     log_group_retention = 365
   }
-   "system" = {
+  system = {
     log_group_retention = 365
   }
 }
 
-
+# ✅ Modern EBS structure (extended safely)
 ebs_volumes_test_2019_2 = [
   {
     name        = "xvdf"
     device_name = "/dev/xvdf"
     size        = 155
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
   },
   {
     name        = "xvdg"
     device_name = "/dev/xvdg"
     size        = 50
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
   },
   {
     name        = "xvdh"
     device_name = "/dev/xvdh"
     size        = 40
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
   }
 ]
