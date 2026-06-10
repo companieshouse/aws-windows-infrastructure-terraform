@@ -142,7 +142,7 @@ ebs_volumes_test_2025_1 = [
   {
     name        = "xvdf"
     device_name = "/dev/xvdf"
-    size        = 155
+    size        = 100
     type        = "gp3"
     iops        = 3000
     throughput  = 125
