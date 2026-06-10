@@ -10,7 +10,7 @@ locals {
 }
 
 # ------------------------------------------------------------------------------
-# EC2 Instance - Test 2019 Server 2
+# What are we going to create 
 # ------------------------------------------------------------------------------
 
 module "test_2019_2_ec2" {
@@ -41,7 +41,7 @@ module "test_2019_2_ec2" {
   root_block_device = [
     {
       delete_on_termination = var.delete_on_termination
-      volume_size           = 80
+      volume_size           = 90
       volume_type           = var.volume_type
       encrypted             = var.ebs_encrypted
       kms_key_id            = data.aws_kms_key.ebs.arn
@@ -84,7 +84,7 @@ variable "ebs_volumes_test_2019_2" {
 }
 
 # ------------------------------------------------------------------------------
-# EBS Volumes (data disks ONLY)
+# EBS Volumes (data disks ONLY) Creates the Required Storage from the Vars File
 # ------------------------------------------------------------------------------
 
 resource "aws_ebs_volume" "test_2019_2" {
@@ -119,9 +119,9 @@ lifecycle {
 }
 }
 
-# ------------------------------------------------------------------------------
-# Volume Attachments
-# ------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------------
+# Volume Attachments - Disks get created above but not attached to Device until this bit runs 
+# -------------------------------------------------------------------------------------------
 
 resource "aws_volume_attachment" "test_2019_2" {
   for_each = { for v in var.ebs_volumes_test_2019_2 : v.name => v }
