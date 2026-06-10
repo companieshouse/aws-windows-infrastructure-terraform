@@ -2,6 +2,18 @@
 # EC2 Instance - Test 2019 Server 2
 # ------------------------------------------------------------------------------
 
+# ------------------------------------------------------------------------------
+# Locals (single source of truth for subnet)
+# ------------------------------------------------------------------------------
+
+locals {
+  test_2019_2_subnet_id = coalesce(data.aws_subnets.application.ids...)
+}
+
+# ------------------------------------------------------------------------------
+# EC2 Instance - Test 2019 Server 2
+# ------------------------------------------------------------------------------
+
 module "test_2019_2_ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "5.8.0"
@@ -19,11 +31,11 @@ module "test_2019_2_ec2" {
     data.aws_security_group.rdp_shared.id
   ]
 
-  subnet_id            = coalesce(data.aws_subnets.application.ids...)
+  subnet_id            = local.test_2019_2_subnet_id
   iam_instance_profile = module.test_2019_2_profile.aws_iam_instance_profile.name
   ebs_optimized        = var.ebs_optimized
 
-  # ✅ Volume tags (required by module for root disk)
+  # Root volume tags
   volume_tags = merge(local.default_tags, {
     Name           = "${var.test_2019_2_ec2_name}-root"
     Application    = var.test_2019_2_application
@@ -33,7 +45,7 @@ module "test_2019_2_ec2" {
     scheduled_stop = var.scheduled_stop
   })
 
-  # ✅ Root disk ONLY (no additional disks here)
+  # Root disk ONLY
   root_block_device = [
     {
       delete_on_termination = var.delete_on_termination
@@ -57,11 +69,11 @@ module "test_2019_2_ec2" {
 }
 
 # ------------------------------------------------------------------------------
-# Resolve AZ from subnet (FIXES dependency issue)
+# Get AZ from subnet (FIXED - no module dependency)
 # ------------------------------------------------------------------------------
 
 data "aws_subnet" "test_2019_2" {
-  id = module.test_2019_2_ec2.subnet_id
+  id = local.test_2019_2_subnet_id
 }
 
 # ------------------------------------------------------------------------------
@@ -80,7 +92,7 @@ variable "ebs_volumes_test_2019_2" {
 }
 
 # ------------------------------------------------------------------------------
-# EBS Volumes (Modern Pattern)
+# EBS Volumes
 # ------------------------------------------------------------------------------
 
 resource "aws_ebs_volume" "test_2019_2" {
