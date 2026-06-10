@@ -99,6 +99,6 @@ ebs_volumes_test_2019_2 = [
   {
     name        = "xvdh"
     device_name = "/dev/xvdh"
-    size        = 30
+    size        = 40
   }
 ]
