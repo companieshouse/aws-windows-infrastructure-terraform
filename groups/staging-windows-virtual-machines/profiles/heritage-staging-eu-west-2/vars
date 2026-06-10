@@ -116,3 +116,35 @@ ebs_volumes_test_2019_2 = [
     throughput  = 125
   }
 ]
+
+
+
+# ------------------------------------------------------------------------------
+# Test 2025 Server 1
+# ------------------------------------------------------------------------------
+
+test_2025_1_application       = "Test 2025 Server 1"
+test_2025_1_ec2_name          = "test2025v1-app"
+test_2025_1_ec2_instance_size = "r6i.large"
+test_2025_1_ami               = "ami-051a608546fba588d"
+
+test_2025_1_cw_logs = {
+  security = {
+    log_group_retention = 365
+  }
+  system = {
+    log_group_retention = 365
+  }
+}
+
+# ✅ Modern EBS structure (extended safely)
+ebs_volumes_test_2025_1 = [
+  {
+    name        = "xvdf"
+    device_name = "/dev/xvdf"
+    size        = 155
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
+  }
+]
