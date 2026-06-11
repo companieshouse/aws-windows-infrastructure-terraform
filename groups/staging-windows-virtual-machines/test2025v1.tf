@@ -22,7 +22,6 @@ module "test_2025_1_ec2" {
   ami                    = var.test_2025_1_ami
   instance_type          = var.test_2025_1_ec2_instance_size
   key_name               = aws_key_pair.test_2025_1_keypair.key_name
-  # key_name               = aws_key_pair.test_2019_1_keypair.key_name   # This needs updating for 2025
   monitoring             = var.monitoring
   get_password_data      = var.get_password_data
 
