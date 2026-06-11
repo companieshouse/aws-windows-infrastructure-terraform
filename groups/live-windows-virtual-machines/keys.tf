@@ -22,6 +22,6 @@ resource "aws_key_pair" "live_test_1_keypair" {
 }
 
 resource "aws_key_pair" "live_test_2025_2_keypair" {
-  key_name   = "Live-Test-Server-1"
+  key_name   = "Live-Test-Server-2"
   public_key = local.live_test_2025_2_ec2_data["public-key"]
 }
