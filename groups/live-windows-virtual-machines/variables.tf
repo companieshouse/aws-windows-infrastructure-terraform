@@ -291,27 +291,27 @@ variable "live_test_1_cw_logs" {
 # Live Test Server 2 Variables
 # ------------------------------------------------------------------------------
 
-variable "live_test_2025_2_application" {
+variable "test_2025_2_application" {
   description = "EC2 application description"
   type        = string
 }
 
-variable "live_test_2025_2_ec2_name" {
+variable "test_2025_2_ec2_name" {
   description = "EC2 instance name"
   type        = string
 }
 
-variable "live_test_2025_2_ec2_instance_size" {
+variable "test_2025_2_ec2_instance_size" {
   type        = string
   description = "The size of the EC2 instance"
 }
 
-variable "live_test_2025_2_ami" {
+variable "test_2025_2_ami" {
   type        = string
   description = "ID of the AMI to use for instance"
 }
 
-variable "live_test_2025_2_cw_logs" {
+variable "test_2025_2_cw_logs" {
   type        = map(any)
   description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
   default     = {}
