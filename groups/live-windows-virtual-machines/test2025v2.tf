@@ -75,7 +75,7 @@ data "aws_subnet" "test_2025_2" {
 # Variables
 # ------------------------------------------------------------------------------
 
-variable "ebs_volumes_test_2025_2" {
+variable "ebs_volumes_live_test_2025_2" {
   type = list(object({
     name        = string
     device_name = string
