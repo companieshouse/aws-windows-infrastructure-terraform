@@ -77,6 +77,18 @@ locals {
 
   test_2019_2_log_groups = compact([for log, map in local.test_2019_2_cw_logs : lookup(map, "log_group_name", "")])
 
+# ------------------------------------------------------------------------------
+  # Test Server Server 3 locals
+  # ------------------------------------------------------------------------------
+
+  test_2025_1_ec2_data = data.vault_generic_secret.test_2025_1_ec2_data.data
+
+  #For each log map passed, add an extra kv for the log group name
+  test_2025_1_cw_logs = { for log, map in var.test_2025_1_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-test-2025-1-${log}" }) }
+
+  test_2025_1_log_groups = compact([for log, map in local.test_2025_1_cw_logs : lookup(map, "log_group_name", "")])
+
+
 
   # ------------------------------------------------------------------------------
   # Shared Security Group Variables
