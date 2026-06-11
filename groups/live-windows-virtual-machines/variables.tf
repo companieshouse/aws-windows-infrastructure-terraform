@@ -296,7 +296,7 @@ variable "live_test_2025_2_application" {
   type        = string
 }
 
-variable "live__ec2_name" {
+variable "live_2025_2_ec2_name" {
   description = "EC2 instance name"
   type        = string
 }
