@@ -126,12 +126,12 @@ lifecycle {
 # Volume Attachments - Disks get created above but not attached to Device until this bit runs 
 # -------------------------------------------------------------------------------------------
 
-resource "aws_volume_attachment" "test_2025_2" {
-  for_each = { for v in var.ebs_volumes_test_2025_2 : v.name => v }
+resource "aws_volume_attachment" "live_test_2025_2" {
+  for_each = { for v in var.ebs_volumes_live_test_2025_2 : v.name => v }
 
   device_name = each.value.device_name
-  volume_id   = aws_ebs_volume.test_2025_2[each.key].id
-  instance_id = module.live.test_2025_2_ec2.id
+  volume_id   = aws_ebs_volume.live_test_2025_2[each.key].id
+  instance_id = module.live_test_2025_2_ec2.id
 
   force_detach = false
 }

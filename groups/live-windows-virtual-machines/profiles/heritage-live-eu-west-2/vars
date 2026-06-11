@@ -157,7 +157,7 @@ live_test_2025_2_cw_logs = {
 }
 
 # ✅ Modern EBS structure (extended safely)
-ebs_volumes_test_2025_2 = [
+ebs_volumes_live_test_2025_2 = [
   {
     name        = "xvdf"
     device_name = "/dev/xvdf"
