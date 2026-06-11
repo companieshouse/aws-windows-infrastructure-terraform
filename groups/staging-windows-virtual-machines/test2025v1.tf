@@ -35,7 +35,6 @@ module "test_2025_1_ec2" {
 
   subnet_id            = local.test_2025_1_subnet_id
   iam_instance_profile = module.test_2025_1_profile.aws_iam_instance_profile.name
- # iam_instance_profile = module.test_2019_2_profile.aws_iam_instance_profile.name
   ebs_optimized        = var.ebs_optimized
 
   # ✅ IMPORTANT: REMOVE volume_tags to stop tag conflict
