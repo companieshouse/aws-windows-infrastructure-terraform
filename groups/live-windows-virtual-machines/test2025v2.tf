@@ -131,7 +131,7 @@ resource "aws_volume_attachment" "test_2025_2" {
 
   device_name = each.value.device_name
   volume_id   = aws_ebs_volume.test_2025_2[each.key].id
-  instance_id = module.test_2025_2_ec2.id
+  instance_id = module.live.test_2025_2_ec2.id
 
   force_detach = false
 }
