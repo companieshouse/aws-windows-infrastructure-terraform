@@ -142,8 +142,8 @@ locals {
 
   ingress_cidr_blocks_live_test = jsondecode(local.live_test_1_ec2_data["ingress-cidr-blocks"])
   
-   # ------------------------------------------------------------------------------
+  # ------------------------------------------------------------------------------
   #  Live Test Server 2 Security Group Variables
   # ------------------------------------------------------------------------------
 
-  ingress_cidr_blocks_live_test = jsondecode(local.live_test_2025_2_ec2_data["ingress-cidr-blocks"])
+  ingress_cidr_blocks_live_test2 = jsondecode(local.live_test_2025_2_ec2_data["ingress-cidr-blocks"])
