@@ -151,3 +151,15 @@ live_test_2025_2_cw_logs = {
     log_group_retention = 365
   }
 }
+
+# ✅ Modern EBS structure (extended safely)
+ebs_volumes_test_2025_2 = [
+  {
+    name        = "xvdf"
+    device_name = "/dev/xvdf"
+    size        = 100
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
+  }
+]
