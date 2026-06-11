@@ -26,19 +26,19 @@ module "test_2025_1_ec2" {
   monitoring             = var.monitoring
   get_password_data      = var.get_password_data
 
-  vpc_security_group_ids = [
-    module.test_2025_1_ec2_security_group.security_group_id,
-    data.aws_security_group.rdp_shared.id
-  ]
-
   #vpc_security_group_ids = [
-  #  module.test_2019_1_ec2_security_group.security_group_id,
+  #  module.test_2025_1_ec2_security_group.security_group_id,
   #  data.aws_security_group.rdp_shared.id
   #]
 
+  vpc_security_group_ids = [
+    module.test_2019_1_ec2_security_group.security_group_id,
+    data.aws_security_group.rdp_shared.id
+  ]
+
   subnet_id            = local.test_2025_1_subnet_id
-  iam_instance_profile = module.test_2025_1_profile.aws_iam_instance_profile.name
-# iam_instance_profile = module.test_2019_2_profile.aws_iam_instance_profile.name
+ #  iam_instance_profile = module.test_2025_1_profile.aws_iam_instance_profile.name
+  iam_instance_profile = module.test_2019_2_profile.aws_iam_instance_profile.name
   ebs_optimized        = var.ebs_optimized
 
   # ✅ IMPORTANT: REMOVE volume_tags to stop tag conflict
