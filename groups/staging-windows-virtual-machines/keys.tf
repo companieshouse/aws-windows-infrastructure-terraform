@@ -28,6 +28,9 @@ resource "aws_key_pair" "test_2019_2_keypair" {
 }
 
 resource "aws_key_pair" "test_2025_1_keypair" {
-  key_name   = "Test-2025-Server-1"
-  public_key = local.test_2025_1_ec2_data["public-key"]
+#  key_name   = "Test-2025-Server-1"
+#  public_key = local.test_2025_1_ec2_data["public-key"]
+  key_name   = "Test-2019-Server-1"
+  public_key = local.test_2019_1_ec2_data["public-key"]
+
 }
