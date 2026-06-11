@@ -17,7 +17,7 @@ module "test_2025_2_ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "5.8.0"
 
-  name = var.test_2025_2_ec2_name
+  name = var.live_test_2025_2_ec2_name
 
   ami                    = var.test_2025_2_ami
   instance_type          = var.test_2025_2_ec2_instance_size
