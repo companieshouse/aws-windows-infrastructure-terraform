@@ -19,9 +19,9 @@ module "test_2025_2_ec2" {
 
   name = var.live_test_2025_2_ec2_name
 
-  ami                    = var.test_2025_2_ami
-  instance_type          = var.test_2025_2_ec2_instance_size
-  key_name               = aws_key_pair.test_2025_2_keypair.key_name
+  ami                    = var.last_test_2025_2_ami
+  instance_type          = var.last_test_2025_2_ec2_instance_size
+  key_name               = aws_key_pair.last_test_2025_2_keypair.key_name
   monitoring             = var.monitoring
   get_password_data      = var.get_password_data
 
@@ -34,7 +34,7 @@ module "test_2025_2_ec2" {
   ]
 
   subnet_id            = local.test_2025_2_subnet_id
-  iam_instance_profile = module.test_2025_2_profile.aws_iam_instance_profile.name
+  iam_instance_profile = module.last_test_2025_2_profile.aws_iam_instance_profile.name
   ebs_optimized        = var.ebs_optimized
 
   # ✅ IMPORTANT: REMOVE volume_tags to stop tag conflict
@@ -52,8 +52,8 @@ module "test_2025_2_ec2" {
   ]
 
   tags = merge(local.default_tags, {
-    Name            = var.test_2025_2_ec2_name
-    Application     = var.test_2025_2_application
+    Name            = var.last_test_2025_2_ec2_name
+    Application     = var.last_test_2025_2_application
     ServiceTeam     = var.ServiceTeam
     Backup          = "backup14"
     BackupApp       = var.application
