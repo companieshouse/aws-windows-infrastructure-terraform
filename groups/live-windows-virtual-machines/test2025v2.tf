@@ -13,7 +13,7 @@ locals {
 # What are we going to create 
 # ------------------------------------------------------------------------------
 
-module "test_2025_2_ec2" {
+module "live_test_2025_2_ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "5.8.0"
 
