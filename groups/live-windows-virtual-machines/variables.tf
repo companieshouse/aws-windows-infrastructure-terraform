@@ -55,6 +55,12 @@ variable "default_log_group_retention_in_days" {
   description = "Total days to retain logs in CloudWatch log group if not specified for specific logs"
 }
 
+variable "scheduled_stop" {
+  type        = string
+  description = "Scheduled Stop For Test Servers"
+  default     = "true"
+}
+
 # ------------------------------------------------------------------------------
 # EC2 Variables
 # ------------------------------------------------------------------------------
