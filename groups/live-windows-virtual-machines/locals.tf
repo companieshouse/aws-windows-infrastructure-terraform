@@ -71,13 +71,13 @@ locals {
   live_test_1_log_groups = compact([for log, map in local.live_test_1_cw_logs : lookup(map, "log_group_name", "")])
 
  # ------------------------------------------------------------------------------
-  # Live Test Server 2 locals
+  # Live Test 2025 Server 2 locals
   # ------------------------------------------------------------------------------
 
   live_test_2025_2_ec2_data = data.vault_generic_secret.live_test_2025_2_ec2_data.data
 
   #For each log map passed, add an extra kv for the log group name
-  live_test_2025_2_cw_logs = { for log, map in var.live_test_2025_2_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-live-test-1-${log}" }) }
+  live_test_2025_2_cw_logs = { for log, map in var.live_test_2025_2_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-live-test-2025-2-${log}" }) }
 
   live_test_2025_2_log_groups = compact([for log, map in local.live_test_2025_2_cw_logs : lookup(map, "log_group_name", "")])
 

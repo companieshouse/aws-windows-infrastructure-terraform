@@ -19,7 +19,7 @@ module "live_test_2025_2_ec2" {
 
   name = var.live_test_2025_2_ec2_name
 
-  ami                    = var.last_test_2025_2_ami
+  ami                    = var.live_test_2025_2_ami
   instance_type          = var.last_test_2025_2_ec2_instance_size
   key_name               = aws_key_pair.last_test_2025_2_keypair.key_name
   monitoring             = var.monitoring

@@ -184,7 +184,7 @@ module "live_test_1_profile" {
 module "live_test_2025_2_profile" {
   source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
-  name       = "live-test-1-profile"
+  name       = "live-test-2025-2-profile"
   enable_ssm = true
   cw_log_group_arns = length(local.live_test_2025_2_log_groups) > 0 ? flatten([
     formatlist(
