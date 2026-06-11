@@ -136,3 +136,18 @@ live_test_1_cw_logs = {
     log_group_retention = 365
   }
 }
+
+# Live Test Server 2
+live_test_2025_2_application       = "Live Test Server 2"
+live_test_2025_2_ec2_name          = "livetest2-app"
+live_test_2025_2_ec2_instance_size = "m5.xlarge"
+live_test_2025_2_ami               = "ami-051a608546fba588d"
+
+live_test_2025_2_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}
