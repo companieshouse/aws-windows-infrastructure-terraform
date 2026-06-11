@@ -93,7 +93,7 @@ variable "ebs_volumes_live_test_2025_2" {
 resource "aws_ebs_volume" "test_2025_2" {
   for_each = { for v in var.ebs_volumes_live_test_2025_2 : v.name => v }
 
-  availability_zone = data.aws_subnet.live_test_2025_2.availability_zone
+  availability_zone = data.aws_subnet.test_2025_2.availability_zone
   size              = each.value.size
 
   type       = lookup(each.value, "type", "gp3")
