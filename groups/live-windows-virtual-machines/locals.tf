@@ -147,3 +147,5 @@ locals {
   # ------------------------------------------------------------------------------
 
   ingress_cidr_blocks_live_test2 = jsondecode(local.live_test_2025_2_ec2_data["ingress-cidr-blocks"])
+
+}
