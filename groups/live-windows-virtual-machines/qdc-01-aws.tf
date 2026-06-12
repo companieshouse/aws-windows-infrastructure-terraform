@@ -88,9 +88,12 @@ variable "ebs_volumes_qdc_1" {
 # ------------------------------------------------------------------------------
 # EBS Volumes (data disks ONLY) Creates the Required Storage from the Vars File
 # ------------------------------------------------------------------------------
-
 resource "aws_ebs_volume" "qdc_1" {
-  for_each = { for v in var.ebs_volumes_qdc_1 : v.name => v }
+  for_each = {
+    for v in var.ebs_volumes_qdc_1 :
+    v.name => v
+    if try(v.name, "") != "" && try(v.size, 0) > 0
+  }
 
   availability_zone = data.aws_subnet.qdc_1.availability_zone
   size              = each.value.size
@@ -120,6 +123,7 @@ lifecycle {
   ]
 }
 }
+
 
 # -------------------------------------------------------------------------------------------
 # Volume Attachments - Disks get created above but not attached to Device until this bit runs 
