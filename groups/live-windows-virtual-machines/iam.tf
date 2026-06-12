@@ -257,7 +257,7 @@ module "qrmad_1_profile" {
 module "qdc_1_profile" {
   source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
-  name       = "qrmad-1-profile"
+  name       = "qdc-1-profile"
   enable_ssm = true
   cw_log_group_arns = length(local.qdc_1_log_groups) > 0 ? flatten([
     formatlist(
