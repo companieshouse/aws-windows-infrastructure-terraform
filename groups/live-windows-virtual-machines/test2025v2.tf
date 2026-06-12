@@ -29,10 +29,9 @@ module "live_test_2025_2_ec2" {
      #  module.test_2025_2_ec2_security_group.security_group_id,
      #  data.aws_security_group.rdp_shared.id
 
-    module.live_test_2019_1_ec2_security_group.security_group_id,
+    module._live_test_2025_2_ec2_security_group.security_group_id,
     data.aws_security_group.rdp_shared.id
   ]
-
 
   subnet_id            = local.test_2025_2_subnet_id
   iam_instance_profile = module.live_test_2025_2_profile.aws_iam_instance_profile.name
