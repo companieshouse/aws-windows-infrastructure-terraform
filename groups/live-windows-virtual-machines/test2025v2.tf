@@ -29,7 +29,7 @@ module "live_test_2025_2_ec2" {
      #  module.test_2025_2_ec2_security_group.security_group_id,
      #  data.aws_security_group.rdp_shared.id
 
-    module._live_test_2025_2_ec2_security_group.security_group_id,
+    module.live_test_2025_2_ec2_security_group.security_group_id,
     data.aws_security_group.rdp_shared.id
   ]
 
