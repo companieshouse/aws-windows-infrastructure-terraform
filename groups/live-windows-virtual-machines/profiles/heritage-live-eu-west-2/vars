@@ -167,3 +167,33 @@ ebs_volumes_live_test_2025_2 = [
     throughput  = 125
   }
 ]
+
+# ------------------------------------------------------------------------------
+# qrmad_1
+# ------------------------------------------------------------------------------
+
+live_qrmad_1_application       = "Quest Rmad Server"
+live_qrmad_1_ec2_name          = "Qrmad-Server-1"
+live_qrmad_1_ec2_instance_size = "r6i.large"
+live_qrmad_1_ami               = "ami-051a608546fba588d"
+
+live_qrmad_1_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}
+
+# ✅ Modern EBS structure (extended safely)
+ebs_volumes_live_qrmad_1 = [
+  {
+    name        = "xvdf"
+    device_name = "/dev/xvdf"
+    size        = 100
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
+  }
+]
