@@ -26,12 +26,11 @@ module "live_test_2025_2_ec2" {
   get_password_data      = var.get_password_data
 
   vpc_security_group_ids = [
-     #  module.test_2025_2_ec2_security_group.security_group_id,
-     #  data.aws_security_group.rdp_shared.id
-
-    module.test_2025_2_ec2_security_group.security_group_id,
+      module.live_test_2025_2_security_group.security_group_id,
     data.aws_security_group.rdp_shared.id
   ]
+
+
 
   subnet_id            = local.test_2025_2_subnet_id
   iam_instance_profile = module.live_test_2025_2_profile.aws_iam_instance_profile.name
