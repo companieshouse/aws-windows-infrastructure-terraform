@@ -81,7 +81,16 @@ locals {
 
   live_test_2025_2_log_groups = compact([for log, map in local.live_test_2025_2_cw_logs : lookup(map, "log_group_name", "")])
 
+# ------------------------------------------------------------------------------
+  # Live qrmad 1 locals
+  # ------------------------------------------------------------------------------
 
+  live_qrmad_1_ec2_data = data.vault_generic_secret.live_qrmad_1_ec2_data.data
+
+  #For each log map passed, add an extra kv for the log group name
+  live_qrmad_1_cw_logs = { for log, map in var.live_qrmad_1_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-live-qrmad-1-${log}" }) }
+
+  live_qrmad_1_log_groups = compact([for log, map in local.live_qrmad_1_cw_logs : lookup(map, "log_group_name", "")])
 
   # ------------------------------------------------------------------------------
   # Lift and Shift Cloudwatch Variables
@@ -147,5 +156,12 @@ locals {
   # ------------------------------------------------------------------------------
 
   ingress_cidr_blocks_live_test2 = jsondecode(local.live_test_2025_2_ec2_data["ingress-cidr-blocks"])
+
+  # ------------------------------------------------------------------------------
+  #  Live qrmad_1 Security Group Variables
+  # ------------------------------------------------------------------------------
+
+  ingress_cidr_blocks_live_qrmad_1 = jsondecode(local.live_qrmad_1_ec2_data["ingress-cidr-blocks"])
+
 
 }

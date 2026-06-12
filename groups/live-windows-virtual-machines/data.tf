@@ -53,6 +53,11 @@ data "vault_generic_secret" "live_test_2025_2_ec2_data" {
   path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/live-test-1/ec2"
 }
 
+data "vault_generic_secret" "live_qrmad_1_ec2_data" {
+#  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/live-qrmad_1/ec2"
+  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/live-test-1/ec2"
+}
+
 data "vault_generic_secret" "azure_dc_cidrs" {
   path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/azure_dc"
 }
