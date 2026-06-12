@@ -32,6 +32,6 @@ resource "aws_key_pair" "qrmad_1_keypair" {
 }
 
 resource "aws_key_pair" "qdc_1_keypair" {
-  key_name   = "qrmad-1"
+  key_name   = "qdc-1"
   public_key = local.qdc_1_ec2_data["public-key"]
 }
