@@ -197,3 +197,34 @@ ebs_volumes_qrmad_1 = [
     throughput  = 125
   }
 ]
+
+
+# ------------------------------------------------------------------------------
+# qdc_1
+# ------------------------------------------------------------------------------
+
+qdc_1_application       = "Quest DC 1 Server"
+qdc_1_ec2_name          = "QDC-1"
+qdc_1_ec2_instance_size = "r6i.large"
+qdc_1_ami               = "ami-051a608546fba588d"
+
+qdc_1_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}
+
+# ✅ Modern EBS structure (extended safely)
+ebs_volumes_qdc_1 = [
+  {
+    name        = "xvdf"
+    device_name = "/dev/xvdf"
+    size        = 100
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
+  }
+]
