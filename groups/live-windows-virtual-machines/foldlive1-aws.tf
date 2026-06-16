@@ -26,10 +26,10 @@ module "foldlive_1_ec2" {
   get_password_data      = var.get_password_data
 
   vpc_security_group_ids = [
-  #  module.foldlive_1_security_group.security_group_id,
-  #  data.aws_security_group.rdp_shared.id
+  module.foldlive_1_security_group.security_group_id,
+   data.aws_security_group.rdp_shared.id
 
-   module.foldlive_1_ec2_security_group.security_group_id, data.aws_security_group.rdp_shared.id
+    # module.foldlive_1_ec2_security_group.security_group_id, data.aws_security_group.rdp_shared.id 
   ]
 
   subnet_id            = local.foldlive_1_subnet_id
