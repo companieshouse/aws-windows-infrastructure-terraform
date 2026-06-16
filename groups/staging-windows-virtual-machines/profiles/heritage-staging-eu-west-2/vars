@@ -148,3 +148,35 @@ ebs_volumes_test_2025_1 = [
     throughput  = 125
   }
 ]
+
+
+
+# ------------------------------------------------------------------------------
+# Foldstage-1 Server 1
+# ------------------------------------------------------------------------------
+
+foldstage_1_application       = "FoldStage Server 1"
+foldstage_1_ec2_name          = "foldstage-1-app"
+foldstage_1_ec2_instance_size = "r6i.large"
+foldstage_1_ami               = "ami-051a608546fba588d"
+
+foldstage_1_cw_logs = {
+  security = {
+    log_group_retention = 365
+  }
+  system = {
+    log_group_retention = 365
+  }
+}
+
+# ✅ Modern EBS structure (extended safely)
+ebs_volumes_foldstage_1 = [
+  {
+    name        = "xvdf"
+    device_name = "/dev/xvdf"
+    size        = 100
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
+  }
+]

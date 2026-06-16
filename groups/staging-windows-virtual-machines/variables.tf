@@ -258,31 +258,32 @@ variable "test_2019_2_cw_logs" {
 }
 
 
+
 # ------------------------------------------------------------------------------
-# Test 2025 Server 1 Variables
+# Folding Space 1 Server Variables
 # ------------------------------------------------------------------------------
 
-variable "test_2025_1_application" {
+variable "foldstage_1_application" {
   description = "EC2 application description"
   type        = string
 }
 
-variable "test_2025_1_ec2_name" {
+variable "foldstage_1_ec2_name" {
   description = "EC2 instance name"
   type        = string
 }
 
-variable "test_2025_1_ec2_instance_size" {
+variable "foldstage_1_ec2_instance_size" {
   type        = string
   description = "The size of the EC2 instance"
 }
 
-variable "test_2025_1_ami" {
+variable "foldstage_1_ami" {
   type        = string
   description = "ID of the AMI to use for instance"
 }
 
-variable "test_2025_1_cw_logs" {
+variable "foldstage_1_cw_logs" {
   type        = map(any)
   description = "Map of log file information; used to create log groups, IAM permissions and passed to the application to configure remote logging"
   default     = {}

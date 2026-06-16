@@ -134,4 +134,10 @@ locals {
 
   ingress_cidr_blocks_test3_ec2 = jsondecode(local.test_2025_1_ec2_data["ingress-cidr-blocks"])
 
+  # ------------------------------------------------------------------------------
+  # Folding Space Server 1 Security Group Variables
+  # ------------------------------------------------------------------------------
+
+  ingress_cidr_blocks_test3_ec2 = jsondecode(local.foldstage_1_ec2_data["ingress-cidr-blocks"])
+
 }
