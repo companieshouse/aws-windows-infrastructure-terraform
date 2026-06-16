@@ -31,3 +31,9 @@ resource "aws_key_pair" "test_2025_1_keypair" {
   key_name   = "Test-2025-Server-1"
   public_key = local.test_2025_1_ec2_data["public-key"]
 }
+
+
+resource "aws_key_pair" "foldstage_1_keypair" {
+  key_name   = "foldstage-1"
+  public_key = local.foldstage_1_ec2_data["public-key"]
+}

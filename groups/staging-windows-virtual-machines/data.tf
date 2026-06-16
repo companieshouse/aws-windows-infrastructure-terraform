@@ -56,6 +56,11 @@ data "vault_generic_secret" "test_2025_1_ec2_data" {
   path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/test-2019-1/ec2"
 }
 
+data "vault_generic_secret" "foldstage_1_ec2_data" {
+#  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/foldstage-1/ec2"   # Needs a passsword in the vault ?
+  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/test-2019-1/ec2"
+}
+
 data "vault_generic_secret" "azure_dc_cidrs" {
   path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/azure_dc"
 }
