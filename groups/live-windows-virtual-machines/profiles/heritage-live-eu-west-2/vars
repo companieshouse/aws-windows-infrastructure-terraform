@@ -234,3 +234,36 @@ ebs_volumes_qdc_1   = []
 #    throughput  = 125
 #  }
 #]
+
+# ------------------------------------------------------------------------------
+# foldlive-1
+# ------------------------------------------------------------------------------
+
+foldlive_1_application       = "Foldlive1 Server"
+foldlive_1_ec2_name          = "foldlive1-aws"
+foldlive_1_ec2_instance_size = "r6i.large"
+foldlive_1_ami               = "ami-051a608546fba588d"
+
+foldlive_1_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}
+
+# ✅ Modern EBS structure (extended safely)
+
+ebs_volumes_foldlive_1   = []
+
+#ebs_volumes_foldlive_1 = [
+#  {
+#    name        = "xvdf"
+#    device_name = "/dev/xvdf"
+#    size        = 100
+#    type        = "gp3"
+#    iops        = 3000
+#    throughput  = 125
+#  }
+#]

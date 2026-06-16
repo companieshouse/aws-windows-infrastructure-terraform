@@ -35,3 +35,7 @@ resource "aws_key_pair" "qdc_1_keypair" {
   key_name   = "qdc-1"
   public_key = local.qdc_1_ec2_data["public-key"]
 }
+resource "aws_key_pair" "foldlive_1_keypair" {
+  key_name   = "foldlive-1"
+  public_key = local.foldlive_1_ec2_data["public-key"]
+}
