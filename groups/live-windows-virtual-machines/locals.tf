@@ -103,6 +103,17 @@ locals {
 
   qdc_1_log_groups = compact([for log, map in local.qdc_1_cw_logs : lookup(map, "log_group_name", "")])
 
+# ------------------------------------------------------------------------------
+# Live foldlive_1 locals
+  # ------------------------------------------------------------------------------
+
+  foldlive_1_ec2_data = data.vault_generic_secret.foldlive_1_ec2_data.data
+
+  #For each log map passed, add an extra kv for the log group name
+  foldlive_1_cw_logs = { for log, map in var.foldlive_1_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-foldlive-1-${log}" }) }
+
+  foldlive_1_log_groups = compact([for log, map in local.foldlive_1_cw_logs : lookup(map, "log_group_name", "")])
+
   # ------------------------------------------------------------------------------
   # Lift and Shift Cloudwatch Variables
   # ------------------------------------------------------------------------------
@@ -180,5 +191,11 @@ locals {
   # ------------------------------------------------------------------------------
 
   ingress_cidr_blocks_qdc_1 = jsondecode(local.qdc_1_ec2_data["ingress-cidr-blocks"])
+
+  # ------------------------------------------------------------------------------
+  #  Live foldlive_1 Security Group Variables
+  # ------------------------------------------------------------------------------
+
+  ingress_cidr_blocks_foldlive_1 = jsondecode(local.foldlive_1_ec2_data["ingress-cidr-blocks"])
 
 }
