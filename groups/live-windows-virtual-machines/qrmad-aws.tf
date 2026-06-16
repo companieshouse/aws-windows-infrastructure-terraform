@@ -54,7 +54,7 @@ module "qrmad_1_ec2" {
     Name            = var.qrmad_1_ec2_name
     Application     = var.qrmad_1_application
     ServiceTeam     = var.ServiceTeam
-    Backup          = "backup14"
+    Backup          = "backup21"
     BackupApp       = var.application
     scheduled_stop  = var.scheduled_stop
     DevelopmentTeam = "None"
