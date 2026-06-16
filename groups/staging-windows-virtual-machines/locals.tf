@@ -88,6 +88,17 @@ locals {
 
   test_2025_1_log_groups = compact([for log, map in local.test_2025_1_cw_logs : lookup(map, "log_group_name", "")])
 
+# ------------------------------------------------------------------------------
+  # Folding Space 1 locals
+  # ------------------------------------------------------------------------------
+
+  foldstage_1_ec2_data = data.vault_generic_secret.foldstage_1_ec2_data.data
+
+  #For each log map passed, add an extra kv for the log group name
+  foldstage_1_cw_logs = { for log, map in var.foldstage_1_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-test-2025-1-${log}" }) }
+
+  foldstage_1_log_groups = compact([for log, map in local.foldstage_1_cw_logs : lookup(map, "log_group_name", "")])
+
 
 
   # ------------------------------------------------------------------------------
