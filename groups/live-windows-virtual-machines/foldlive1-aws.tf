@@ -13,27 +13,27 @@ locals {
 # What are we going to create 
 # ------------------------------------------------------------------------------
 
-module "live_foldlive_1_ec2" {
+module "foldlive_1_ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "5.8.0"
 
-  name = var.live_foldlive_1_ec2_name
+  name = var.foldlive_1_ec2_name
 
-  ami                    = var.live_foldlive_1_ami
-  instance_type          = var.live_foldlive_1_ec2_instance_size
-  key_name               = aws_key_pair.live_foldlive_1_keypair.key_name
+  ami                    = var.foldlive_1_ami
+  instance_type          = var.foldlive_1_ec2_instance_size
+  key_name               = aws_key_pair.foldlive_1_keypair.key_name
   monitoring             = var.monitoring
   get_password_data      = var.get_password_data
 
   vpc_security_group_ids = [
-  #  module.live_foldlive_1_security_group.security_group_id,
+  #  module.foldlive_1_security_group.security_group_id,
   #  data.aws_security_group.rdp_shared.id
 
-   module.live_foldlive_1_ec2_security_group.security_group_id, data.aws_security_group.rdp_shared.id
+   module.foldlive_1_ec2_security_group.security_group_id, data.aws_security_group.rdp_shared.id
   ]
 
   subnet_id            = local.foldlive_1_subnet_id
-  iam_instance_profile = module.live_foldlive_1_profile.aws_iam_instance_profile.name
+  iam_instance_profile = module.foldlive_1_profile.aws_iam_instance_profile.name
   ebs_optimized        = var.ebs_optimized
 
   # ✅ IMPORTANT: REMOVE volume_tags to stop tag conflict
@@ -51,8 +51,8 @@ module "live_foldlive_1_ec2" {
   ]
 
   tags = merge(local.default_tags, {
-    Name            = var.live_foldlive_1_ec2_name
-    Application     = var.live_foldlive_1_application
+    Name            = var.foldlive_1_ec2_name
+    Application     = var.foldlive_1_application
     ServiceTeam     = var.ServiceTeam
     Backup          = "backup14"
     BackupApp       = var.application
@@ -89,8 +89,8 @@ variable "ebs_volumes_foldlive_1" {
 # EBS Volumes (data disks ONLY) Creates the Required Storage from the Vars File
 # ------------------------------------------------------------------------------
 
-resource "aws_ebs_volume" "live_foldlive_1" {
-  for_each = { for v in var.ebs_volumes_live_foldlive_1 : v.name => v }
+resource "aws_ebs_volume" "foldlive_1" {
+  for_each = { for v in var.ebs_volumes_foldlive_1 : v.name => v }
 
   availability_zone = data.aws_subnet.foldlive_1.availability_zone
   size              = each.value.size
@@ -103,8 +103,8 @@ resource "aws_ebs_volume" "live_foldlive_1" {
   kms_key_id = data.aws_kms_key.ebs.arn
 
   tags = merge(local.default_tags, {
-    Name           = "${var.live_foldlive_1_ec2_name}-${each.key}"
-    Application    = var.live_foldlive_1_application
+    Name           = "${var.foldlive_1_ec2_name}-${each.key}"
+    Application    = var.foldlive_1_application
     ServiceTeam    = var.ServiceTeam
     Backup         = "backup14"
     BackupApp      = var.application
@@ -125,12 +125,12 @@ lifecycle {
 # Volume Attachments - Disks get created above but not attached to Device until this bit runs 
 # -------------------------------------------------------------------------------------------
 
-resource "aws_volume_attachment" "live_foldlive_1" {
-  for_each = { for v in var.ebs_volumes_live_foldlive_1 : v.name => v }
+resource "aws_volume_attachment" "foldlive_1" {
+  for_each = { for v in var.ebs_volumes_foldlive_1 : v.name => v }
 
   device_name = each.value.device_name
-  volume_id   = aws_ebs_volume.live_foldlive_1[each.key].id
-  instance_id = module.live_foldlive_1_ec2.id
+  volume_id   = aws_ebs_volume.foldlive_1[each.key].id
+  instance_id = module.foldlive_1_ec2.id
 
   force_detach = false
 }
