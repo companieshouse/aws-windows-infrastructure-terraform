@@ -74,7 +74,7 @@ data "aws_subnet" "foldlive_1" {
 # Variables
 # ------------------------------------------------------------------------------
 
-variable "ebs_volumes_live_foldlive_1" {
+variable "ebs_volumes_foldlive_1" {
   type = list(object({
     name        = string
     device_name = string
