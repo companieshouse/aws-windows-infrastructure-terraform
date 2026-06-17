@@ -90,7 +90,7 @@ locals {
   #For each log map passed, add an extra kv for the log group name
   qrmad_1_cw_logs = { for log, map in var.qrmad_1_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-qrmad-1-${log}" }) }
 
-  qrmad_1_log_groups = compact([for log, map in local.qrmad_1_cw_logs : lookup(map, "log_group_name", "")])
+  qrmad_1_log_groups = compact([for log, map in local.qrmad_1_cw_logs SMART: lookup(map, "log_group_name", "")])
 
 # ------------------------------------------------------------------------------
   # Live qrmad 1 locals
@@ -113,6 +113,16 @@ locals {
   foldlive_1_cw_logs = { for log, map in var.foldlive_1_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-foldlive-1-${log}" }) }
 
   foldlive_1_log_groups = compact([for log, map in local.foldlive_1_cw_logs : lookup(map, "log_group_name", "")])
+
+  # Live smartv_1 locals
+  # ------------------------------------------------------------------------------
+
+  smartv_1_ec2_data = data.vault_generic_secret.smartv_1_ec2_data.data
+
+  #For each log map passed, add an extra kv for the log group name
+  smartv_1_cw_logs = { for log, map in var.smartv_1_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-smartv-1-${log}" }) }
+
+  smartv_1_log_groups = compact([for log, map in local.smartv_1_cw_logs : lookup(map, "log_group_name", "")])
 
   # ------------------------------------------------------------------------------
   # Lift and Shift Cloudwatch Variables
@@ -197,5 +207,12 @@ locals {
   # ------------------------------------------------------------------------------
 
   ingress_cidr_blocks_foldlive_1 = jsondecode(local.foldlive_1_ec2_data["ingress-cidr-blocks"])
+
+  
+  # ------------------------------------------------------------------------------
+  #  Live smartv_1 Security Group Variables
+  # ------------------------------------------------------------------------------
+
+  ingress_cidr_blocks_smartv_1 = jsondecode(local.smartv_1_ec2_data["ingress-cidr-blocks"])
 
 }
