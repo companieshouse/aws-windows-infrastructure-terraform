@@ -58,7 +58,7 @@ module "foldlive_1_ec2" {
     Name            = var.foldlive_1_ec2_name
     Application     = var.foldlive_1_application
     ServiceTeam     = var.ServiceTeam
-    Backup          = "backup14"
+    Backup          = "backup21"
     BackupApp       = var.application
     scheduled_stop  = var.scheduled_stop
     DevelopmentTeam = "None"
