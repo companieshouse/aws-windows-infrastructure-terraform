@@ -68,6 +68,11 @@ data "vault_generic_secret" "foldlive_1_ec2_data" {
   path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/live-test-1/ec2"
 }
 
+data "vault_generic_secret" "smartv_1_ec2_data" {
+#  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/live-smartv_1/ec2"
+  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/live-test-1/ec2"
+}
+
 data "vault_generic_secret" "azure_dc_cidrs" {
   path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/azure_dc"
 }
