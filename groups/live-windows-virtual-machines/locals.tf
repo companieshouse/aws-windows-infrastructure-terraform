@@ -90,7 +90,7 @@ locals {
   #For each log map passed, add an extra kv for the log group name
   qrmad_1_cw_logs = { for log, map in var.qrmad_1_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-qrmad-1-${log}" }) }
 
-  qrmad_1_log_groups = compact([for log, map in local.qrmad_1_cw_logs SMART: lookup(map, "log_group_name", "")])
+  qrmad_1_log_groups = compact([for log, map in local.qrmad_1_cw_logs : lookup(map, "log_group_name", "")])
 
 # ------------------------------------------------------------------------------
   # Live qrmad 1 locals
