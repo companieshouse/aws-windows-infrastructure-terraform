@@ -106,7 +106,7 @@ resource "aws_ebs_volume" "qrmad_1" {
     Name           = "${var.qrmad_1_ec2_name}-${each.key}"
     Application    = var.qrmad_1_application
     ServiceTeam    = var.ServiceTeam
-    Backup         = "backup14"
+    Backup         = "backup21"
     BackupApp      = var.application
     scheduled_stop = var.scheduled_stop
   })

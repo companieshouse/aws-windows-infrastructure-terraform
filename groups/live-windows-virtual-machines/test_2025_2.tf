@@ -54,7 +54,7 @@ module "live_test_2025_2_ec2" {
     Name            = var.live_test_2025_2_ec2_name
     Application     = var.live_test_2025_2_application
     ServiceTeam     = var.ServiceTeam
-    Backup          = "backup14"
+    Backup          = "backup21"
     BackupApp       = var.application
     scheduled_stop  = var.scheduled_stop
     DevelopmentTeam = "None"
@@ -106,7 +106,7 @@ resource "aws_ebs_volume" "live_test_2025_2" {
     Name           = "${var.live_test_2025_2_ec2_name}-${each.key}"
     Application    = var.live_test_2025_2_application
     ServiceTeam    = var.ServiceTeam
-    Backup         = "backup14"
+    Backup         = "backup21"
     BackupApp      = var.application
     scheduled_stop = var.scheduled_stop
   })

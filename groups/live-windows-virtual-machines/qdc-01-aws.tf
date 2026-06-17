@@ -106,7 +106,7 @@ resource "aws_ebs_volume" "qdc_1" {
     Name           = "${var.qdc_1_ec2_name}-${each.key}"
     Application    = var.qdc_1_application
     ServiceTeam    = var.ServiceTeam
-    Backup         = "backup14"
+    Backup         = "backup21"
     BackupApp      = var.application
     scheduled_stop = var.scheduled_stop
   })
