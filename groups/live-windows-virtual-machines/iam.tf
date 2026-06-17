@@ -307,8 +307,26 @@ module "foldlive_1_profile" {
       data.aws_caller_identity.current.account_id,
       local.foldlive_1_log_groups
     ),
+  ]) : null
+  kms_key_refs = [
+    "alias/${var.account}/${var.region}/ebs",
+    local.ssm_kms_key_id
+  ]
+  s3_buckets_write = [local.session_manager_bucket_name]
 
-    module "smartv_1_profile" {
+  custom_statements = [
+    {
+      sid       = "CloudwatchMetrics"
+      effect    = "Allow"
+      resources = ["*"]
+      actions = [
+        "cloudwatch:PutMetricData"
+      ]
+    }
+  ]
+}
+
+module "smartv_1_profile" {
   source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
 
   name       = "smartv-1-profile"
