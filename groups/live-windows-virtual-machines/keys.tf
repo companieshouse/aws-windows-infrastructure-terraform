@@ -49,3 +49,8 @@ resource "aws_key_pair" "smartv_2_keypair" {
   key_name   = "smartv-2"
   public_key = local.smartv_2_ec2_data["public-key"]
 }
+
+resource "aws_key_pair" "doc1da_keypair" {
+  key_name   = "doc1da"
+  public_key = local.doc1da_ec2_data["public-key"]
+}

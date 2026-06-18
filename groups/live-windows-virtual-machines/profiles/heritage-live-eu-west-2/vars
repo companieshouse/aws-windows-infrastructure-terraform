@@ -333,3 +333,18 @@ ebs_volumes_smartv_2   = []
 #    throughput  = 125
 #  }
 #]
+
+# ✅ Modern EBS structure (extended safely)
+
+ebs_volumes_doc1da   = []
+
+#ebs_volumes_doc1da = [
+#  {
+#    name        = "xvdf"
+#    device_name = "/dev/xvdf"
+#    size        = 100
+#    type        = "gp3"
+#    iops        = 3000
+#    throughput  = 125
+#  }
+#]
