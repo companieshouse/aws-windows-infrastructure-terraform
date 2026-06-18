@@ -399,3 +399,36 @@ ebs_volumes_doc1pg   = []
 #    throughput  = 125
 #  }
 #]
+
+# ------------------------------------------------------------------------------
+# doc1tdg
+# ------------------------------------------------------------------------------
+
+doc1tdg_application       = "doc1tdg Server"
+doc1tdg_ec2_name          = "doc1tdg-aws"
+doc1tdg_ec2_instance_size = "r6i.large"
+doc1tdg_ami               = "ami-051a608546fba588d"
+
+doc1tdg_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}
+
+# ✅ Modern EBS structure (extended safely)
+
+ebs_volumes_doc1tdg  = []
+
+#ebs_volumes_doc1tdg = [
+#  {
+#    name        = "xvdf"
+#    device_name = "/dev/xvdf"
+#    size        = 100
+#    type        = "gp3"
+#    iops        = 3000
+#    throughput  = 125
+#  }
+#]
