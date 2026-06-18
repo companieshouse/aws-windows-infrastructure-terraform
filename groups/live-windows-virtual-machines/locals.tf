@@ -134,6 +134,16 @@ locals {
 
   smartv_2_log_groups = compact([for log, map in local.smartv_2_cw_logs : lookup(map, "log_group_name", "")])
 
+    # Live doc1da locals
+  # ------------------------------------------------------------------------------
+
+  doc1da_ec2_data = data.vault_generic_secret.doc1da_ec2_data.data
+
+  #For each log map passed, add an extra kv for the log group name
+  doc1da_cw_logs = { for log, map in var.doc1da_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-doc1da-${log}" }) }
+
+  doc1da_log_groups = compact([for log, map in local.doc1da_cw_logs : lookup(map, "log_group_name", "")])
+
   # ------------------------------------------------------------------------------
   # Lift and Shift Cloudwatch Variables
   # ------------------------------------------------------------------------------
