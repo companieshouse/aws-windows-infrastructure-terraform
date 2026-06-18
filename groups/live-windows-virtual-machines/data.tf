@@ -83,6 +83,11 @@ data "vault_generic_secret" "doc1da_ec2_data" {
   path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/live-test-1/ec2"
 }
 
+data "vault_generic_secret" "doc1pg_ec2_data" {
+#  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/live-doc1pg/ec2"
+  path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/live-test-1/ec2"
+}
+
 data "vault_generic_secret" "azure_dc_cidrs" {
   path = "applications/${var.aws_account}-${var.aws_region}/${var.application}/azure_dc"
 }
