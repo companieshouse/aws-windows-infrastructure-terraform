@@ -241,13 +241,16 @@ locals {
 
   ingress_cidr_blocks_smartv_2 = jsondecode(local.smartv_2_ec2_data["ingress-cidr-blocks"])
 
-
 # ------------------------------------------------------------------------------
   #  Live doc1da Security Group Variables
   # ------------------------------------------------------------------------------
 
   ingress_cidr_blocks_doc1da = jsondecode(local.doc1da_ec2_data["ingress-cidr-blocks"])
 
+# ------------------------------------------------------------------------------
+  #  Live doc1pg Security Group Variables
+  # ------------------------------------------------------------------------------
+
+  ingress_cidr_blocks_doc1pg = jsondecode(local.doc1pg_ec2_data["ingress-cidr-blocks"])
 
 }
-

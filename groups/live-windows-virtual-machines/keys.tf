@@ -54,3 +54,8 @@ resource "aws_key_pair" "doc1da_keypair" {
   key_name   = "doc1da"
   public_key = local.doc1da_ec2_data["public-key"]
 }
+
+resource "aws_key_pair" "doc1pg_keypair" {
+  key_name   = "doc1pg"
+  public_key = local.doc1pg_ec2_data["public-key"]
+}
