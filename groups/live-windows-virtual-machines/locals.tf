@@ -233,5 +233,12 @@ locals {
 
 
 }
+# ------------------------------------------------------------------------------
+  #  Live doc1da Security Group Variables
+  # ------------------------------------------------------------------------------
 
+  ingress_cidr_blocks_doc1da = jsondecode(local.doc1da_ec2_data["ingress-cidr-blocks"])
+
+
+}
 
