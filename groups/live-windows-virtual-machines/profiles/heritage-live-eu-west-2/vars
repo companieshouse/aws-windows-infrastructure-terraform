@@ -334,6 +334,25 @@ ebs_volumes_smartv_2   = []
 #  }
 #]
 
+
+# ------------------------------------------------------------------------------
+# doc1da
+# ------------------------------------------------------------------------------
+
+doc1da_application       = "doc1da Server"
+doc1da_ec2_name          = "doc1da-aws"
+doc1da_ec2_instance_size = "r6i.large"
+doc1da_ami               = "ami-051a608546fba588d"
+
+doc1da_cw_logs = {
+  "security" = {
+    log_group_retention = 365
+  }
+   "system" = {
+    log_group_retention = 365
+  }
+}
+
 # ✅ Modern EBS structure (extended safely)
 
 ebs_volumes_doc1da   = []
