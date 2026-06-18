@@ -255,18 +255,26 @@ foldlive_1_cw_logs = {
 
 # ✅ Modern EBS structure (extended safely)
 
-ebs_volumes_foldlive_1   = []
+#ebs_volumes_foldlive_1   = []
 
-#ebs_volumes_foldlive_1 = [
-#  {
-#    name        = "xvdf"
-#    device_name = "/dev/xvdf"
-#    size        = 100
-#    type        = "gp3"
-#    iops        = 3000
-#    throughput  = 125
-#  }
-#]
+ebs_volumes_foldlive_1 = [
+  {
+   name        = "xvdf"
+    device_name = "/dev/xvdf"
+    size        = 300
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
+  },
+    {
+   name        = "xvdg"
+    device_name = "/dev/xvdg"
+    size        = 300
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
+  }
+]
 
 # ------------------------------------------------------------------------------
 # smartv-1
