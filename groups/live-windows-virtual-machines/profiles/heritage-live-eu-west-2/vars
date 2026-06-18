@@ -362,18 +362,26 @@ doc1da_cw_logs = {
 
 # ✅ Modern EBS structure (extended safely)
 
-ebs_volumes_doc1da   = []
+#ebs_volumes_doc1da   = []
 
-#ebs_volumes_doc1da = [
-#  {
-#    name        = "xvdf"
-#    device_name = "/dev/xvdf"
-#    size        = 100
-#    type        = "gp3"
-#    iops        = 3000
-#    throughput  = 125
-#  }
-#]
+ebs_volumes_doc1da = [
+  {
+    name        = "xvdf"
+    device_name = "/dev/xvdf"
+    size        = 150
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
+  },
+    {
+    name        = "xvdf"
+    device_name = "/dev/xvdf"
+    size        = 100
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
+  }
+]
 
 # ------------------------------------------------------------------------------
 # doc1pg
@@ -395,18 +403,18 @@ doc1pg_cw_logs = {
 
 # ✅ Modern EBS structure (extended safely)
 
-ebs_volumes_doc1pg   = []
+#ebs_volumes_doc1pg   = []
 
-#ebs_volumes_doc1pg = [
-#  {
-#    name        = "xvdf"
-#    device_name = "/dev/xvdf"
-#    size        = 100
-#    type        = "gp3"
-#    iops        = 3000
-#    throughput  = 125
-#  }
-#]
+ebs_volumes_doc1pg = [
+  {
+    name        = "xvdf"
+    device_name = "/dev/xvdf"
+    size        = 900
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
+  }
+]
 
 # ------------------------------------------------------------------------------
 # doc1tdg
@@ -428,15 +436,15 @@ doc1tdg_cw_logs = {
 
 # ✅ Modern EBS structure (extended safely)
 
-ebs_volumes_doc1tdg   = []
+#ebs_volumes_doc1tdg   = []
 
-#ebs_volumes_doc1tdg = [
-#  {
-#    name        = "xvdf"
-#    device_name = "/dev/xvdf"
-#    size        = 100
-#    type        = "gp3"
-#    iops        = 3000
-#    throughput  = 125
-#  }
-#]
+ebs_volumes_doc1tdg = [
+  {
+    name        = "xvdf"
+    device_name = "/dev/xvdf"
+    size        = 100
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
+  }
+]
