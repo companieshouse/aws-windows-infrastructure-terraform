@@ -374,8 +374,8 @@ ebs_volumes_doc1da = [
     throughput  = 125
   },
     {
-    name        = "xvdf"
-    device_name = "/dev/xvdf"
+    name        = "xvdg"
+    device_name = "/dev/xvdg"
     size        = 100
     type        = "gp3"
     iops        = 3000
