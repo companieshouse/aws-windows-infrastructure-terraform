@@ -118,7 +118,7 @@ resource "aws_cloudwatch_log_group" "ewok_lic_sec" {
 }
 
 # ------------------------------------------------------------------------------
-# Ewok License Second EC2
+# Ewok License Second EC2 - Hostname: ewklic2-app-aws
 # ------------------------------------------------------------------------------
 
 module "ewok_lic_sec_ec2" {
@@ -140,7 +140,7 @@ module "ewok_lic_sec_ec2" {
   root_block_device = [
     {
       delete_on_termination = var.delete_on_termination
-      volume_size           = 100
+      volume_size           = 150
       volume_type           = var.volume_type
       encrypted             = var.ebs_encrypted
       kms_key_id            = data.aws_kms_key.ebs.arn

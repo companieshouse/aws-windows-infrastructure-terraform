@@ -122,7 +122,7 @@ resource "aws_cloudwatch_log_group" "ewok_lic_bac" {
 }
 
 # ------------------------------------------------------------------------------
-# Ewok License Backup EC2
+# Ewok License Backup EC2 - Hostname: ewklic-app-aws
 # ------------------------------------------------------------------------------
 
 module "ewok_lic_bac_ec2" {
@@ -144,7 +144,7 @@ module "ewok_lic_bac_ec2" {
   root_block_device = [
     {
       delete_on_termination = var.delete_on_termination
-      volume_size           = 100
+      volume_size           = 200
       volume_type           = var.volume_type
       encrypted             = var.ebs_encrypted
       kms_key_id            = data.aws_kms_key.ebs.arn
