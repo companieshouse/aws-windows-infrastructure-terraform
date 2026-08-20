@@ -60,7 +60,7 @@ module "smartv_1_ec2" {
     ServiceTeam     = var.ServiceTeam
     Backup          = "backup21"
     BackupApp       = var.application
-    scheduled_stop  = var.scheduled_stop
+ #   scheduled_stop = var.scheduled_stop
     DevelopmentTeam = "None"
     Owner           = "WebOps / Devops"
   })
@@ -112,7 +112,7 @@ resource "aws_ebs_volume" "smartv_1" {
     ServiceTeam    = var.ServiceTeam
     Backup         = "backup21"
     BackupApp      = var.application
-    scheduled_stop = var.scheduled_stop
+ #   scheduled_stop = var.scheduled_stop
   })
 
 lifecycle {

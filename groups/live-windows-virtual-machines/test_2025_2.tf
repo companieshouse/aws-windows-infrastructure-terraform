@@ -56,7 +56,7 @@ module "live_test_2025_2_ec2" {
     ServiceTeam     = var.ServiceTeam
     Backup          = "backup21"
     BackupApp       = var.application
-    scheduled_stop  = var.scheduled_stop
+ #   scheduled_stop  = var.scheduled_stop
     DevelopmentTeam = "None"
     Owner           = "MSS"
   })
@@ -108,7 +108,7 @@ resource "aws_ebs_volume" "live_test_2025_2" {
     ServiceTeam    = var.ServiceTeam
     Backup         = "backup21"
     BackupApp      = var.application
-    scheduled_stop = var.scheduled_stop
+ #   scheduled_stop = var.scheduled_stop
   })
 
 lifecycle {
