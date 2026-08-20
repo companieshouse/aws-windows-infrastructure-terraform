@@ -139,7 +139,7 @@ module "abbyy_dev_ec2" {
       ServiceTeam    = var.ServiceTeam
       Backup         = "backup14"
       BackupApp      = var.application
-      scheduled_stop = var.scheduled_stop
+#      scheduled_stop = var.scheduled_stop
     }
   )
 
@@ -151,7 +151,7 @@ module "abbyy_dev_ec2" {
       ServiceTeam    = var.ServiceTeam
       Backup         = "backup14"
       BackupApp      = var.application
-      scheduled_stop = var.scheduled_stop
+ #     scheduled_stop = var.scheduled_stop
     }
   )
 }
