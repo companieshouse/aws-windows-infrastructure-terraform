@@ -60,7 +60,7 @@ module "doc1pg_ec2" {
     ServiceTeam     = var.ServiceTeam
     Backup          = "backup21"
     BackupApp       = var.application
-    scheduled_stop  = var.scheduled_stop
+ #   scheduled_stop  = var.scheduled_stop
     DevelopmentTeam = "None"
     Owner           = "CSI"
   })
@@ -112,7 +112,7 @@ resource "aws_ebs_volume" "doc1pg" {
     ServiceTeam    = var.ServiceTeam
     Backup         = "backup21"
     BackupApp      = var.application
-    scheduled_stop = var.scheduled_stop
+#    scheduled_stop = var.scheduled_stop
   })
 
 lifecycle {
