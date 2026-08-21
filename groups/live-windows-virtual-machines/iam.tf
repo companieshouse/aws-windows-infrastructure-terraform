@@ -505,3 +505,39 @@ module "doc1tdg_profile" {
     }
   ]
 }
+
+module "smartv_3_profile" {
+  source = "git@github.com:companieshouse/terraform-modules//aws/instance_profile?ref=tags/1.0.365"
+
+  name       = "smartv-3-profile"
+  enable_ssm = true
+  cw_log_group_arns = length(local.smartv_3_log_groups) > 0 ? flatten([
+    formatlist(
+      "arn:aws:logs:%s:%s:log-group:%s:*:*",
+      var.aws_region,
+      data.aws_caller_identity.current.account_id,
+      local.smartv_3_log_groups
+    ),
+    formatlist("arn:aws:logs:%s:%s:log-group:%s:*",
+      var.aws_region,
+      data.aws_caller_identity.current.account_id,
+      local.smartv_3_log_groups
+    ),
+  ]) : null
+  kms_key_refs = [
+    "alias/${var.account}/${var.region}/ebs",
+    local.ssm_kms_key_id
+  ]
+  s3_buckets_write = [local.session_manager_bucket_name]
+
+  custom_statements = [
+    {
+      sid       = "CloudwatchMetrics"
+      effect    = "Allow"
+      resources = ["*"]
+      actions = [
+        "cloudwatch:PutMetricData"
+      ]
+    }
+  ]
+}
