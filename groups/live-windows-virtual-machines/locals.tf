@@ -164,6 +164,16 @@ locals {
 
   doc1tdg_log_groups = compact([for log, map in local.doc1tdg_cw_logs : lookup(map, "log_group_name", "")])
 
+    # Live smartv_3 locals
+  # ------------------------------------------------------------------------------
+
+  smartv_3_ec2_data = data.vault_generic_secret.smartv_3_ec2_data.data
+
+  #For each log map passed, add an extra kv for the log group name
+  smartv_3_cw_logs = { for log, map in var.smartv_3_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-smartv-3-${log}" }) }
+
+  smartv_3_log_groups = compact([for log, map in local.smartv_3_cw_logs : lookup(map, "log_group_name", "")])
+
   # ------------------------------------------------------------------------------
   # Lift and Shift Cloudwatch Variables
   # ------------------------------------------------------------------------------
@@ -278,5 +288,11 @@ locals {
   # ------------------------------------------------------------------------------
 
   ingress_cidr_blocks_doc1tdg = jsondecode(local.doc1tdg_ec2_data["ingress-cidr-blocks"])
+
+  # ------------------------------------------------------------------------------
+  #  Live smartv_3 Security Group Variables
+  # ------------------------------------------------------------------------------
+
+  ingress_cidr_blocks_smartv_3 = jsondecode(local.smartv_3_ec2_data["ingress-cidr-blocks"])
 
 }
