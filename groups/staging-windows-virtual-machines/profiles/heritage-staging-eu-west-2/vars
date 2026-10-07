@@ -186,5 +186,13 @@ ebs_volumes_foldstage_1 = [
     type        = "gp3"
     iops        = 3000
     throughput  = 125
+  },
+    {
+    name        = "xvdh"
+    device_name = "/dev/xvdh"
+    size        = 300
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
   }
 ]
