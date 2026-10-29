@@ -37,3 +37,8 @@ resource "aws_key_pair" "foldstage_1_keypair" {
   key_name   = "foldstage-1"
   public_key = local.foldstage_1_ec2_data["public-key"]
 }
+
+resource "aws_key_pair" "SnapCenter_1_keypair" {
+  key_name   = "SnapCenter-1"
+  public_key = local.SnapCenter_1_ec2_data["public-key"]
+}
