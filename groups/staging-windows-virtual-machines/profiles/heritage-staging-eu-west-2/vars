@@ -198,7 +198,7 @@ ebs_volumes_foldstage_1 = [
 ]
 
 # ------------------------------------------------------------------------------
-# SnapCenter-1 Server 1
+# SnapCenter-1 Server
 # ------------------------------------------------------------------------------
 
 SnapCenter_1_application       = "SnapCenter Server 1"
@@ -214,3 +214,15 @@ SnapCenter_1_cw_logs = {
     log_group_retention = 365
   }
 }
+
+# ✅ Modern EBS structure (extended safely)
+ebs_volumes_SnapCenter_1 = [
+  {
+    name        = "xvdf"
+    device_name = "/dev/xvdf"
+    size        = 100
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
+  }
+]
