@@ -196,3 +196,21 @@ ebs_volumes_foldstage_1 = [
     throughput  = 125
   }
 ]
+
+# ------------------------------------------------------------------------------
+# SnapCenter-1 Server 1
+# ------------------------------------------------------------------------------
+
+SnapCenter_1_application       = "SnapCenter Server 1"
+SnapCenter_1_ec2_name          = "SnapCenter-1-app"
+SnapCenter_1_ec2_instance_size = "c6i.xlarge"
+SnapCenter_1_ami               = "ami-051a608546fba588d"
+
+SnapCenter_1_cw_logs = {
+  security = {
+    log_group_retention = 365
+  }
+  system = {
+    log_group_retention = 365
+  }
+}
