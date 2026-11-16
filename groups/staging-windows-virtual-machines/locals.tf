@@ -110,9 +110,8 @@ locals {
 
   SnapCenter_1_log_groups = compact([for log, map in local.SnapCenter_1_cw_logs : lookup(map, "log_group_name", "")])
 
- ------------------------------------------------------------------------------
-  # SnapCenter Space 2
-   locals
+ #------------------------------------------------------------------------------
+  # SnapCenter Space 2 locals
   # ------------------------------------------------------------------------------
 
   SnapCenter_2_ec2_data = data.vault_generic_secret.SnapCenter_2_ec2_data.data
