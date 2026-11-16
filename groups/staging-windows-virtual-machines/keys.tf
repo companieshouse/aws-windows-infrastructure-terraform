@@ -42,3 +42,8 @@ resource "aws_key_pair" "SnapCenter_1_keypair" {
   key_name   = "SnapCenter-1"
   public_key = local.SnapCenter_1_ec2_data["public-key"]
 }
+
+resource "aws_key_pair" "SnapCenter_2_keypair" {
+  key_name   = "SnapCenter-2"
+  public_key = local.SnapCenter_2_ec2_data["public-key"]
+}
