@@ -31,6 +31,7 @@ module "SnapCenter_2_ec2" {
 
     module.test_2019_1_ec2_security_group.security_group_id,
     data.aws_security_group.rdp_shared.id
+
   ]
 
   subnet_id            = local.SnapCenter_2_subnet_id
