@@ -226,3 +226,34 @@ ebs_volumes_SnapCenter_1 = [
     throughput  = 125
   }
 ]
+
+
+# ------------------------------------------------------------------------------
+# SnapCenter-2 Server 2
+# ------------------------------------------------------------------------------
+
+SnapCenter_2_application       = "SnapCenter Server 2"
+SnapCenter_2_ec2_name          = "SnapCenter-2-app"
+SnapCenter_2_ec2_instance_size = "m5.xlarge"
+SnapCenter_2_ami               = "ami-051a608546fba588d"
+
+SnapCenter_2_cw_logs = {
+  security = {
+    log_group_retention = 365
+  }
+  system = {
+    log_group_retention = 365
+  }
+}
+
+# ✅ Modern EBS structure (extended safely)
+ebs_volumes_SnapCenter_2 = [
+  {
+    name        = "xvdf"
+    device_name = "/dev/xvdf"
+    size        = 100
+    type        = "gp3"
+    iops        = 3000
+    throughput  = 125
+  }
+]

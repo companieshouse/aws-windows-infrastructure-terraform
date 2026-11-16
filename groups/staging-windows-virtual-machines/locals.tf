@@ -110,6 +110,17 @@ locals {
 
   SnapCenter_1_log_groups = compact([for log, map in local.SnapCenter_1_cw_logs : lookup(map, "log_group_name", "")])
 
+ ------------------------------------------------------------------------------
+  # SnapCenter Space 2
+   locals
+  # ------------------------------------------------------------------------------
+
+  SnapCenter_2_ec2_data = data.vault_generic_secret.SnapCenter_2_ec2_data.data
+
+  #For each log map passed, add an extra kv for the log group name
+  SnapCenter_2_cw_logs = { for log, map in var.SnapCenter_2_cw_logs : log => merge(map, { "log_group_name" = "${var.application}-SnapCenter-2-${log}" }) }
+
+  SnapCenter_2_log_groups = compact([for log, map in local.SnapCenter_2_cw_logs : lookup(map, "log_group_name", "")])
 
 
   # ------------------------------------------------------------------------------
@@ -167,5 +178,11 @@ locals {
   # ------------------------------------------------------------------------------
 
   ingress_cidr_blocks_SnapCenter_1_ec2 = jsondecode(local.SnapCenter_1_ec2_data["ingress-cidr-blocks"])
+
+   # ------------------------------------------------------------------------------
+  # SnapCenter Space Server 2 Security Group Variables
+  # ------------------------------------------------------------------------------
+
+  ingress_cidr_blocks_SnapCenter_2_ec2 = jsondecode(local.SnapCenter_2_ec2_data["ingress-cidr-blocks"])
 
 }
