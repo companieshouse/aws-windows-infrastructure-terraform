@@ -294,7 +294,7 @@ module "SnapCenter_2_profile" {
 
   name       = "SnapCenter-2-profile"
   enable_ssm = true
-  cw_log_group_arns = length(local.SnapCenter_1_log_groups) > 0 ? flatten([
+  cw_log_group_arns = length(local.SnapCenter_2_log_groups) > 0 ? flatten([
     formatlist(
       "arn:aws:logs:%s:%s:log-group:%s:*:*",
       var.aws_region,
