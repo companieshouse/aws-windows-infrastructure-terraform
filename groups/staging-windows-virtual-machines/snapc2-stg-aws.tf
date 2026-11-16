@@ -127,11 +127,11 @@ lifecycle {
 # -------------------------------------------------------------------------------------------
 
 resource "aws_volume_attachment" "SnapCenter_2" {
-  for_each = { for v in var.ebs_volumes_SnapCenter_1 : v.name => v }
+  for_each = { for v in var.ebs_volumes_SnapCenter_2 : v.name => v }
 
   device_name = each.value.device_name
   volume_id   = aws_ebs_volume.SnapCenter_2[each.key].id
-  instance_id = module.SnapCenter_1_ec2.id
+  instance_id = module.SnapCenter_2_ec2.id
 
   force_detach = false
 }
