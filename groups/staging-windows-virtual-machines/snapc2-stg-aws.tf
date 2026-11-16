@@ -6,7 +6,9 @@
 # ------------------------------------------------------------------------------
 
 locals {
-  SnapCenter_2_subnet_id = coalesce(data.aws_subnets.application.ids...)
+ # SnapCenter_2_subnet_id = coalesce(data.aws_subnets.application.ids...)
+ SnapCenter_2_subnet_id = "subnet-0edef41bb605962e2"
+
 }
 
 # ------------------------------------------------------------------------------
